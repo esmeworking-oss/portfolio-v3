@@ -1,0 +1,185 @@
+---
+import { Image } from 'astro:assets'
+
+interface Props {
+  oldImage: ImageMetadata
+  newImage: ImageMetadata
+  oldAlt: string
+  newAlt: string
+}
+
+const { oldImage, newImage, oldAlt, newAlt } = Astro.props
+---
+
+<div class="compare-slider" data-compare>
+  <div class="compare-wrapper">
+    <div class="compare-old">
+      <Image src={oldImage} alt={oldAlt} class="compare-img" />
+      <span class="compare-label compare-label--old">Before</span>
+    </div>
+    <div class="compare-new" data-new>
+      <Image src={newImage} alt={newAlt} class="compare-img" />
+      <span class="compare-label compare-label--new">After</span>
+    </div>
+    <div class="compare-handle" data-handle>
+      <div class="compare-handle-line"></div>
+      <div class="compare-handle-knob">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="compare-handle-line"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .compare-slider {
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
+    border-radius: 0;
+    border: 1px solid #e5e7eb;
+    cursor: ew-resize;
+    height: 100%;
+  }
+
+  .compare-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .compare-old {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .compare-old .compare-img,
+  .compare-new .compare-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  .compare-new {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    clip-path: inset(0 0 0 50%);
+  }
+
+  .compare-label {
+    position: absolute;
+    bottom: 12px;
+    padding: 4px 12px;
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .compare-label--old {
+    left: 12px;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+  }
+
+  .compare-label--new {
+    right: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    color: black;
+  }
+
+  .compare-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .compare-handle-line {
+    flex: 1;
+    width: 2px;
+    background: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .compare-handle-knob {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    color: #333;
+    flex-shrink: 0;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-compare]').forEach((slider) => {
+    const newLayer = slider.querySelector<HTMLElement>('[data-new]')!
+    const handle = slider.querySelector<HTMLElement>('[data-handle]')!
+    let isDragging = false
+
+    function updatePosition(x: number) {
+      const rect = slider.getBoundingClientRect()
+      let pct = ((x - rect.left) / rect.width) * 100
+      pct = Math.min(Math.max(pct, 0), 100)
+      newLayer.style.clipPath = `inset(0 0 0 ${pct}%)`
+      handle.style.left = `${pct}%`
+    }
+
+    slider.addEventListener('dragstart', (e) => e.preventDefault())
+
+    slider.addEventListener('mousedown', (e) => {
+      e.preventDefault()
+      isDragging = true
+      updatePosition(e.clientX)
+    })
+
+    slider.addEventListener('touchstart', (e) => {
+      isDragging = true
+      updatePosition(e.touches[0].clientX)
+    }, { passive: true })
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return
+      e.preventDefault()
+      updatePosition(e.clientX)
+    })
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return
+      updatePosition(e.touches[0].clientX)
+    }, { passive: true })
+
+    window.addEventListener('mouseup', () => { isDragging = false })
+    window.addEventListener('touchend', () => { isDragging = false })
+  })
+</script>

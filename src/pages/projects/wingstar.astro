@@ -1,0 +1,78 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro'
+import { Image } from 'astro:assets'
+
+import homepage from '../../assets/projects/wingstar/homepage.png'
+import profile from '../../assets/projects/wingstar/profile.png'
+import profileMobile from '../../assets/projects/wingstar/profile-mobile.png'
+import ranking from '../../assets/projects/wingstar/ranking.png'
+import rankingMobile from '../../assets/projects/wingstar/ranking-mobile.png'
+import memberIntro from '../../assets/projects/wingstar/member-intro.png'
+import news from '../../assets/projects/wingstar/news.png'
+import purchaseHistory from '../../assets/projects/wingstar/purchase-history.png'
+import monetizationMap from '../../assets/projects/wingstar/monetization-map.png'
+---
+
+<ProjectLayout
+  title="WINGSTARS 啦啦隊官方網站"
+  headline="打造粉絲與偶像互動的專屬平台"
+
+  skills={['UX/UI', '網站設計', 'RWD', 'Prototyping']}
+  roles={['資訊架構', '介面設計', '響應式設計', 'Prototyping']}
+>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">背景</h2>
+    <h3 class="text-base font-semibold text-black mb-3">從單向追隨，到雙向奔赴的數位看台</h3>
+    <p class="text-black leading-relaxed">
+      傳統的粉絲經營面臨著巨大的斷層：粉絲渴望更近距離的互動，卻缺乏安全且專屬的溝通管道；擁有了眾多收藏，卻苦無展現熱情的競技場。對經紀公司而言，破碎的跨裝置體驗與難以落地的變現模式，更是長期以來社群經營的阻礙。
+    </p>
+    <p class="text-black leading-relaxed mt-4">
+      本專案透過整合性的體驗設計，將粉絲的「忠誠度」轉化為「社群動力」。我們重新定義了互動的邊界，讓排行競賽成為粉絲間的良性催化劑，並藉由一致性的跨裝置介面，打破體驗的隔閡，將零散的流量轉化為<strong class="text-black">可持續發展的商業生態</strong>。
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">設計策略與變現拆解</h2>
+    <h3 class="text-base font-semibold text-black mb-3">定義價值，讓每一次點擊都成為支持偶像的動力</h3>
+    <p class="text-black leading-relaxed">
+      為了建立可持續的變現模式，我參與了核心營收架構的梳理。我將粉絲的心理預期分為「情感寄託、身分認同、特權渴望」三大維度，並轉化為具體的產品策略：例如利用<strong class="text-black">限時稱號</strong>強化社交榮譽，或透過<strong class="text-black">數位扭蛋</strong>增加趣味性的消費動機。
+    </p>
+    <p class="text-black leading-relaxed mt-4">
+      透過主導這份變現藍圖，我能從更宏觀的視角決定設計的權重，確保產品在提供流暢體驗的同時，也建立起一套完整的社群經濟閉環，達成偶像、粉絲與公司三方的互惠成長。
+    </p>
+    <Image src={monetizationMap} alt="變現模式心智圖" class="w-full border border-gray-200 mt-6" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">解決方案</h2>
+
+    <p class="text-black leading-relaxed mb-2">
+      <strong class="text-black block mb-1">強化粉絲參與</strong>個人化會員頁面展示專屬數據與活動紀錄；排行榜結合投票機制與追蹤功能，營造良性競爭。
+    </p>
+
+    <p class="text-black leading-relaxed mb-2">
+      <strong class="text-black block mb-1">遊戲化收藏體驗</strong>展示櫃依系列整理收藏，未收集品項以鎖頭圖示激勵蒐集動力。
+    </p>
+
+    <p class="text-black leading-relaxed mb-2">
+      <strong class="text-black block mb-1">商業與體驗整合</strong>商城整合限定球場周邊與二手拍賣，開啟變現管道；同步設計桌面與手機版，確保跨裝置一致。
+    </p>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <Image src={profile} alt="個人頁面（桌面版）" class="border border-gray-200" />
+      <Image src={profileMobile} alt="個人頁面（手機版）" class="border border-gray-200" />
+    </div>
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <Image src={ranking} alt="排行榜（桌面版）" class="border border-gray-200" />
+      <Image src={rankingMobile} alt="排行榜（手機版）" class="border border-gray-200" />
+    </div>
+    <Image src={memberIntro} alt="成員介紹頁面" class="w-full border border-gray-200 mb-6" />
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <Image src={homepage} alt="首頁" class="border border-gray-200" />
+      <Image src={news} alt="最新消息" class="border border-gray-200" />
+    </div>
+    <Image src={purchaseHistory} alt="消費紀錄" class="w-full border border-gray-200" />
+  </section>
+
+</ProjectLayout>

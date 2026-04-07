@@ -1,0 +1,24 @@
+---
+const experiences = [
+  { year: '2025 – 2026', company: '星坦科技', role: 'UI/UX 設計師' },
+  { year: '2025', company: '簡訊設計', role: '專案經理' },
+  { year: '2023 – 2025', company: '喜馬拉雅科技', role: 'UI/UX 設計師' },
+  { year: '2022', company: '泛思醫學', role: '專案經理' },
+]
+---
+
+<section id="experience" class="py-20">
+  <div class="max-w-[1200px] mx-auto px-8">
+    <hr class="border-t border-black mb-10" />
+    <h2 class="text-2xl font-bold mb-10">Experience</h2>
+    <div class="space-y-0">
+      {experiences.map((exp) => (
+        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-0 py-4 border-b border-black/15">
+          <span class="text-sm text-black sm:w-40 flex-shrink-0">{exp.year}</span>
+          <span class="text-sm text-black sm:w-48 flex-shrink-0">{exp.company}</span>
+          <span class="text-sm text-black">{exp.role}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+interface Props {
+  year: string
+  company: string
+  title: string
+  description: string
+  href: string
+  video?: string
+  image?: string
+}
+
+const { year, company, title, description, href, video, image } = Astro.props
+---
+
+<a href={href} class="group block">
+  {video && (
+    <div class="overflow-hidden h-[360px] transition-transform duration-300 group-hover:scale-[1.02]">
+      <video
+        src={video}
+        autoplay
+        loop
+        muted
+        playsinline
+        class="w-full h-full object-cover"
+      />
+    </div>
+  )}
+  {!video && image && (
+    <div class="overflow-hidden h-[360px] transition-transform duration-300 group-hover:scale-[1.02]">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover"
+      />
+    </div>
+  )}
+  <h3 class="text-xl font-medium mt-5">
+    <span>{title}</span>
+    <span class="inline-block align-middle text-lg transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+  </h3>
+  <p class="text-sm text-black mt-1">{description}</p>
+</a>

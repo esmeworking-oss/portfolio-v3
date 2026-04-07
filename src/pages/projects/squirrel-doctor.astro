@@ -1,0 +1,165 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro'
+import { Image } from 'astro:assets'
+
+import fabAdded from '../../assets/projects/squirrel-doctor/fab/fab-added.png'
+import fabExpanded from '../../assets/projects/squirrel-doctor/fab/fab-expanded.png'
+import questionnaireSteps from '../../assets/projects/squirrel-doctor/symptoms-record/questionnaire-steps.png'
+import tooltip from '../../assets/projects/squirrel-doctor/symptoms-record/tooltip.png'
+import logMeal from '../../assets/projects/squirrel-doctor/food/log-meal.png'
+import galleryMonth from '../../assets/projects/squirrel-doctor/food/gallery-month.png'
+import foodPatientList from '../../assets/projects/squirrel-doctor/food/patient-list.jpg'
+import logBp from '../../assets/projects/squirrel-doctor/blood-pressure/log-bp.png'
+import loggedToday from '../../assets/projects/squirrel-doctor/blood-pressure/logged-today.png'
+
+const gradients = [
+  'linear-gradient(135deg, #1a3c5e 0%, #2a7b9b 50%, #3db8c1 100%)',   // 藍青
+  'linear-gradient(135deg, #1e2a78 0%, #5b3dbd 50%, #8b5cf6 100%)',   // 藍紫
+  'linear-gradient(135deg, #6b21a8 0%, #a855f7 50%, #d4b4fe 100%)',   // 紫粉
+  'linear-gradient(135deg, #065f5b 0%, #0d9488 50%, #5eead4 100%)',   // 青綠
+  'linear-gradient(135deg, #7c2d12 0%, #c2410c 50%, #fb923c 100%)',   // 橘棕
+]
+---
+
+<ProjectLayout
+  title="松鼠醫生 App 與後台"
+  headline="為高齡慢性病患者打造低門檻的健康記錄體驗"
+  skills={['UX 研究', 'UI 設計', '資訊架構', 'Prototyping']}
+  roles={['用戶研究', '資訊架構', '介面設計', 'Prototyping', 'PM']}
+>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">背景</h2>
+    <p class="text-black leading-relaxed">
+      高齡慢性病患者需要長期追蹤健康數據，但多數長輩對數位工具感到陌生，導致記錄中斷、數據零散。此專案設計患者端 App 與臨床端後台，目標是降低使用門檻，同時串連患者、家屬與醫護的照護關係。
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">核心問題</h2>
+    <ul class="text-black leading-relaxed space-y-2">
+      <li><strong class="text-black">患者：</strong>視力退化難以閱讀、不熟悉帳密登入、難以描述症狀、常忘記量測、無法判斷數值異常</li>
+      <li><strong class="text-black">家屬：</strong>無法即時掌握長輩健康狀況</li>
+      <li><strong class="text-black">醫師：</strong>看診時缺乏患者日常連續數據</li>
+      <li><strong class="text-black">護理師：</strong>病房設備管理流程繁瑣耗時</li>
+    </ul>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">我的職責</h2>
+
+    <!-- 主導功能 -->
+    <p class="text-black leading-relaxed mb-2">
+      兩人設計團隊，我主導以下功能：
+    </p>
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">遊戲化體驗設計</span>
+      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">血壓紀錄流程</span>
+      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">飲食紀錄流程</span>
+      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">問卷功能</span>
+      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">FAB 快捷入口</span>
+    </div>
+
+    <!-- 協作經驗 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex gap-3 bg-gray-50 p-4">
+        <span class="text-2xl shrink-0 mt-0.5">🌏</span>
+        <div>
+          <p class="text-sm font-medium text-black mb-1">跨國協作</p>
+          <p class="text-sm text-black leading-relaxed">與加拿大、馬來西亞工程師與 PM 協作，參與產品多國上線</p>
+        </div>
+      </div>
+      <div class="flex gap-3 bg-gray-50 p-4">
+        <span class="text-2xl shrink-0 mt-0.5">📋</span>
+        <div>
+          <p class="text-sm font-medium text-black mb-1">外包管理</p>
+          <p class="text-sm text-black leading-relaxed">擔任動畫外包 PM，設計標準化交付流程解決跨時區溝通問題</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">關鍵洞察</h2>
+    <p class="text-black leading-relaxed">
+      透過參與回診觀察長輩實際操作，發現高齡用戶高度仰賴「視覺回饋」來確認自己是否正確使用 App——他們需要明確的狀態變化來建立信心。這個洞察成為遊戲化設計的核心依據：用植物成長的視覺變化，讓長輩「看見」自己的記錄行為被系統接收。
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">意外發現</h2>
+    <p class="text-black leading-relaxed">
+      原本預期長輩會排斥使用 App，但回診時意外發現：部分功能反而創造了親人互動的契機。例如某些拍照姿勢需要家人協助，讓健康記錄從「獨自完成的任務」變成「與家人共同參與的日常」。這個發現也呼應了產品「串連照護關係」的核心價值。
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">設計策略</h2>
+
+    <h3 class="text-base font-medium mb-2">策略一：降低使用門檻</h3>
+    <p class="text-black leading-relaxed mb-2">
+      超大粗體字與高對比配色確保閱讀無障礙；QR Code 掃碼綁定醫師，免去帳密註冊流程。
+    </p>
+
+    <h3 class="text-base font-medium mb-2">策略二：讓記錄變簡單</h3>
+    <p class="text-black leading-relaxed mb-2">
+      首頁新增 FAB 快捷入口，縮短記錄路徑；30+ 圖文化症狀選單，讓患者「選」而非「寫」；血壓量測後彈窗引導輸入，搭配推播提醒；日曆以綠／黃／紅三色標示，異常數值一目了然。
+    </p>
+    <h3 class="text-base font-medium mb-2">策略三：以遊戲化培養習慣</h3>
+    <p class="text-black leading-relaxed mb-2">
+      連續打卡觸發植物成長動畫，將抽象的「記錄完成」轉化為具體的視覺回饋，幫助長輩建立操作信心與長期記錄動力。
+    </p>
+    <h3 class="text-base font-medium mb-2">策略四：串連照護關係</h3>
+    <p class="text-black leading-relaxed mb-2">
+      「我的照護圈」讓家屬即時掌握狀況；後台提供 AI 自動摘要報告供醫師看診參考；病房端 QR Code 掃碼實現設備與床位自動配對。
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">介面展示</h2>
+
+    <div class="mb-16">
+      <div class="flex gap-4 mb-4 justify-center p-8" style={`background: ${gradients[0]};`}>
+        <Image src={fabAdded} alt="FAB 快捷入口" class="shadow-lg w-48" />
+        <Image src={fabExpanded} alt="FAB 展開選單" class="shadow-lg w-48" />
+      </div>
+      <p class="text-black leading-relaxed">
+        首頁新增 FAB 快捷入口，將日常記錄從 3～4 步操作縮短為 1 步，減少長輩在流程中放棄的機會。
+      </p>
+    </div>
+
+    <div class="mb-16">
+      <div class="flex gap-4 mb-4 justify-center p-8" style={`background: ${gradients[1]};`}>
+        <Image src={logBp} alt="血壓記錄" class="shadow-lg w-48" />
+        <Image src={loggedToday} alt="今日已記錄" class="shadow-lg w-48" />
+      </div>
+      <p class="text-black leading-relaxed">
+        重新設計血壓紀錄模組，以視覺化圖表取代冰冷數字，讓醫病溝通更直觀高效。在介面設計上策略性地複用既有元件，將開發週期大幅精簡，實現「體驗升級、成本可控」的雙重目標。
+      </p>
+    </div>
+
+    <div class="mb-16">
+      <div class="flex gap-4 mb-4 justify-center p-8" style={`background: ${gradients[2]};`}>
+        <Image src={questionnaireSteps} alt="問卷逐步引導" class="shadow-lg w-48" />
+        <Image src={tooltip} alt="題組切換提示" class="shadow-lg w-48" />
+      </div>
+      <p class="text-black leading-relaxed">
+        考量長輩容易在長問卷中感到疲勞與迷失，我們採用逐步引導的方式降低認知負擔，並確保任何步驟都能儲存或離開，保護填答進度。同時，以頂部滑動切換題組，將大量題目拆解為可消化的區塊，減輕心理壓力。
+      </p>
+    </div>
+
+    <div class="mb-16">
+      <div class="flex flex-col gap-4 mb-4 items-center p-8" style={`background: ${gradients[3]};`}>
+        <div class="flex gap-4 justify-center">
+          <Image src={logMeal} alt="飲食記錄" class="shadow-lg w-48" />
+          <Image src={galleryMonth} alt="月度飲食總覽" class="shadow-lg w-48" />
+        </div>
+        <Image src={foodPatientList} alt="患者飲食摘要" class="shadow-lg w-full max-w-lg" />
+      </div>
+      <p class="text-black leading-relaxed">
+        圖文化飲食選單讓長輩輕鬆記錄每餐內容，後台自動彙整為視覺化摘要，讓醫師在看診時能快速掌握患者的飲食模式與潛在問題。考量長輩飲食習慣相對固定，輸入時優先顯示「常用食物」與「最近吃過」，讓記錄從「回想並輸入」簡化為「看到就選」，大幅降低操作與記憶負擔。後台自動彙整為視覺化摘要，讓醫師快速掌握患者飲食模式。
+      </p>
+    </div>
+  </section>
+
+</ProjectLayout>

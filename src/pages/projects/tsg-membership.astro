@@ -1,0 +1,82 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro'
+import { Image } from 'astro:assets'
+
+import register1 from '../../assets/projects/tsg-membership/register-1.png'
+import register2 from '../../assets/projects/tsg-membership/register-2.png'
+import register3 from '../../assets/projects/tsg-membership/register-3.png'
+import register4 from '../../assets/projects/tsg-membership/register-4.png'
+import register5 from '../../assets/projects/tsg-membership/register-5.png'
+import homepage from '../../assets/projects/tsg-membership/homepage.png'
+import pointsShop from '../../assets/projects/tsg-membership/points-shop.png'
+import pointsHistory from '../../assets/projects/tsg-membership/points-history.png'
+import myPage from '../../assets/projects/tsg-membership/my-page.png'
+import coupons from '../../assets/projects/tsg-membership/coupons.png'
+import profilePage from '../../assets/projects/tsg-membership/profile.png'
+import profileV2 from '../../assets/projects/tsg-membership/profile-v2.png'
+
+---
+
+<ProjectLayout
+  title="台鋼會員系統"
+  headline="重新設計會員系統，建立一致且透明的使用體驗"
+
+  skills={['UX/UI', 'Design System', 'RWD', 'Prototyping']}
+  roles={['介面設計', 'Design System', '響應式設計', 'Prototyping']}
+>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">背景</h2>
+    <p class="text-black leading-relaxed">
+      台鋼集團正在推動數位轉型，希望透過全新的會員系統串聯旗下多元事業體，然而原有的會員體驗卻成了一道隱形的門檻。
+    </p>
+    <p class="text-black leading-relaxed mt-4">
+      使用者從踏入註冊流程的那一刻起，就迷失在冗長的欄位與驗證步驟中，許多人在完成前便選擇離開。忘記密碼？找回流程像是一場沒有終點的迷宮。好不容易成為會員後，點數怎麼累積、如何兌換，規則藏在深處。更根本的問題是整體介面缺乏統一的設計語言，互動體驗不連貫。
+    </p>
+    <p class="text-black leading-relaxed mt-4">
+      我的任務是重新梳理這一切。從註冊流程、點數經濟到優惠券管理，建立一套完整且一致的 Design System，讓會員網站不再是使用的阻礙，而是連結品牌與用戶的橋樑。
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">解決方案</h2>
+
+    <p class="text-black leading-relaxed mb-2">
+      <strong class="text-black block mb-1">簡化關鍵流程</strong>註冊拆為 5 步驟彈窗，每步聚焦一件事；密碼找回提供 OTP / Email 多種方式，搭配視覺流程引導。
+    </p>
+
+    <p class="text-black leading-relaxed mb-2">
+      <strong class="text-black block mb-1">資訊透明化</strong>點數流向圖清楚呈現取得、兌換與到期規則；票券依可用／已用／過期分類，加上到期提醒；個資支援即時編輯，搭配表單驗證與錯誤提示。
+    </p>
+
+    <p class="text-black leading-relaxed mb-2">
+      <strong class="text-black block mb-1">建立一致性</strong>完整 Design System 規範字級與版面；桌面與手機響應式設計，確保跨裝置體驗統一。
+    </p>
+
+    <h3 class="text-base font-medium text-black mb-3">電腦版</h3>
+    <div class="overflow-x-auto mb-8">
+      <div class="flex gap-4 w-max">
+        <Image src={register1} alt="步驟 1：初始畫面" class="h-80 w-auto border border-gray-200" />
+        <Image src={register2} alt="步驟 2：OTP 驗證" class="h-80 w-auto border border-gray-200" />
+        <Image src={register3} alt="步驟 3：設定密碼" class="h-80 w-auto border border-gray-200" />
+        <Image src={register4} alt="步驟 4：填寫資訊" class="h-80 w-auto border border-gray-200" />
+        <Image src={register5} alt="步驟 5：註冊成功" class="h-80 w-auto border border-gray-200" />
+        <Image src={homepage} alt="首頁" class="h-80 w-auto border border-gray-200" />
+      </div>
+    </div>
+
+    <h3 class="text-base font-medium text-black mb-3">手機版</h3>
+    <div class="overflow-x-auto">
+      <div class="flex gap-4 w-max">
+        <Image src={myPage} alt="我的頁面" class="h-80 w-auto border border-gray-200" />
+        <Image src={pointsShop} alt="點數商城" class="h-80 w-auto border border-gray-200" />
+        <Image src={pointsHistory} alt="點數紀錄" class="h-80 w-auto border border-gray-200" />
+        <Image src={coupons} alt="優惠券頁面" class="h-80 w-auto border border-gray-200" />
+        <Image src={profilePage} alt="個人資料頁面" class="h-80 w-auto border border-gray-200" />
+        <Image src={profileV2} alt="個人頁面" class="h-80 w-auto border border-gray-200" />
+      </div>
+    </div>
+  </section>
+
+
+</ProjectLayout>
