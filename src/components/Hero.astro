@@ -3,21 +3,87 @@
 
 <section class="pt-40 pb-20 md:pt-48 md:pb-28">
   <div class="max-w-[1200px] mx-auto px-8">
-    <h1 class="font-serif text-4xl md:text-5xl font-normal leading-[1.2] tracking-tight max-w-[680px] mb-6">
-      用設計架起商業與使用者的橋樑
-    </h1>
-    <p class="text-sm text-black leading-relaxed max-w-[600px] mb-10">
-      我是 Esme，一名 Product Designer。擅長挖掘核心問題，並透過設計思維將其轉化為兼具商業價值與美感的產品體驗。
-    </p>
-    <a
-      href="mailto:esme.working@gmail.com"
-      class="inline-block border border-black text-black text-sm px-6 py-3 hover:bg-black hover:text-white transition-colors"
-    >
-      馬上聯繫
-    </a>
-    <p class="mt-6 block flex items-center gap-2 text-sm text-black">
-      <span class="text-base">✳</span> Available for freelance projects
-    </p>
-    <hr class="border-t border-black mt-16" />
+    <div class="flex items-start gap-10">
+      <div class="flex-1 min-w-0">
+        <h1 class="hero-animate font-serif text-[26px] md:text-[38px] font-bold leading-[1.2] tracking-tight max-w-[680px] mb-6">
+          <span id="typewriter"></span><span id="cursor" class="inline-block w-[2px] h-[1em] bg-black align-middle ml-[2px] animate-blink"></span>
+        </h1>
+        <p class="hero-animate text-sm text-black leading-relaxed max-w-[600px] mb-10">
+          嗨！我是Esme，一名熱愛解決問題的 Product Designer。我喜歡從複雜需求中挖出真正的痛點，再用設計思維把它變成好用又好看的產品體驗。最近我也著迷於用 AI 來加速工作流程，從發想到落地，每個環節都想試試看能不能更快、更有趣。對我來說，設計的樂趣就在於不斷探索新的可能。
+        </p>
+        <div class="hero-animate flex flex-wrap gap-2 mb-10">
+          <span class="tag">Product Design</span>
+          <span class="tag">UX Research</span>
+          <span class="tag">AI 應用</span>
+          <span class="tag">專案管理</span>
+          <span class="tag">Design System</span>
+        </div>
+        <a
+          href="mailto:esme.working@gmail.com"
+          class="hero-animate inline-block border border-black text-black text-sm px-6 py-3 hover:bg-black hover:text-white transition-colors"
+        >
+          馬上聯繫
+        </a>
+      </div>
+      <div class="hero-animate hidden md:block hero-image-wrapper">
+        <img src="/images/hero-image.png" alt="" class="hero-image" />
+      </div>
+    </div>
+
   </div>
 </section>
+
+<style>
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .animate-blink {
+    animation: blink 0.8s step-end infinite;
+  }
+  .tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 999px;
+    font-size: 12px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .hero-image-wrapper {
+    flex: 0 0 360px;
+    margin-top: -60px;
+  }
+  .hero-image {
+    width: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  const text = '用設計 架起商業與使用者的橋樑';
+  const el = document.getElementById('typewriter')!;
+  const cursor = document.getElementById('cursor')!;
+  const speed = 120;
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      const char = text[i];
+      if (char === '\n') {
+        el.appendChild(document.createElement('br'));
+      } else {
+        el.appendChild(document.createTextNode(char));
+      }
+      i++;
+      setTimeout(type, speed);
+    } else {
+      // 打完後停留一下再隱藏游標
+      setTimeout(() => { cursor.style.display = 'none'; }, 1500);
+    }
+  }
+
+  // 等頁面載入後開始打字
+  setTimeout(type, 600);
+</script>

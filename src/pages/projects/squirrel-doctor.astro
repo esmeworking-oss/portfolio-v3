@@ -11,6 +11,7 @@ import galleryMonth from '../../assets/projects/squirrel-doctor/food/gallery-mon
 import foodPatientList from '../../assets/projects/squirrel-doctor/food/patient-list.jpg'
 import logBp from '../../assets/projects/squirrel-doctor/blood-pressure/log-bp.png'
 import loggedToday from '../../assets/projects/squirrel-doctor/blood-pressure/logged-today.png'
+import userJourney from '../../assets/projects/squirrel-doctor/user journey.png'
 
 const gradients = [
   'linear-gradient(135deg, #1a3c5e 0%, #2a7b9b 50%, #3db8c1 100%)',   // 藍青
@@ -31,17 +32,16 @@ const gradients = [
   <section class="mb-16">
     <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">背景</h2>
     <p class="text-black leading-relaxed">
-      高齡慢性病患者需要長期追蹤健康數據，但多數長輩對數位工具感到陌生，導致記錄中斷、數據零散。此專案設計患者端 App 與臨床端後台，目標是降低使用門檻，同時串連患者、家屬與醫護的照護關係。
+      慢性病患者需要長期追蹤健康數據，但對許多長輩來說，數位工具並不直覺：記錄常常斷掉，數據散落各處或是學習曲線陡峭。這個專案從患者端 App 到臨床端後台一起設計，希望讓「記錄健康」這件事變得簡單，同時把患者、家屬和醫護的照護關係串連起來。
     </p>
   </section>
 
   <section class="mb-16">
     <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">核心問題</h2>
     <ul class="text-black leading-relaxed space-y-2">
-      <li><strong class="text-black">患者：</strong>視力退化難以閱讀、不熟悉帳密登入、難以描述症狀、常忘記量測、無法判斷數值異常</li>
-      <li><strong class="text-black">家屬：</strong>無法即時掌握長輩健康狀況</li>
-      <li><strong class="text-black">醫師：</strong>看診時缺乏患者日常連續數據</li>
-      <li><strong class="text-black">護理師：</strong>病房設備管理流程繁瑣耗時</li>
+      <li><strong class="text-black">患者：</strong>字太小看不清楚、帳密登入很陌生、不知道怎麼描述症狀、常常忘記量測、看到數字也不知道正不正常</li>
+      <li><strong class="text-black">家屬：</strong>想關心長輩，卻沒辦法即時知道他們的狀況；照顧者無法代替紀錄</li>
+      <li><strong class="text-black">醫師：</strong>看診只有片段資訊，缺乏日常連續數據來判斷病情；病患描述的狀況可能不精準</li>
     </ul>
   </section>
 
@@ -53,23 +53,23 @@ const gradients = [
       兩人設計團隊，我主導以下功能：
     </p>
     <div class="flex flex-wrap gap-2 mb-8">
-      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">遊戲化體驗設計</span>
-      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">血壓紀錄流程</span>
-      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">飲食紀錄流程</span>
-      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">問卷功能</span>
-      <span class="inline-block bg-teal-50 text-teal-700 text-sm font-medium px-4 py-2">FAB 快捷入口</span>
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">遊戲化體驗設計</span>
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">血壓紀錄流程</span>
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">飲食紀錄流程</span>
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">問卷功能</span>
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">FAB 快捷入口</span>
     </div>
 
     <!-- 協作經驗 -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="flex gap-3 bg-gray-50 p-4">
+      <div class="flex gap-3 bg-white p-4">
         <span class="text-2xl shrink-0 mt-0.5">🌏</span>
         <div>
           <p class="text-sm font-medium text-black mb-1">跨國協作</p>
           <p class="text-sm text-black leading-relaxed">與加拿大、馬來西亞工程師與 PM 協作，參與產品多國上線</p>
         </div>
       </div>
-      <div class="flex gap-3 bg-gray-50 p-4">
+      <div class="flex gap-3 bg-white p-4">
         <span class="text-2xl shrink-0 mt-0.5">📋</span>
         <div>
           <p class="text-sm font-medium text-black mb-1">外包管理</p>
@@ -96,23 +96,51 @@ const gradients = [
   <section class="mb-16">
     <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">設計策略</h2>
 
-    <h3 class="text-base font-medium mb-2">策略一：降低使用門檻</h3>
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">策略一：降低使用門檻</span></h3>
     <p class="text-black leading-relaxed mb-2">
       超大粗體字與高對比配色確保閱讀無障礙；QR Code 掃碼綁定醫師，免去帳密註冊流程。
     </p>
 
-    <h3 class="text-base font-medium mb-2">策略二：讓記錄變簡單</h3>
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">策略二：讓記錄變簡單</span></h3>
     <p class="text-black leading-relaxed mb-2">
       首頁新增 FAB 快捷入口，縮短記錄路徑；30+ 圖文化症狀選單，讓患者「選」而非「寫」；血壓量測後彈窗引導輸入，搭配推播提醒；日曆以綠／黃／紅三色標示，異常數值一目了然。
     </p>
-    <h3 class="text-base font-medium mb-2">策略三：以遊戲化培養習慣</h3>
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">策略三：以遊戲化培養習慣</span></h3>
     <p class="text-black leading-relaxed mb-2">
       連續打卡觸發植物成長動畫，將抽象的「記錄完成」轉化為具體的視覺回饋，幫助長輩建立操作信心與長期記錄動力。
     </p>
-    <h3 class="text-base font-medium mb-2">策略四：串連照護關係</h3>
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">策略四：串連照護關係</span></h3>
     <p class="text-black leading-relaxed mb-2">
       「我的照護圈」讓家屬即時掌握狀況；後台提供 AI 自動摘要報告供醫師看診參考；病房端 QR Code 掃碼實現設備與床位自動配對。
     </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">User Flow 設計：定義使用者旅程</h2>
+    <p class="text-black leading-relaxed mb-4">
+      在進入視覺設計階段之前，我們會先透過 User Flow 來釐清產品的核心流程。這張流程圖展示了「每日血壓記錄」功能的 MVP 目標設計。
+    </p>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">設計目標</span></h3>
+    <p class="text-black leading-relaxed mb-4">
+      讓使用者能夠每天輕鬆記錄兩次血壓數據，系統自動帶入時間戳記，同時保留手動編輯的彈性。
+    </p>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">流程規劃</span></h3>
+    <p class="text-black leading-relaxed mb-4">
+      我們定義了三個主要進入點：推播通知、首頁快捷按鈕、以及底部導覽列。無論從哪個入口進入，使用者都能透過一致的路徑完成記錄：查看生命徵象資訊 → 點擊記錄按鈕 → 輸入數據 → 獲得即時反饋。
+    </p>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">設計思考</span></h3>
+    <p class="text-black leading-relaxed mb-4">
+      流程圖中的決策點（菱形）標示了使用者完成記錄後的選擇：可以直接離開，或返回繼續查看其他健康數據。這樣的設計確保了單一任務的完整性，同時也支援連續操作的需求。
+    </p>
+
+    <p class="text-black leading-relaxed mb-4">
+      透過 User Flow 的前期規劃，團隊能在開發前就對功能邏輯達成共識，有效減少後期的溝通成本與設計成本。
+    </p>
+
+    <Image src={userJourney} alt="每日血壓記錄 User Flow" class="w-full mb-4" />
   </section>
 
   <section class="mb-16">

@@ -1,10 +1,10 @@
 ---
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-black/10">
+<nav class="nav-double-border fixed top-0 left-0 right-0 z-50 bg-[#FDF8EC]/80 backdrop-blur-sm">
   <div class="max-w-[1200px] mx-auto px-8 py-5 flex items-center justify-between">
-    <a href="/" class="text-base font-normal tracking-tight hover:opacity-70 transition-opacity">
-      Esme's Studio
+    <a href="/" class="hover:opacity-70 transition-opacity">
+      <img src="/logo.svg" alt="Esme's Studio" class="h-[10px]" />
     </a>
     <div class="flex gap-10 text-base">
       <a href="/#projects" class="text-black hover:opacity-60 transition-opacity">Work</a>
@@ -13,3 +13,19 @@
     </div>
   </div>
 </nav>
+
+<style>
+  .nav-double-border {
+    border-bottom: 2px solid black;
+    position: relative;
+  }
+  .nav-double-border::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: black;
+  }
+</style>

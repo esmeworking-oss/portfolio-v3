@@ -2,9 +2,6 @@
 import ProjectLayout from '../../layouts/ProjectLayout.astro'
 import { Image } from 'astro:assets'
 
-import register1 from '../../assets/projects/tsg-membership/register-1.png'
-import register2 from '../../assets/projects/tsg-membership/register-2.png'
-import register3 from '../../assets/projects/tsg-membership/register-3.png'
 import register4 from '../../assets/projects/tsg-membership/register-4.png'
 import register5 from '../../assets/projects/tsg-membership/register-5.png'
 import homepage from '../../assets/projects/tsg-membership/homepage.png'
@@ -14,6 +11,8 @@ import myPage from '../../assets/projects/tsg-membership/my-page.png'
 import coupons from '../../assets/projects/tsg-membership/coupons.png'
 import profilePage from '../../assets/projects/tsg-membership/profile.png'
 import profileV2 from '../../assets/projects/tsg-membership/profile-v2.png'
+import research from '../../assets/projects/tsg-membership/research.png'
+import designSystem from '../../assets/projects/tsg-membership/design-system.png'
 
 ---
 
@@ -28,14 +27,49 @@ import profileV2 from '../../assets/projects/tsg-membership/profile-v2.png'
   <section class="mb-16">
     <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">背景</h2>
     <p class="text-black leading-relaxed">
-      台鋼集團正在推動數位轉型，希望透過全新的會員系統串聯旗下多元事業體，然而原有的會員體驗卻成了一道隱形的門檻。
+      台鋼集團正在推動數位轉型，希望透過一套全新的會員系統串聯旗下多元事業體。過去各品牌各自為政，會員體驗分散在不同的 App 與入口之間，難以形成統一的品牌認同與用戶關係。使用者需要一個單一入口，能夠跨品牌累積點數、查看優惠、管理會員資格，而不必在多個系統之間反覆切換。
     </p>
     <p class="text-black leading-relaxed mt-4">
-      使用者從踏入註冊流程的那一刻起，就迷失在冗長的欄位與驗證步驟中，許多人在完成前便選擇離開。忘記密碼？找回流程像是一場沒有終點的迷宮。好不容易成為會員後，點數怎麼累積、如何兌換，規則藏在深處。更根本的問題是整體介面缺乏統一的設計語言，互動體驗不連貫。
+      我的任務是定義這套系統的基礎：從最開始的產品調研，決定方向，到註冊流程、點數經濟跟優惠券管理等，設計一個會員系統，讓全新的會員平台成為連結台鋼品牌與用戶的核心橋樑。
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">事前調研與策略定義</h2>
+    <p class="text-black leading-relaxed">
+      本專案目標是為台鋼集團從零建立一套全新的跨品牌會員系統，而非既有系統的改版。設計核心圍繞「快速使用」原則，致力於降低使用摩擦、提升會員活躍率。
     </p>
     <p class="text-black leading-relaxed mt-4">
-      我的任務是重新梳理這一切。從註冊流程、點數經濟到優惠券管理，建立一套完整且一致的 Design System，讓會員網站不再是使用的阻礙，而是連結品牌與用戶的橋樑。
+      調研階段以輕量方式進行，選定 Open Point 與星巴克點數作為競品分析對象，兩者皆具備跨品牌整合或深度 App 會員經營的參考價值。使用者訪談方面，訪談了現有會員，發現入會的核心動機在於能夠跨台鋼旗下多個品牌累積點數；主要痛點則是過去需要開啟多個獨立 App、體驗分散且無法整合。訪談也顯示，明確的優惠誘因與簡短的操作路徑，是提升會員主動登入意願的關鍵因素。
     </p>
+    <p class="text-black leading-relaxed mt-4">
+      基於以上發現，本次設計將聚焦四個方向：<span class="highlight-underline">以單一整合入口取代多 App 分散體驗、核心流程步驟最小化、透過推播優惠主動創造登入誘因，以及在首頁明確展示跨品牌點數整合的核心價值。</span>
+    </p>
+    <Image src={research} alt="台鋼會員系統調研" class="w-full mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">台鋼官網設計規範</h2>
+    <p class="text-black leading-relaxed">
+      過去集團內並沒有類似的網站開發指引，我以主設計師的身份定義了這份設計系統（Design System），涵蓋字體層級、品牌配色與 UX Writing 語調指引，確保產品在後續迭代中維持一致的視覺語言與使用體驗。
+    </p>
+
+    <ul class="list-disc list-inside space-y-2 text-black leading-relaxed mt-6">
+      <li><strong>色彩系統：</strong>梳理現有配色，定義主色、輔色與功能色的使用情境與規則</li>
+      <li><strong>字體層級：</strong>規範標題、內文、標註等文字樣式，建立清晰的閱讀層次</li>
+      <li><strong>元件規範：</strong>定義 UI 元件的樣式與互動狀態，降低設計與開發的模糊地帶</li>
+      <li><strong>UX Writing 指引：</strong>統一按鈕文案、提示訊息與錯誤回饋的語調風格</li>
+    </ul>
+
+    <h3 class="text-[16px] font-semibold tracking-widest uppercase mb-3 mt-8">建立規範後的效益</h3>
+    <ul class="list-disc list-inside space-y-2 text-black leading-relaxed">
+      <li>新頁面設計有據可循，減少重複決策與來回溝通</li>
+      <li>視覺風格趨於一致，強化品牌專業形象</li>
+      <li>跨功能的交互問題減少，使用體驗更流暢</li>
+      <li>設計資產可被延續與複用，降低長期維護的設計負債</li>
+    </ul>
+
+    <Image src={designSystem} alt="台鋼官網設計規範" class="w-full mt-8" />
   </section>
 
   <section class="mb-16">
@@ -53,21 +87,12 @@ import profileV2 from '../../assets/projects/tsg-membership/profile-v2.png'
       <strong class="text-black block mb-1">建立一致性</strong>完整 Design System 規範字級與版面；桌面與手機響應式設計，確保跨裝置體驗統一。
     </p>
 
-    <h3 class="text-base font-medium text-black mb-3">電腦版</h3>
-    <div class="overflow-x-auto mb-8">
+    <h3 class="text-[20px] font-semibold tracking-widest uppercase mb-4 mt-16">手機介面展示</h3>
+    <div class="overflow-x-auto">
       <div class="flex gap-4 w-max">
-        <Image src={register1} alt="步驟 1：初始畫面" class="h-80 w-auto border border-gray-200" />
-        <Image src={register2} alt="步驟 2：OTP 驗證" class="h-80 w-auto border border-gray-200" />
-        <Image src={register3} alt="步驟 3：設定密碼" class="h-80 w-auto border border-gray-200" />
         <Image src={register4} alt="步驟 4：填寫資訊" class="h-80 w-auto border border-gray-200" />
         <Image src={register5} alt="步驟 5：註冊成功" class="h-80 w-auto border border-gray-200" />
         <Image src={homepage} alt="首頁" class="h-80 w-auto border border-gray-200" />
-      </div>
-    </div>
-
-    <h3 class="text-base font-medium text-black mb-3">手機版</h3>
-    <div class="overflow-x-auto">
-      <div class="flex gap-4 w-max">
         <Image src={myPage} alt="我的頁面" class="h-80 w-auto border border-gray-200" />
         <Image src={pointsShop} alt="點數商城" class="h-80 w-auto border border-gray-200" />
         <Image src={pointsHistory} alt="點數紀錄" class="h-80 w-auto border border-gray-200" />

@@ -11,6 +11,7 @@ import memberIntro from '../../assets/projects/wingstar/member-intro.png'
 import news from '../../assets/projects/wingstar/news.png'
 import purchaseHistory from '../../assets/projects/wingstar/purchase-history.png'
 import monetizationMap from '../../assets/projects/wingstar/monetization-map.png'
+import framework from '../../assets/projects/wingstar/framework.png'
 ---
 
 <ProjectLayout
@@ -29,6 +30,25 @@ import monetizationMap from '../../assets/projects/wingstar/monetization-map.png
     </p>
     <p class="text-black leading-relaxed mt-4">
       本專案透過整合性的體驗設計，將粉絲的「忠誠度」轉化為「社群動力」。我們重新定義了互動的邊界，讓排行競賽成為粉絲間的良性催化劑，並藉由一致性的跨裝置介面，打破體驗的隔閡，將零散的流量轉化為<strong class="text-black">可持續發展的商業生態</strong>。
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">產品規劃與調研</h2>
+    <p class="text-black leading-relaxed">
+      本框架將啦啦隊官網的產品設計分為四個遞進階段：從發散式調研收斂到明確定義，再從功能規劃展開至驗證迭代。調研階段聚焦於理解「誰是我們的用戶」與「市場上已有什麼」，透過用戶訪談、競品分析（分析台日韓等地的啦啦隊網站與模式）並確認商業目標，建立完整的產品背景認知。
+    </p>
+    <Image src={framework} alt="產品規劃框架" class="w-full border border-gray-200 mt-6 mb-8" />
+    <h3 class="text-base font-semibold text-black mb-3">決策方式</h3>
+    <p class="text-black leading-relaxed mb-4">根據調研結果，專案採用了以下框架：</p>
+    <p class="text-black leading-relaxed mb-2">
+      <strong class="text-black block mb-1">用戶價值優先</strong>功能取捨以「核心粉絲」與「球賽觀眾」兩大主力用戶的需求為首要考量，品牌合作與媒體需求作為次要但必備的支援功能。
+    </p>
+    <p class="text-black leading-relaxed mb-2">
+      <strong class="text-black block mb-1">優先開發「高影響、低成本」項目作為 MVP</strong>例如成員介紹頁與活動日曆。
+    </p>
+    <p class="text-black leading-relaxed">
+      <strong class="text-black block mb-1">數據驅動迭代</strong>上線後追蹤關鍵指標（頁面停留時間、互動率、轉換率），根據數據表現決定後續功能的開發優先序。
     </p>
   </section>
 
@@ -59,20 +79,25 @@ import monetizationMap from '../../assets/projects/wingstar/monetization-map.png
       <strong class="text-black block mb-1">商業與體驗整合</strong>商城整合限定球場周邊與二手拍賣，開啟變現管道；同步設計桌面與手機版，確保跨裝置一致。
     </p>
 
-    <div class="grid grid-cols-2 gap-4 mb-6">
-      <Image src={profile} alt="個人頁面（桌面版）" class="border border-gray-200" />
-      <Image src={profileMobile} alt="個人頁面（手機版）" class="border border-gray-200" />
+    <div class="mb-6">
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Desktop</h4>
+      <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-thin">
+        <Image src={homepage} alt="首頁" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={profile} alt="個人頁面" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={ranking} alt="排行榜" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={memberIntro} alt="成員介紹" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={news} alt="最新消息" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={purchaseHistory} alt="消費紀錄" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+      </div>
     </div>
-    <div class="grid grid-cols-2 gap-4 mb-6">
-      <Image src={ranking} alt="排行榜（桌面版）" class="border border-gray-200" />
-      <Image src={rankingMobile} alt="排行榜（手機版）" class="border border-gray-200" />
+
+    <div class="mb-6">
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Mobile</h4>
+      <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-thin">
+        <Image src={profileMobile} alt="個人頁面（手機版）" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={rankingMobile} alt="排行榜（手機版）" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+      </div>
     </div>
-    <Image src={memberIntro} alt="成員介紹頁面" class="w-full border border-gray-200 mb-6" />
-    <div class="grid grid-cols-2 gap-4 mb-6">
-      <Image src={homepage} alt="首頁" class="border border-gray-200" />
-      <Image src={news} alt="最新消息" class="border border-gray-200" />
-    </div>
-    <Image src={purchaseHistory} alt="消費紀錄" class="w-full border border-gray-200" />
   </section>
 
 </ProjectLayout>

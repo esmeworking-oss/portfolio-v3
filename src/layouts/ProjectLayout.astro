@@ -10,6 +10,17 @@ interface Props {
   roles: string[]
 }
 
+const projects = [
+  { slug: 'squirrel-doctor', title: '松鼠醫生 App 與後台' },
+  { slug: 'burger-king', title: '豪點王 Redesign' },
+  { slug: 'wingstar', title: 'WINGSTARS 啦啦隊官方網站' },
+  { slug: 'tsg-membership', title: '台鋼會員系統' },
+]
+
+const currentSlug = Astro.url.pathname.replace(/\/$/, '').split('/').pop()
+const currentIndex = projects.findIndex((p) => p.slug === currentSlug)
+const nextProject = projects[(currentIndex + 1) % projects.length]
+
 const { title, headline, skills, roles } = Astro.props
 ---
 
@@ -23,7 +34,7 @@ const { title, headline, skills, roles } = Astro.props
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title} — Esme Chang</title>
   </head>
-  <body class="bg-white text-black font-sans antialiased">
+  <body class="bg-[#FDF8EC] text-black font-sans antialiased grain-overlay">
     <Navbar />
     <article class="pt-32 pb-20">
       <div class="max-w-[1200px] mx-auto px-8">
@@ -53,6 +64,18 @@ const { title, headline, skills, roles } = Astro.props
             <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">{title}</h1>
             <p class="text-lg text-black leading-relaxed mb-[100px]">{headline}</p>
             <slot />
+
+            <!-- Next project navigation -->
+            <a
+              href={`/projects/${nextProject.slug}`}
+              class="next-project-link group flex items-center justify-between mt-20 pt-8 border-t border-black/10 text-black hover:opacity-70 transition-opacity"
+            >
+              <div>
+                <span class="text-xs font-semibold tracking-widest uppercase text-black/50">下一個專案</span>
+                <p class="text-xl md:text-2xl font-bold mt-1">{nextProject.title}</p>
+              </div>
+              <span class="text-2xl transition-transform group-hover:translate-x-1">&rarr;</span>
+            </a>
           </div>
         </div>
       </div>
