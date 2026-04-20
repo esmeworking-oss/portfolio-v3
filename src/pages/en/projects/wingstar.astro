@@ -1,0 +1,82 @@
+---
+import ProjectLayout from '../../../layouts/ProjectLayout.astro'
+import { Image } from 'astro:assets'
+import { useTranslations } from '../../../i18n/utils'
+
+import homepage from '../../../assets/projects/wingstar/homepage.png'
+import profile from '../../../assets/projects/wingstar/profile.png'
+import profileMobile from '../../../assets/projects/wingstar/profile-mobile.png'
+import ranking from '../../../assets/projects/wingstar/ranking.png'
+import rankingMobile from '../../../assets/projects/wingstar/ranking-mobile.png'
+import memberIntro from '../../../assets/projects/wingstar/member-intro.png'
+import news from '../../../assets/projects/wingstar/news.png'
+import purchaseHistory from '../../../assets/projects/wingstar/purchase-history.png'
+import monetizationMap from '../../../assets/projects/wingstar/monetization-map.png'
+import framework from '../../../assets/projects/wingstar/framework.png'
+
+const t = useTranslations('en')
+---
+
+<ProjectLayout
+  lang="en"
+  title={t('project.ws.title')}
+  headline={t('project.ws.headline')}
+  skills={['UX/UI', 'Web Design', 'RWD', 'Prototyping']}
+  roles={['Information Architecture', 'Interface Design', 'Responsive Design', 'Prototyping']}
+>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('ws.s1.h')}</h2>
+    <h3 class="text-base font-semibold text-black mb-3">{t('ws.s1.h3')}</h3>
+    <p class="text-black leading-relaxed">{t('ws.s1.p1')}</p>
+    <p class="text-black leading-relaxed mt-4" set:html={t('ws.s1.p2')} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('ws.s2.h')}</h2>
+    <p class="text-black leading-relaxed">{t('ws.s2.p')}</p>
+    <Image src={framework} alt="Product planning framework" class="w-full border border-gray-200 mt-6 mb-8" />
+    <h3 class="text-base font-semibold text-black mb-3">{t('ws.s2.h3')}</h3>
+    <p class="text-black leading-relaxed mb-4">{t('ws.s2.p2')}</p>
+    <p class="text-black leading-relaxed mb-2" set:html={t('ws.s2.f1')} />
+    <p class="text-black leading-relaxed mb-2" set:html={t('ws.s2.f2')} />
+    <p class="text-black leading-relaxed" set:html={t('ws.s2.f3')} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('ws.s3.h')}</h2>
+    <h3 class="text-base font-semibold text-black mb-3">{t('ws.s3.h3')}</h3>
+    <p class="text-black leading-relaxed" set:html={t('ws.s3.p1')} />
+    <p class="text-black leading-relaxed mt-4">{t('ws.s3.p2')}</p>
+    <Image src={monetizationMap} alt="Monetization map" class="w-full border border-gray-200 mt-6" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('ws.s4.h')}</h2>
+
+    <p class="text-black leading-relaxed mb-2" set:html={t('ws.s4.p1')} />
+    <p class="text-black leading-relaxed mb-2" set:html={t('ws.s4.p2')} />
+    <p class="text-black leading-relaxed mb-2" set:html={t('ws.s4.p3')} />
+
+    <div class="mb-6">
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Desktop</h4>
+      <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-thin">
+        <Image src={homepage} alt="Homepage" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={profile} alt="Profile page" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={ranking} alt="Leaderboard" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={memberIntro} alt="Member intro" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={news} alt="News" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={purchaseHistory} alt="Purchase history" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Mobile</h4>
+      <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-thin">
+        <Image src={profileMobile} alt="Profile (mobile)" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+        <Image src={rankingMobile} alt="Leaderboard (mobile)" class="border border-gray-200 flex-shrink-0 h-[360px] w-auto" />
+      </div>
+    </div>
+  </section>
+
+</ProjectLayout>

@@ -2,6 +2,10 @@ export type Lang = 'zh' | 'en'
 
 export const ui: Record<Lang, Record<string, string>> = {
   zh: {
+    'layout.back': '← 返回首頁',
+    'layout.skills': '技能',
+    'layout.roles': '我的角色',
+    'layout.next': '下一個專案',
     'hero.bio': '嗨！我是Esme，一名熱愛解決問題的 Product Designer。我喜歡從複雜需求中挖出真正的痛點，再用設計思維把它變成好用又好看的產品體驗。最近我也著迷於用 AI 來加速工作流程，從發想到落地，每個環節都想試試看能不能更快、更有趣。對我來說，設計的樂趣就在於不斷探索新的可能。',
     'hero.tag.ai': 'AI 應用',
     'hero.tag.pm': '專案管理',

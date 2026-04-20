@@ -1,0 +1,88 @@
+---
+import ProjectLayout from '../../../layouts/ProjectLayout.astro'
+import { Image } from 'astro:assets'
+import { useTranslations } from '../../../i18n/utils'
+
+import register4 from '../../../assets/projects/tsg-membership/register-4.png'
+import register5 from '../../../assets/projects/tsg-membership/register-5.png'
+import homepage from '../../../assets/projects/tsg-membership/homepage.png'
+import pointsShop from '../../../assets/projects/tsg-membership/points-shop.png'
+import pointsHistory from '../../../assets/projects/tsg-membership/points-history.png'
+import myPage from '../../../assets/projects/tsg-membership/my-page.png'
+import coupons from '../../../assets/projects/tsg-membership/coupons.png'
+import profilePage from '../../../assets/projects/tsg-membership/profile.png'
+import profileV2 from '../../../assets/projects/tsg-membership/profile-v2.png'
+import research from '../../../assets/projects/tsg-membership/research.png'
+import designSystem from '../../../assets/projects/tsg-membership/design-system.png'
+
+const t = useTranslations('en')
+---
+
+<ProjectLayout
+  lang="en"
+  title={t('project.tsg.title')}
+  headline={t('project.tsg.headline')}
+  skills={['UX/UI', 'Design System', 'RWD', 'Prototyping']}
+  roles={['Interface Design', 'Design System', 'Responsive Design', 'Prototyping']}
+>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('tsg.s1.h')}</h2>
+    <p class="text-black leading-relaxed">{t('tsg.s1.p1')}</p>
+    <p class="text-black leading-relaxed mt-4">{t('tsg.s1.p2')}</p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('tsg.s2.h')}</h2>
+    <p class="text-black leading-relaxed">{t('tsg.s2.p1')}</p>
+    <p class="text-black leading-relaxed mt-4">{t('tsg.s2.p2')}</p>
+    <p class="text-black leading-relaxed mt-4" set:html={t('tsg.s2.p3')} />
+    <Image src={research} alt="TSG Membership research" class="w-full mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('tsg.s3.h')}</h2>
+    <p class="text-black leading-relaxed">{t('tsg.s3.p')}</p>
+
+    <ul class="list-disc list-inside space-y-2 text-black leading-relaxed mt-6">
+      <li set:html={t('tsg.s3.li1')} />
+      <li set:html={t('tsg.s3.li2')} />
+      <li set:html={t('tsg.s3.li3')} />
+      <li set:html={t('tsg.s3.li4')} />
+    </ul>
+
+    <h3 class="text-[16px] font-semibold tracking-widest uppercase mb-3 mt-8">{t('tsg.s3.benefits.h')}</h3>
+    <ul class="list-disc list-inside space-y-2 text-black leading-relaxed">
+      <li>{t('tsg.s3.bli1')}</li>
+      <li>{t('tsg.s3.bli2')}</li>
+      <li>{t('tsg.s3.bli3')}</li>
+      <li>{t('tsg.s3.bli4')}</li>
+    </ul>
+
+    <Image src={designSystem} alt="TSG Design System" class="w-full mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('tsg.s4.h')}</h2>
+
+    <p class="text-black leading-relaxed mb-2" set:html={t('tsg.s4.p1')} />
+    <p class="text-black leading-relaxed mb-2" set:html={t('tsg.s4.p2')} />
+    <p class="text-black leading-relaxed mb-2" set:html={t('tsg.s4.p3')} />
+
+    <h3 class="text-[20px] font-semibold tracking-widest uppercase mb-4 mt-16">{t('tsg.s4.screens.h')}</h3>
+    <div class="overflow-x-auto">
+      <div class="flex gap-4 w-max">
+        <Image src={register4} alt="Step 4: Fill info" class="h-80 w-auto border border-gray-200" />
+        <Image src={register5} alt="Step 5: Registration success" class="h-80 w-auto border border-gray-200" />
+        <Image src={homepage} alt="Homepage" class="h-80 w-auto border border-gray-200" />
+        <Image src={myPage} alt="My page" class="h-80 w-auto border border-gray-200" />
+        <Image src={pointsShop} alt="Points shop" class="h-80 w-auto border border-gray-200" />
+        <Image src={pointsHistory} alt="Points history" class="h-80 w-auto border border-gray-200" />
+        <Image src={coupons} alt="Coupons" class="h-80 w-auto border border-gray-200" />
+        <Image src={profilePage} alt="Profile page" class="h-80 w-auto border border-gray-200" />
+        <Image src={profileV2} alt="Profile v2" class="h-80 w-auto border border-gray-200" />
+      </div>
+    </div>
+  </section>
+
+</ProjectLayout>

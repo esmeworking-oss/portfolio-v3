@@ -1,0 +1,203 @@
+---
+import ProjectLayout from '../../../layouts/ProjectLayout.astro'
+import { Image } from 'astro:assets'
+import { useTranslations } from '../../../i18n/utils'
+
+import newHome from '../../../assets/projects/burger-king/new-home.png'
+import newCoupon from '../../../assets/projects/burger-king/new-coupon.png'
+import newCoins from '../../../assets/projects/burger-king/new-coins.png'
+import newNotification from '../../../assets/projects/burger-king/new-notification.png'
+import old2 from '../../../assets/projects/burger-king/old-2.png'
+import old4 from '../../../assets/projects/burger-king/old-4.png'
+import oldCoupon from '../../../assets/projects/burger-king/old-coupon.png'
+import oldTransaction from '../../../assets/projects/burger-king/old-transaction.png'
+import oldBarcode from '../../../assets/projects/burger-king/old-barcode.png'
+import oldHomepage from '../../../assets/projects/burger-king/old-homepage.png'
+import oldCarrier from '../../../assets/projects/burger-king/old-carrier.png'
+import newMemberPage from '../../../assets/projects/burger-king/new-member-page.png'
+import userResearch from '../../../assets/projects/burger-king/user-research.png'
+
+const t = useTranslations('en')
+---
+
+<ProjectLayout
+  lang="en"
+  title={t('project.bk.title')}
+  headline={t('project.bk.headline')}
+  skills={['UX/UI', 'App Design', 'Visual Design', 'Prototyping']}
+  roles={['Interface Design', 'Visual Design', 'Prototyping']}
+>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('bk.s1.h')}</h2>
+    <p class="text-black leading-relaxed">{t('bk.s1.p')}</p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('bk.s2.h')}</h2>
+    <p class="text-black leading-relaxed mb-6">{t('bk.s2.p1')}</p>
+    <p class="text-black leading-relaxed mb-8">{t('bk.s2.p2')}</p>
+    <Image src={userResearch} alt="Product Research" class="w-full" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('bk.s3.h')}</h2>
+    <p class="text-black leading-relaxed">{t('bk.s3.p')}</p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('bk.s4.h')}</h2>
+
+    <p class="text-black leading-relaxed mb-2" set:html={t('bk.s4.p1')} />
+    <p class="text-black leading-relaxed mb-2" set:html={t('bk.s4.p2')} />
+    <p class="text-black leading-relaxed mb-2" set:html={t('bk.s4.p3')} />
+    <p class="text-black leading-relaxed mb-2" set:html={t('bk.s4.p4')} />
+
+    <div class="mt-12 bg-white p-6 text-center">
+      <h3 class="text-base font-semibold mb-1">{t('bk.s4.compare.title')}</h3>
+      <p class="text-black text-sm mb-4">{t('bk.s4.compare.sub')}</p>
+
+      <div class="before-after-grid">
+        <span class="version-badge version-badge--old">Before</span>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2 mb-6">
+          <Image src={old4} alt="Old homepage" class="w-full border border-gray-200" />
+          <Image src={oldCoupon} alt="Old coupons" class="w-full border border-gray-200" />
+          <Image src={oldTransaction} alt="Old transactions" class="w-full border border-gray-200" />
+          <Image src={old2} alt="Old notifications" class="w-full border border-gray-200" />
+        </div>
+        <span class="version-badge version-badge--new">After</span>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+          <Image src={newHome} alt="New homepage" class="w-full border border-gray-200" />
+          <Image src={newCoupon} alt="New coupons" class="w-full border border-gray-200" />
+          <Image src={newCoins} alt="New points" class="w-full border border-gray-200" />
+          <Image src={newNotification} alt="New notifications" class="w-full border border-gray-200" />
+        </div>
+      </div>
+    </div>
+
+    <div class="consolidation-block mt-12 bg-white p-6">
+      <h3 class="text-base font-semibold mb-1">{t('bk.s4.member.title')}</h3>
+      <p class="text-black text-sm mb-6">{t('bk.s4.member.sub')}</p>
+
+      <span class="version-label">{t('bk.s4.old.label')}</span>
+      <div class="old-screens">
+        <div class="old-screen-item">
+          <Image src={oldHomepage} alt="Old: Member Home" class="border border-gray-200" />
+          <span class="screen-name">{t('bk.s4.old.home')}</span>
+        </div>
+        <div class="old-screen-item">
+          <Image src={oldBarcode} alt="Old: Member Barcode" class="border border-gray-200" />
+          <span class="screen-name">{t('bk.s4.old.barcode')}</span>
+        </div>
+        <div class="old-screen-item">
+          <Image src={oldCarrier} alt="Old: Carrier" class="border border-gray-200" />
+          <span class="screen-name">{t('bk.s4.old.carrier')}</span>
+        </div>
+      </div>
+
+      <div class="converge-arrows">
+        <svg viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrows-svg">
+          <path d="M50 8 L150 48" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" />
+          <path d="M150 8 L150 48" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" />
+          <path d="M250 8 L150 48" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" />
+          <polygon points="144,52 156,52 150,60" fill="#9ca3af" />
+        </svg>
+      </div>
+
+      <span class="version-label version-label--new">{t('bk.s4.new.label')}</span>
+      <div class="new-screen">
+        <Image src={newMemberPage} alt="New: Unified Member Page" class="border border-gray-200" />
+        <span class="screen-name">{t('bk.s4.new.page')}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('bk.s5.h')}</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <div class="bg-white p-6 text-center">
+        <p class="text-[32px] font-bold text-black leading-none mb-2">0.5<span class="text-[18px] font-semibold">{t('bk.s5.m1.unit')}</span></p>
+        <p class="text-sm text-gray-600">{t('bk.s5.m1.label')}</p>
+        <p class="text-xs text-gray-500 mt-1">{t('bk.s5.m1.sub')}</p>
+      </div>
+      <div class="bg-white p-6 text-center">
+        <p class="text-[32px] font-bold text-black leading-none mb-2">+40<span class="text-[18px] font-semibold">%</span></p>
+        <p class="text-sm text-gray-600">{t('bk.s5.m2.label')}</p>
+        <p class="text-xs text-gray-500 mt-1">{t('bk.s5.m2.sub')}</p>
+      </div>
+      <div class="bg-white p-6 text-center">
+        <p class="text-[32px] font-bold text-black leading-none mb-2">-1~3<span class="text-[18px] font-semibold">{t('bk.s5.m3.unit')}</span></p>
+        <p class="text-sm text-gray-600">{t('bk.s5.m3.label')}</p>
+        <p class="text-xs text-gray-500 mt-1">{t('bk.s5.m3.sub')}</p>
+      </div>
+    </div>
+
+    <p class="text-black leading-relaxed mb-2" set:html={t('bk.s5.p1')} />
+    <p class="text-black leading-relaxed" set:html={t('bk.s5.p2')} />
+  </section>
+
+</ProjectLayout>
+
+<style>
+  .consolidation-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .old-screens {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin-top: 0.75rem;
+  }
+  .old-screen-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .old-screen-item img { width: 100%; height: auto; }
+  .before-after-grid { text-align: left; }
+  .version-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  .version-badge--old { background: #e5e7eb; color: #6b7280; }
+  .version-badge--new { background: #a7f3d0; color: #047857; }
+  .version-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #6b7280;
+    background: #e5e7eb;
+    padding: 0.2rem 0.75rem;
+    border-radius: 0;
+    letter-spacing: 0.05em;
+  }
+  .version-label--new { color: #047857; background: #a7f3d0; }
+  .screen-name { font-size: 0.8rem; color: #6b7280; }
+  .converge-arrows {
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem 0;
+  }
+  .arrows-svg { width: 100%; height: auto; }
+  .new-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 240px;
+    margin-top: 0.75rem;
+  }
+  .new-screen img { width: 100%; height: auto; }
+  @media (max-width: 640px) {
+    .old-screens { gap: 0.5rem; }
+    .new-screen { max-width: 180px; }
+  }
+</style>

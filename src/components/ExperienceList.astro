@@ -1,9 +1,16 @@
 ---
+import { useTranslations } from '../i18n/utils'
+
+type Lang = 'zh' | 'en'
+interface Props { lang?: Lang }
+const { lang = 'zh' } = Astro.props
+const t = useTranslations(lang)
+
 const experiences = [
-  { year: '2025 – 2026', company: '星坦科技', role: 'UI/UX 設計師', i18nKey: 'exp.startech' },
-  { year: '2025', company: '簡訊設計', role: '專案經理', i18nKey: 'exp.jianxun' },
-  { year: '2023 – 2025', company: '喜馬拉雅科技', role: 'UI/UX 設計師', i18nKey: 'exp.himalaya' },
-  { year: '2022', company: '泛思醫學', role: '專案經理', i18nKey: 'exp.pansying' },
+  { year: '2025 – 2026', i18nKey: 'exp.startech' },
+  { year: '2025', i18nKey: 'exp.jianxun' },
+  { year: '2023 – 2025', i18nKey: 'exp.himalaya' },
+  { year: '2022', i18nKey: 'exp.pansying' },
 ]
 ---
 
@@ -14,8 +21,8 @@ const experiences = [
       {experiences.map((exp) => (
         <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-0 py-4 border-t border-black">
           <span class="text-sm text-black sm:w-40 flex-shrink-0">{exp.year}</span>
-          <span class="text-sm text-black sm:w-48 flex-shrink-0" data-i18n={`${exp.i18nKey}.company`}>{exp.company}</span>
-          <span class="text-sm text-black" data-i18n={`${exp.i18nKey}.role`}>{exp.role}</span>
+          <span class="text-sm text-black sm:w-48 flex-shrink-0">{t(`${exp.i18nKey}.company`)}</span>
+          <span class="text-sm text-black">{t(`${exp.i18nKey}.role`)}</span>
         </div>
       ))}
     </div>

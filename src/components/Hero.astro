@@ -1,29 +1,34 @@
 ---
+import { useTranslations } from '../i18n/utils'
+
+type Lang = 'zh' | 'en'
+interface Props { lang?: Lang }
+const { lang = 'zh' } = Astro.props
+const t = useTranslations(lang)
 ---
 
-<section class="pt-40 pb-20 md:pt-48 md:pb-28">
+<section class="pt-40 pb-20 md:pt-48 md:pb-28" data-lang={lang}>
   <div class="max-w-[1200px] mx-auto px-8">
     <div class="flex items-start gap-10">
       <div class="flex-1 min-w-0">
         <h1 class="hero-animate font-serif text-[26px] md:text-[38px] font-bold leading-[1.2] tracking-tight max-w-[680px] mb-6">
           <span id="typewriter"></span><span id="cursor" class="inline-block w-[2px] h-[1em] bg-black align-middle ml-[2px] animate-blink"></span>
         </h1>
-        <p class="hero-animate text-sm text-black leading-relaxed max-w-[600px] mb-10" data-i18n="hero.bio">
-          嗨！我是Esme，一名熱愛解決問題的 Product Designer。我喜歡從複雜需求中挖出真正的痛點，再用設計思維把它變成好用又好看的產品體驗。最近我也著迷於用 AI 來加速工作流程，從發想到落地，每個環節都想試試看能不能更快、更有趣。對我來說，設計的樂趣就在於不斷探索新的可能。
+        <p class="hero-animate text-sm text-black leading-relaxed max-w-[600px] mb-10">
+          {t('hero.bio')}
         </p>
         <div class="hero-animate flex flex-wrap gap-2 mb-10">
           <span class="tag">Product Design</span>
           <span class="tag">UX Research</span>
-          <span class="tag" data-i18n="hero.tag.ai">AI 應用</span>
-          <span class="tag" data-i18n="hero.tag.pm">專案管理</span>
+          <span class="tag">{t('hero.tag.ai')}</span>
+          <span class="tag">{t('hero.tag.pm')}</span>
           <span class="tag">Design System</span>
         </div>
         <a
           href="mailto:esme.working@gmail.com"
           class="hero-animate inline-block border border-black text-black text-sm px-6 py-3 hover:bg-black hover:text-white transition-colors"
-          data-i18n="hero.cta"
         >
-          馬上聯繫
+          {t('hero.cta')}
         </a>
       </div>
       <div class="hero-animate hidden md:block hero-image-wrapper">
@@ -105,11 +110,6 @@
     typewriterTimeout = setTimeout(type, 600)
   }
 
-  const savedLang = localStorage.getItem('lang') || 'zh'
-  startTypewriter(typewriterTexts[savedLang] ?? typewriterTexts.zh)
-
-  document.addEventListener('langChange', (e: Event) => {
-    const { lang } = (e as CustomEvent<{ lang: string }>).detail
-    startTypewriter(typewriterTexts[lang] ?? typewriterTexts.zh)
-  })
+  const lang = document.querySelector<HTMLElement>('[data-lang]')?.dataset.lang ?? 'zh'
+  startTypewriter(typewriterTexts[lang] ?? typewriterTexts.zh)
 </script>

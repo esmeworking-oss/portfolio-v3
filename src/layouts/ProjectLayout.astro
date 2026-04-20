@@ -2,17 +2,23 @@
 import '../styles/global.css'
 import Navbar from '../components/Navbar.astro'
 import Footer from '../components/Footer.astro'
+import { useTranslations } from '../i18n/utils'
 
+type Lang = 'zh' | 'en'
 interface Props {
   title: string
   headline: string
   skills: string[]
   roles: string[]
+  lang?: Lang
   titleEn?: string
   headlineEn?: string
   skillsEn?: string[]
   rolesEn?: string[]
 }
+
+const { title, headline, skills, roles, lang = 'zh' } = Astro.props
+const t = useTranslations(lang)
 
 const projects = [
   { slug: 'squirrel-doctor', title: '松鼠醫生 App 與後台', titleEn: 'Symptomtrace App & Dashboard' },
@@ -25,11 +31,12 @@ const currentSlug = Astro.url.pathname.replace(/\/$/, '').split('/').pop()
 const currentIndex = projects.findIndex((p) => p.slug === currentSlug)
 const nextProject = projects[(currentIndex + 1) % projects.length]
 
-const { title, headline, skills, roles, titleEn, headlineEn, skillsEn, rolesEn } = Astro.props
+const projectBase = lang === 'en' ? '/en/projects' : '/projects'
+const nextTitle = lang === 'en' ? nextProject.titleEn : nextProject.title
 ---
 
 <!doctype html>
-<html lang="zh-Hant">
+<html lang={lang === 'zh' ? 'zh-Hant' : 'en'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,36 +46,29 @@ const { title, headline, skills, roles, titleEn, headlineEn, skillsEn, rolesEn }
     <title>{title} — Esme Chang</title>
   </head>
   <body class="bg-[#FDF8EC] text-black font-sans antialiased grain-overlay">
-    <Navbar />
+    <Navbar lang={lang} />
     <article class="pt-32 pb-20">
       <div class="max-w-[1200px] mx-auto px-8">
-        <a href="/" class="inline-flex items-center text-sm text-black hover:opacity-60 transition-opacity mb-10"
-           data-i18n="layout.back">
-          &larr; 返回首頁
+        <a href={lang === 'en' ? '/en/' : '/'} class="inline-flex items-center text-sm text-black hover:opacity-60 transition-opacity mb-10">
+          {t('layout.back')}
         </a>
 
         <div class="flex flex-col md:flex-row gap-12 md:gap-16">
           <!-- Left sidebar -->
           <aside class="md:w-[200px] shrink-0 space-y-8">
             <div>
-              <h3 class="text-xs font-semibold tracking-widest uppercase mb-2" data-i18n="layout.skills">技能</h3>
+              <h3 class="text-xs font-semibold tracking-widest uppercase mb-2">{t('layout.skills')}</h3>
               <ul class="text-sm text-black leading-relaxed space-y-1">
-                {skills.map((skill, i) => (
-                  <li
-                    data-zh={skillsEn ? skill : undefined}
-                    data-en={skillsEn ? skillsEn[i] : undefined}
-                  >{skill}</li>
+                {skills.map((skill) => (
+                  <li>{skill}</li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 class="text-xs font-semibold tracking-widest uppercase mb-2" data-i18n="layout.roles">我的角色</h3>
+              <h3 class="text-xs font-semibold tracking-widest uppercase mb-2">{t('layout.roles')}</h3>
               <ul class="text-sm text-black leading-relaxed space-y-1">
-                {roles.map((role, i) => (
-                  <li
-                    data-zh={rolesEn ? role : undefined}
-                    data-en={rolesEn ? rolesEn[i] : undefined}
-                  >{role}</li>
+                {roles.map((role) => (
+                  <li>{role}</li>
                 ))}
               </ul>
             </div>
@@ -76,24 +76,18 @@ const { title, headline, skills, roles, titleEn, headlineEn, skillsEn, rolesEn }
 
           <!-- Right content -->
           <div class="flex-1 min-w-0 project-body">
-            <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-3"
-                data-zh={titleEn ? title : undefined}
-                data-en={titleEn ?? undefined}>{title}</h1>
-            <p class="text-lg text-black leading-relaxed mb-[100px]"
-               data-zh={headlineEn ? headline : undefined}
-               data-en={headlineEn ?? undefined}>{headline}</p>
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">{title}</h1>
+            <p class="text-lg text-black leading-relaxed mb-[100px]">{headline}</p>
             <slot />
 
             <!-- Next project navigation -->
             <a
-              href={`/projects/${nextProject.slug}`}
+              href={`${projectBase}/${nextProject.slug}`}
               class="next-project-link group flex items-center justify-between mt-20 pt-8 border-t border-black/10 text-black hover:opacity-70 transition-opacity"
             >
               <div>
-                <span class="text-xs font-semibold tracking-widest uppercase text-black/50" data-i18n="layout.next">下一個專案</span>
-                <p class="text-xl md:text-2xl font-bold mt-1"
-                   data-zh={nextProject.title}
-                   data-en={nextProject.titleEn}>{nextProject.title}</p>
+                <span class="text-xs font-semibold tracking-widest uppercase text-black/50">{t('layout.next')}</span>
+                <p class="text-xl md:text-2xl font-bold mt-1">{nextTitle}</p>
               </div>
               <span class="text-2xl transition-transform group-hover:translate-x-1">&rarr;</span>
             </a>

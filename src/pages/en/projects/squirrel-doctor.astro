@@ -1,0 +1,163 @@
+---
+import ProjectLayout from '../../../layouts/ProjectLayout.astro'
+import { Image } from 'astro:assets'
+import { useTranslations } from '../../../i18n/utils'
+
+import fabAdded from '../../../assets/projects/squirrel-doctor/fab/fab-added.png'
+import fabExpanded from '../../../assets/projects/squirrel-doctor/fab/fab-expanded.png'
+import questionnaireSteps from '../../../assets/projects/squirrel-doctor/symptoms-record/questionnaire-steps.png'
+import tooltip from '../../../assets/projects/squirrel-doctor/symptoms-record/tooltip.png'
+import logMeal from '../../../assets/projects/squirrel-doctor/food/log-meal.png'
+import galleryMonth from '../../../assets/projects/squirrel-doctor/food/gallery-month.png'
+import foodPatientList from '../../../assets/projects/squirrel-doctor/food/patient-list.jpg'
+import logBp from '../../../assets/projects/squirrel-doctor/blood-pressure/log-bp.png'
+import loggedToday from '../../../assets/projects/squirrel-doctor/blood-pressure/logged-today.png'
+import userJourney from '../../../assets/projects/squirrel-doctor/user journey.png'
+
+const t = useTranslations('en')
+
+const gradients = [
+  'linear-gradient(135deg, #1a3c5e 0%, #2a7b9b 50%, #3db8c1 100%)',
+  'linear-gradient(135deg, #1e2a78 0%, #5b3dbd 50%, #8b5cf6 100%)',
+  'linear-gradient(135deg, #6b21a8 0%, #a855f7 50%, #d4b4fe 100%)',
+  'linear-gradient(135deg, #065f5b 0%, #0d9488 50%, #5eead4 100%)',
+  'linear-gradient(135deg, #7c2d12 0%, #c2410c 50%, #fb923c 100%)',
+]
+---
+
+<ProjectLayout
+  lang="en"
+  title={t('project.sd.title')}
+  headline={t('project.sd.headline')}
+  skills={['UX Research', 'UI Design', 'Information Architecture', 'Prototyping']}
+  roles={['User Research', 'Information Architecture', 'Interface Design', 'Prototyping', 'PM']}
+>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('sd.s1.h')}</h2>
+    <p class="text-black leading-relaxed">{t('sd.s1.p')}</p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('sd.s2.h')}</h2>
+    <ul class="text-black leading-relaxed space-y-2">
+      <li set:html={t('sd.s2.li1')} />
+      <li set:html={t('sd.s2.li2')} />
+      <li set:html={t('sd.s2.li3')} />
+    </ul>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('sd.s3.h')}</h2>
+
+    <p class="text-black leading-relaxed mb-2">{t('sd.s3.p')}</p>
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">{t('sd.s3.tag1')}</span>
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">{t('sd.s3.tag2')}</span>
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">{t('sd.s3.tag3')}</span>
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">{t('sd.s3.tag4')}</span>
+      <span class="inline-block bg-white text-teal-700 text-sm font-medium px-4 py-2">{t('sd.s3.tag5')}</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex gap-3 bg-white p-4">
+        <span class="text-2xl shrink-0 mt-0.5">🌏</span>
+        <div>
+          <p class="text-sm font-medium text-black mb-1">{t('sd.s3.collab.title')}</p>
+          <p class="text-sm text-black leading-relaxed">{t('sd.s3.collab.body')}</p>
+        </div>
+      </div>
+      <div class="flex gap-3 bg-white p-4">
+        <span class="text-2xl shrink-0 mt-0.5">📋</span>
+        <div>
+          <p class="text-sm font-medium text-black mb-1">{t('sd.s3.pm.title')}</p>
+          <p class="text-sm text-black leading-relaxed">{t('sd.s3.pm.body')}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('sd.s4.h')}</h2>
+    <p class="text-black leading-relaxed">{t('sd.s4.p')}</p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('sd.s5.h')}</h2>
+    <p class="text-black leading-relaxed">{t('sd.s5.p')}</p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('sd.s6.h')}</h2>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">{t('sd.s6.s1.h')}</span></h3>
+    <p class="text-black leading-relaxed mb-2">{t('sd.s6.s1.p')}</p>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">{t('sd.s6.s2.h')}</span></h3>
+    <p class="text-black leading-relaxed mb-2">{t('sd.s6.s2.p')}</p>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">{t('sd.s6.s3.h')}</span></h3>
+    <p class="text-black leading-relaxed mb-2">{t('sd.s6.s3.p')}</p>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">{t('sd.s6.s4.h')}</span></h3>
+    <p class="text-black leading-relaxed mb-2">{t('sd.s6.s4.p')}</p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('sd.s7.h')}</h2>
+    <p class="text-black leading-relaxed mb-4">{t('sd.s7.p1')}</p>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">{t('sd.s7.goal.h')}</span></h3>
+    <p class="text-black leading-relaxed mb-4">{t('sd.s7.goal.p')}</p>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">{t('sd.s7.flow.h')}</span></h3>
+    <p class="text-black leading-relaxed mb-4">{t('sd.s7.flow.p')}</p>
+
+    <h3 class="text-base font-medium mb-2"><span class="highlight-underline">{t('sd.s7.think.h')}</span></h3>
+    <p class="text-black leading-relaxed mb-4">{t('sd.s7.think.p')}</p>
+
+    <p class="text-black leading-relaxed mb-4">{t('sd.s7.p2')}</p>
+
+    <Image src={userJourney} alt="Daily Blood Pressure Log User Flow" class="w-full mb-4" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">{t('sd.s8.h')}</h2>
+
+    <div class="mb-16">
+      <div class="flex gap-4 mb-4 justify-center p-8" style={`background: ${gradients[0]};`}>
+        <Image src={fabAdded} alt="FAB quick access" class="shadow-lg w-48" />
+        <Image src={fabExpanded} alt="FAB expanded menu" class="shadow-lg w-48" />
+      </div>
+      <p class="text-black leading-relaxed">{t('sd.s8.p1')}</p>
+    </div>
+
+    <div class="mb-16">
+      <div class="flex gap-4 mb-4 justify-center p-8" style={`background: ${gradients[1]};`}>
+        <Image src={logBp} alt="Blood pressure log" class="shadow-lg w-48" />
+        <Image src={loggedToday} alt="Logged today" class="shadow-lg w-48" />
+      </div>
+      <p class="text-black leading-relaxed">{t('sd.s8.p2')}</p>
+    </div>
+
+    <div class="mb-16">
+      <div class="flex gap-4 mb-4 justify-center p-8" style={`background: ${gradients[2]};`}>
+        <Image src={questionnaireSteps} alt="Questionnaire steps" class="shadow-lg w-48" />
+        <Image src={tooltip} alt="Section switch tooltip" class="shadow-lg w-48" />
+      </div>
+      <p class="text-black leading-relaxed">{t('sd.s8.p3')}</p>
+    </div>
+
+    <div class="mb-16">
+      <div class="flex flex-col gap-4 mb-4 items-center p-8" style={`background: ${gradients[3]};`}>
+        <div class="flex gap-4 justify-center">
+          <Image src={logMeal} alt="Meal log" class="shadow-lg w-48" />
+          <Image src={galleryMonth} alt="Monthly meal gallery" class="shadow-lg w-48" />
+        </div>
+        <Image src={foodPatientList} alt="Patient meal summary" class="shadow-lg w-full max-w-lg" />
+      </div>
+      <p class="text-black leading-relaxed">{t('sd.s8.p4')}</p>
+    </div>
+  </section>
+
+</ProjectLayout>
