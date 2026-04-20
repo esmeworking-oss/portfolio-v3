@@ -1,15 +1,14 @@
 ---
 interface Props {
-  year: string
-  company: string
   title: string
   description: string
   href: string
   video?: string
   image?: string
+  i18nPrefix?: string
 }
 
-const { year, company, title, description, href, video, image } = Astro.props
+const { title, description, href, video, image, i18nPrefix } = Astro.props
 ---
 
 <a href={href} class="group block">
@@ -35,8 +34,8 @@ const { year, company, title, description, href, video, image } = Astro.props
     </div>
   )}
   <h3 class="text-xl font-medium mt-5">
-    <span>{title}</span>
+    <span data-i18n={i18nPrefix ? `${i18nPrefix}.title` : undefined}>{title}</span>
     <span class="inline-block align-middle text-lg transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
   </h3>
-  <p class="text-sm text-black mt-1">{description}</p>
+  <p class="text-sm text-black mt-1" data-i18n={i18nPrefix ? `${i18nPrefix}.desc` : undefined}>{description}</p>
 </a>

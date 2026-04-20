@@ -6,10 +6,14 @@
     <a href="/" class="hover:opacity-70 transition-opacity">
       <img src="/logo.svg" alt="Esme's Studio" class="h-[10px]" />
     </a>
-    <div class="flex gap-10 text-base">
+    <div class="flex items-center gap-8 text-base">
       <a href="/#projects" class="text-black hover:opacity-60 transition-opacity">Work</a>
       <a href="/#experience" class="text-black hover:opacity-60 transition-opacity">Experience</a>
       <a href="mailto:esme.working@gmail.com" class="text-black hover:opacity-60 transition-opacity">Contact</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="zh">ZH</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -28,4 +32,91 @@
     height: 1px;
     background: black;
   }
+  .lang-switch {
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.22);
+    border-radius: 999px;
+    padding: 2px;
+    gap: 1px;
+  }
+  .lang-btn {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 3px 11px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s, color 0.2s;
+    line-height: 1.4;
+  }
+  .lang-btn:hover:not(.active) {
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .lang-btn.active {
+    background: black;
+    color: white;
+  }
 </style>
+
+<script>
+  import { ui } from '../i18n/ui'
+
+  type Lang = 'zh' | 'en'
+
+  function applyLang(lang: Lang) {
+    const t = ui[lang]
+
+    // Plain text elements: save original on first EN switch, restore on ZH
+    document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+      const key = el.dataset.i18n!
+      if (lang === 'en') {
+        if (!el.dataset.original) el.dataset.original = el.textContent ?? ''
+        if (key in t) el.textContent = t[key]
+      } else {
+        if (el.dataset.original !== undefined) el.textContent = el.dataset.original
+      }
+    })
+
+    // HTML elements (paragraphs with embedded <strong> etc.)
+    document.querySelectorAll<HTMLElement>('[data-i18n-html]').forEach((el) => {
+      const key = el.dataset.i18nHtml!
+      if (lang === 'en') {
+        if (!el.dataset.original) el.dataset.original = el.innerHTML ?? ''
+        if (key in t) el.innerHTML = t[key]
+      } else {
+        if (el.dataset.original !== undefined) el.innerHTML = el.dataset.original
+      }
+    })
+
+    // Sidebar skills/roles, title, headline, next-project title
+    document.querySelectorAll<HTMLElement>('[data-zh][data-en]').forEach((el) => {
+      el.textContent = lang === 'en' ? el.dataset.en! : el.dataset.zh!
+    })
+
+    document.dispatchEvent(new CustomEvent('langChange', { detail: { lang } }))
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang)
+    })
+
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en'
+    localStorage.setItem('lang', lang)
+  }
+
+  const savedLang = (localStorage.getItem('lang') as Lang) || 'zh'
+
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === savedLang)
+  })
+
+  if (savedLang === 'en') applyLang('en')
+
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      applyLang(btn.getAttribute('data-lang') as Lang)
+    })
+  })
+</script>

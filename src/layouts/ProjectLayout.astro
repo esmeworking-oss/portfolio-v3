@@ -8,20 +8,24 @@ interface Props {
   headline: string
   skills: string[]
   roles: string[]
+  titleEn?: string
+  headlineEn?: string
+  skillsEn?: string[]
+  rolesEn?: string[]
 }
 
 const projects = [
-  { slug: 'squirrel-doctor', title: '松鼠醫生 App 與後台' },
-  { slug: 'burger-king', title: '豪點王 Redesign' },
-  { slug: 'wingstar', title: 'WINGSTARS 啦啦隊官方網站' },
-  { slug: 'tsg-membership', title: '台鋼會員系統' },
+  { slug: 'squirrel-doctor', title: '松鼠醫生 App 與後台', titleEn: 'Symptomtrace App & Dashboard' },
+  { slug: 'burger-king', title: '豪點王 Redesign', titleEn: 'Burger King 豪點王 Redesign' },
+  { slug: 'wingstar', title: 'WINGSTARS 啦啦隊官方網站', titleEn: 'WINGSTARS Cheerleading Official Website' },
+  { slug: 'tsg-membership', title: '台鋼會員系統', titleEn: 'TSG Membership System' },
 ]
 
 const currentSlug = Astro.url.pathname.replace(/\/$/, '').split('/').pop()
 const currentIndex = projects.findIndex((p) => p.slug === currentSlug)
 const nextProject = projects[(currentIndex + 1) % projects.length]
 
-const { title, headline, skills, roles } = Astro.props
+const { title, headline, skills, roles, titleEn, headlineEn, skillsEn, rolesEn } = Astro.props
 ---
 
 <!doctype html>
@@ -38,7 +42,8 @@ const { title, headline, skills, roles } = Astro.props
     <Navbar />
     <article class="pt-32 pb-20">
       <div class="max-w-[1200px] mx-auto px-8">
-        <a href="/" class="inline-flex items-center text-sm text-black hover:opacity-60 transition-opacity mb-10">
+        <a href="/" class="inline-flex items-center text-sm text-black hover:opacity-60 transition-opacity mb-10"
+           data-i18n="layout.back">
           &larr; 返回首頁
         </a>
 
@@ -46,23 +51,37 @@ const { title, headline, skills, roles } = Astro.props
           <!-- Left sidebar -->
           <aside class="md:w-[200px] shrink-0 space-y-8">
             <div>
-              <h3 class="text-xs font-semibold tracking-widest uppercase mb-2">技能</h3>
+              <h3 class="text-xs font-semibold tracking-widest uppercase mb-2" data-i18n="layout.skills">技能</h3>
               <ul class="text-sm text-black leading-relaxed space-y-1">
-                {skills.map((skill) => <li>{skill}</li>)}
+                {skills.map((skill, i) => (
+                  <li
+                    data-zh={skillsEn ? skill : undefined}
+                    data-en={skillsEn ? skillsEn[i] : undefined}
+                  >{skill}</li>
+                ))}
               </ul>
             </div>
             <div>
-              <h3 class="text-xs font-semibold tracking-widest uppercase mb-2">我的角色</h3>
+              <h3 class="text-xs font-semibold tracking-widest uppercase mb-2" data-i18n="layout.roles">我的角色</h3>
               <ul class="text-sm text-black leading-relaxed space-y-1">
-                {roles.map((role) => <li>{role}</li>)}
+                {roles.map((role, i) => (
+                  <li
+                    data-zh={rolesEn ? role : undefined}
+                    data-en={rolesEn ? rolesEn[i] : undefined}
+                  >{role}</li>
+                ))}
               </ul>
             </div>
           </aside>
 
           <!-- Right content -->
           <div class="flex-1 min-w-0 project-body">
-            <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">{title}</h1>
-            <p class="text-lg text-black leading-relaxed mb-[100px]">{headline}</p>
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-3"
+                data-zh={titleEn ? title : undefined}
+                data-en={titleEn ?? undefined}>{title}</h1>
+            <p class="text-lg text-black leading-relaxed mb-[100px]"
+               data-zh={headlineEn ? headline : undefined}
+               data-en={headlineEn ?? undefined}>{headline}</p>
             <slot />
 
             <!-- Next project navigation -->
@@ -71,8 +90,10 @@ const { title, headline, skills, roles } = Astro.props
               class="next-project-link group flex items-center justify-between mt-20 pt-8 border-t border-black/10 text-black hover:opacity-70 transition-opacity"
             >
               <div>
-                <span class="text-xs font-semibold tracking-widest uppercase text-black/50">下一個專案</span>
-                <p class="text-xl md:text-2xl font-bold mt-1">{nextProject.title}</p>
+                <span class="text-xs font-semibold tracking-widest uppercase text-black/50" data-i18n="layout.next">下一個專案</span>
+                <p class="text-xl md:text-2xl font-bold mt-1"
+                   data-zh={nextProject.title}
+                   data-en={nextProject.titleEn}>{nextProject.title}</p>
               </div>
               <span class="text-2xl transition-transform group-hover:translate-x-1">&rarr;</span>
             </a>
@@ -85,16 +106,9 @@ const { title, headline, skills, roles } = Astro.props
 </html>
 
 <style>
-  /* 淡入動畫 */
   @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .project-body :global(section) {
@@ -103,10 +117,7 @@ const { title, headline, skills, roles } = Astro.props
     margin-bottom: 5rem;
   }
 
-  .project-body :global(section:last-child) {
-    margin-bottom: 0;
-  }
-
+  .project-body :global(section:last-child) { margin-bottom: 0; }
   .project-body :global(section:nth-child(1)) { animation-delay: 0.1s; }
   .project-body :global(section:nth-child(2)) { animation-delay: 0.2s; }
   .project-body :global(section:nth-child(3)) { animation-delay: 0.3s; }

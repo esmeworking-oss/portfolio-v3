@@ -8,19 +8,20 @@
         <h1 class="hero-animate font-serif text-[26px] md:text-[38px] font-bold leading-[1.2] tracking-tight max-w-[680px] mb-6">
           <span id="typewriter"></span><span id="cursor" class="inline-block w-[2px] h-[1em] bg-black align-middle ml-[2px] animate-blink"></span>
         </h1>
-        <p class="hero-animate text-sm text-black leading-relaxed max-w-[600px] mb-10">
+        <p class="hero-animate text-sm text-black leading-relaxed max-w-[600px] mb-10" data-i18n="hero.bio">
           嗨！我是Esme，一名熱愛解決問題的 Product Designer。我喜歡從複雜需求中挖出真正的痛點，再用設計思維把它變成好用又好看的產品體驗。最近我也著迷於用 AI 來加速工作流程，從發想到落地，每個環節都想試試看能不能更快、更有趣。對我來說，設計的樂趣就在於不斷探索新的可能。
         </p>
         <div class="hero-animate flex flex-wrap gap-2 mb-10">
           <span class="tag">Product Design</span>
           <span class="tag">UX Research</span>
-          <span class="tag">AI 應用</span>
-          <span class="tag">專案管理</span>
+          <span class="tag" data-i18n="hero.tag.ai">AI 應用</span>
+          <span class="tag" data-i18n="hero.tag.pm">專案管理</span>
           <span class="tag">Design System</span>
         </div>
         <a
           href="mailto:esme.working@gmail.com"
           class="hero-animate inline-block border border-black text-black text-sm px-6 py-3 hover:bg-black hover:text-white transition-colors"
+          data-i18n="hero.cta"
         >
           馬上聯繫
         </a>
@@ -62,28 +63,53 @@
 </style>
 
 <script>
-  const text = '用設計 架起商業與使用者的橋樑';
-  const el = document.getElementById('typewriter')!;
-  const cursor = document.getElementById('cursor')!;
-  const speed = 120;
-  let i = 0;
-
-  function type() {
-    if (i < text.length) {
-      const char = text[i];
-      if (char === '\n') {
-        el.appendChild(document.createElement('br'));
-      } else {
-        el.appendChild(document.createTextNode(char));
-      }
-      i++;
-      setTimeout(type, speed);
-    } else {
-      // 打完後停留一下再隱藏游標
-      setTimeout(() => { cursor.style.display = 'none'; }, 1500);
-    }
+  const typewriterTexts: Record<string, string> = {
+    zh: '用設計 架起商業與使用者的橋樑',
+    en: 'Bridging Business and Users Through Design',
   }
 
-  // 等頁面載入後開始打字
-  setTimeout(type, 600);
+  let typewriterTimeout: ReturnType<typeof setTimeout> | null = null
+
+  function startTypewriter(text: string) {
+    const el = document.getElementById('typewriter')!
+    const cursor = document.getElementById('cursor')!
+
+    if (typewriterTimeout) {
+      clearTimeout(typewriterTimeout)
+      typewriterTimeout = null
+    }
+
+    el.innerHTML = ''
+    cursor.style.display = ''
+
+    let i = 0
+    const speed = 100
+
+    function type() {
+      if (i < text.length) {
+        const char = text[i]
+        if (char === '\n') {
+          el.appendChild(document.createElement('br'))
+        } else {
+          el.appendChild(document.createTextNode(char))
+        }
+        i++
+        typewriterTimeout = setTimeout(type, speed)
+      } else {
+        typewriterTimeout = setTimeout(() => {
+          cursor.style.display = 'none'
+        }, 1500)
+      }
+    }
+
+    typewriterTimeout = setTimeout(type, 600)
+  }
+
+  const savedLang = localStorage.getItem('lang') || 'zh'
+  startTypewriter(typewriterTexts[savedLang] ?? typewriterTexts.zh)
+
+  document.addEventListener('langChange', (e: Event) => {
+    const { lang } = (e as CustomEvent<{ lang: string }>).detail
+    startTypewriter(typewriterTexts[lang] ?? typewriterTexts.zh)
+  })
 </script>

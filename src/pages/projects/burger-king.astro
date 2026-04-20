@@ -6,9 +6,7 @@ import newHome from '../../assets/projects/burger-king/new-home.png'
 import newCoupon from '../../assets/projects/burger-king/new-coupon.png'
 import newCoins from '../../assets/projects/burger-king/new-coins.png'
 import newNotification from '../../assets/projects/burger-king/new-notification.png'
-import old1 from '../../assets/projects/burger-king/old-1.png'
 import old2 from '../../assets/projects/burger-king/old-2.png'
-import old3 from '../../assets/projects/burger-king/old-3.png'
 import old4 from '../../assets/projects/burger-king/old-4.png'
 import oldCoupon from '../../assets/projects/burger-king/old-coupon.png'
 import oldTransaction from '../../assets/projects/burger-king/old-transaction.png'
@@ -22,59 +20,62 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
 
 <ProjectLayout
   title="豪點王 Redesign"
+  titleEn="Burger King 豪點王 Redesign"
   headline="重整資訊層級，打造乾淨現代的點餐會員體驗"
-
+  headlineEn="Restructuring Information Hierarchy for a Clean, Modern Ordering Experience"
   skills={['UX/UI', 'App 設計', '視覺設計', 'Prototyping']}
+  skillsEn={['UX/UI', 'App Design', 'Visual Design', 'Prototyping']}
   roles={['介面設計', '視覺設計', 'Prototyping']}
+  rolesEn={['Interface Design', 'Visual Design', 'Prototyping']}
 >
 
   <section class="mb-16">
-    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">背景</h2>
-    <p class="text-black leading-relaxed">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4" data-i18n="bk.s1.h">背景</h2>
+    <p class="text-black leading-relaxed" data-i18n="bk.s1.p">
       在飢腸轆轆的時刻，科技不該是阻礙。我們重新梳理了 LINE LIFF 上的資訊雜音，將繁瑣的票券分類化繁為簡。透過更符合直覺的導航體驗，使用者能穿梭於各項優惠之間，讓點餐的過程從「尋找」變成一種「期待」。我們不僅改版了介面，更為每一位熱愛美食的會員，打造了更乾淨、更流暢的數位生活。
     </p>
   </section>
 
   <section class="mb-16">
-    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">產品調研</h2>
-    <p class="text-black leading-relaxed mb-6">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4" data-i18n="bk.s2.h">產品調研</h2>
+    <p class="text-black leading-relaxed mb-6" data-i18n="bk.s2.p1">
       這個專案我獨立負責從研究規劃到設計提案的全流程。在正式進入設計之前，我先花了 2 週快速收集資料：不只訪談用戶，也同步分析業務數據、拆解競品以及評估技術限制。
     </p>
-    <p class="text-black leading-relaxed mb-8">
+    <p class="text-black leading-relaxed mb-8" data-i18n="bk.s2.p2">
       透過初期調研，我們找出了幾個關鍵痛點——Banner 過度佔據首頁視覺、會員條碼與票券藏在深層頁面、載具綁定流程缺乏狀態引導——同時也釐清了產品的限制與潛能：在 LINE LIFF 的技術框架下，我們無法完全自定導航體驗，但可以善用其高觸及率的優勢，將最高頻的功能前置，減少操作路徑，讓商業推廣與用戶體驗重新取得平衡。
     </p>
     <Image src={userResearch} alt="產品調研流程" class="w-full" />
   </section>
 
   <section class="mb-16">
-    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">重塑失衡的溝通：找出藏在介面裡的摩擦點</h2>
-    <p class="text-black leading-relaxed">
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4" data-i18n="bk.s3.h">重塑失衡的溝通：找出藏在介面裡的摩擦點</h2>
+    <p class="text-black leading-relaxed" data-i18n="bk.s3.p">
       我們發現，現有的介面在商業推廣與用戶體驗之間失去了平衡。過於強勢的 Banner 稀釋了核心功能，資訊層級的混亂讓票券與點數等重要價值變得難以觸及。同時，缺乏引導的載具綁定與不夠直覺的導航符號，都成了點餐旅程中的隱形路障。我們的挑戰是：如何剝除這些多餘的視覺雜訊，將原本「尋找」的痛苦，轉化為「獲得」的快樂。
     </p>
   </section>
 
   <section class="mb-16">
-    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">解決方案</h2>
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4" data-i18n="bk.s4.h">解決方案</h2>
 
-    <p class="text-black leading-relaxed mb-2">
+    <p class="text-black leading-relaxed mb-2" data-i18n-html="bk.s4.p1">
       <strong class="text-black block mb-1">把最常用的功能，放到手指最近的地方</strong>我們發現用戶每次結帳都在翻找會員條碼——於是直接把它和 QR Code 搬到首頁核心位置。點數餘額不再藏在深層頁面，而是一眼可見，搭配到期提醒和一鍵兌換，讓「查詢」和「行動」零距離。
     </p>
 
-    <p class="text-black leading-relaxed mb-2">
+    <p class="text-black leading-relaxed mb-2" data-i18n-html="bk.s4.p2">
       <strong class="text-black block mb-1">用狀態說話，別讓用戶猜</strong>過去的票券頁像一疊沒整理的折價券，用戶永遠搞不清哪張能用。我們重新設計了 5 種狀態分類，每張票券附上清楚的使用條件。載具綁定也是同樣邏輯：已綁定、未綁定，兩種狀態、兩種引導，不再讓人茫然。
     </p>
 
-    <p class="text-black leading-relaxed mb-2">
+    <p class="text-black leading-relaxed mb-2" data-i18n-html="bk.s4.p3">
       <strong class="text-black block mb-1">乾淨，但不無聊</strong>白底打底、金黃色 CTA 點綴，視覺輕盈卻不失品牌個性。底部導航從繁雜精簡為 5 個清晰 Tab，首頁置中——讓每一次操作都從熟悉的起點開始。
     </p>
 
-    <p class="text-black leading-relaxed mb-2">
+    <p class="text-black leading-relaxed mb-2" data-i18n-html="bk.s4.p4">
       <strong class="text-black block mb-1">建立Design System，確保設計風格</strong>新頁面設計有據可循，讓元件易於重複使用，減少重複決策的時間與開發成本
     </p>
 
     <div class="mt-12 bg-white p-6 text-center">
-      <h3 class="text-base font-semibold mb-1">前後對比</h3>
-      <p class="text-black text-sm mb-4">查看改版前後的畫面差異</p>
+      <h3 class="text-base font-semibold mb-1" data-i18n="bk.s4.compare.title">前後對比</h3>
+      <p class="text-black text-sm mb-4" data-i18n="bk.s4.compare.sub">查看改版前後的畫面差異</p>
 
       <div class="before-after-grid">
         <span class="version-badge version-badge--old">Before</span>
@@ -95,29 +96,27 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
     </div>
 
     <div class="consolidation-block mt-12 bg-white p-6">
-      <h3 class="text-base font-semibold mb-1">會員頁面整合</h3>
-      <p class="text-black text-sm mb-6">
+      <h3 class="text-base font-semibold mb-1" data-i18n="bk.s4.member.title">會員頁面整合</h3>
+      <p class="text-black text-sm mb-6" data-i18n="bk.s4.member.sub">
         舊版將會員首頁、條碼、電子載具分散在三個獨立頁面，新版整合至單一會員頁
       </p>
 
-      <!-- 舊版三張 -->
-      <span class="version-label">舊版</span>
+      <span class="version-label" data-i18n="bk.s4.old.label">舊版</span>
       <div class="old-screens">
         <div class="old-screen-item">
           <Image src={oldHomepage} alt="舊版：會員首頁" class="border border-gray-200" />
-          <span class="screen-name">會員首頁</span>
+          <span class="screen-name" data-i18n="bk.s4.old.home">會員首頁</span>
         </div>
         <div class="old-screen-item">
           <Image src={oldBarcode} alt="舊版：會員條碼" class="border border-gray-200" />
-          <span class="screen-name">會員條碼</span>
+          <span class="screen-name" data-i18n="bk.s4.old.barcode">會員條碼</span>
         </div>
         <div class="old-screen-item">
           <Image src={oldCarrier} alt="舊版：電子載具" class="border border-gray-200" />
-          <span class="screen-name">電子載具</span>
+          <span class="screen-name" data-i18n="bk.s4.old.carrier">電子載具</span>
         </div>
       </div>
 
-      <!-- 收斂箭頭 -->
       <div class="converge-arrows">
         <svg viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrows-svg">
           <path d="M50 8 L150 48" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" />
@@ -127,41 +126,40 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
         </svg>
       </div>
 
-      <!-- 新版 -->
-      <span class="version-label version-label--new">新版</span>
+      <span class="version-label version-label--new" data-i18n="bk.s4.new.label">新版</span>
       <div class="new-screen">
         <Image src={newMemberPage} alt="新版：整合會員頁" class="border border-gray-200" />
-        <span class="screen-name">會員頁（整合）</span>
+        <span class="screen-name" data-i18n="bk.s4.new.page">會員頁（整合）</span>
       </div>
     </div>
   </section>
 
   <section class="mb-16">
-    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">Redesign 成效</h2>
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4" data-i18n="bk.s5.h">Redesign 成效</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
       <div class="bg-white p-6 text-center">
-        <p class="text-[32px] font-bold text-black leading-none mb-2">0.5<span class="text-[18px] font-semibold">秒</span></p>
-        <p class="text-sm text-gray-600">結帳出示條碼的平均完成時間</p>
-        <p class="text-xs text-gray-500 mt-1">打開即掃描，不再翻找</p>
+        <p class="text-[32px] font-bold text-black leading-none mb-2">0.5<span class="text-[18px] font-semibold" data-i18n="bk.s5.m1.unit">秒</span></p>
+        <p class="text-sm text-gray-600" data-i18n="bk.s5.m1.label">結帳出示條碼的平均完成時間</p>
+        <p class="text-xs text-gray-500 mt-1" data-i18n="bk.s5.m1.sub">打開即掃描，不再翻找</p>
       </div>
       <div class="bg-white p-6 text-center">
         <p class="text-[32px] font-bold text-black leading-none mb-2">+40<span class="text-[18px] font-semibold">%</span></p>
-        <p class="text-sm text-gray-600">載具綁定完成率提升</p>
-        <p class="text-xs text-gray-500 mt-1">清晰的狀態引導減少放棄</p>
+        <p class="text-sm text-gray-600" data-i18n="bk.s5.m2.label">載具綁定完成率提升</p>
+        <p class="text-xs text-gray-500 mt-1" data-i18n="bk.s5.m2.sub">清晰的狀態引導減少放棄</p>
       </div>
       <div class="bg-white p-6 text-center">
-        <p class="text-[32px] font-bold text-black leading-none mb-2">-1~3<span class="text-[18px] font-semibold">步</span></p>
-        <p class="text-sm text-gray-600">高頻任務平均減少點擊數</p>
-        <p class="text-xs text-gray-500 mt-1">點數查詢、票券使用、載具管理</p>
+        <p class="text-[32px] font-bold text-black leading-none mb-2">-1~3<span class="text-[18px] font-semibold" data-i18n="bk.s5.m3.unit">步</span></p>
+        <p class="text-sm text-gray-600" data-i18n="bk.s5.m3.label">高頻任務平均減少點擊數</p>
+        <p class="text-xs text-gray-500 mt-1" data-i18n="bk.s5.m3.sub">點數查詢、票券使用、載具管理</p>
       </div>
     </div>
 
-    <p class="text-black leading-relaxed mb-2">
+    <p class="text-black leading-relaxed mb-2" data-i18n-html="bk.s5.p1">
       <strong class="text-black">從 1 次點擊，到 0 次</strong> — 舊版的會員條碼藏在不起眼的角落，結帳時用戶得先找、再點，才能打開。新版直接把條碼放在首頁——打開 App 就是結帳狀態，不用思考，不用等待。
     </p>
 
-    <p class="text-black leading-relaxed">
+    <p class="text-black leading-relaxed" data-i18n-html="bk.s5.p2">
       <strong class="text-black">少點 1~3 下，體驗差很多</strong> — 我們重新檢視每一條操作路徑，把冗餘的步驟逐一刪除。點數查詢、票券使用、載具管理——這些高頻任務平均減少了 1 到 3 次點擊。數字看似微小，但乘上每天數萬次的使用，就是巨大的體驗升級。
     </p>
   </section>
@@ -191,14 +189,9 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
     gap: 0.5rem;
   }
 
-  .old-screen-item img {
-    width: 100%;
-    height: auto;
-  }
+  .old-screen-item img { width: 100%; height: auto; }
 
-  .before-after-grid {
-    text-align: left;
-  }
+  .before-after-grid { text-align: left; }
 
   .version-badge {
     display: inline-block;
@@ -208,15 +201,8 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
     letter-spacing: 0.05em;
   }
 
-  .version-badge--old {
-    background: #e5e7eb;
-    color: #6b7280;
-  }
-
-  .version-badge--new {
-    background: #a7f3d0;
-    color: #047857;
-  }
+  .version-badge--old { background: #e5e7eb; color: #6b7280; }
+  .version-badge--new { background: #a7f3d0; color: #047857; }
 
   .version-label {
     font-size: 0.75rem;
@@ -228,15 +214,9 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
     letter-spacing: 0.05em;
   }
 
-  .version-label--new {
-    color: #047857;
-    background: #a7f3d0;
-  }
+  .version-label--new { color: #047857; background: #a7f3d0; }
 
-  .screen-name {
-    font-size: 0.8rem;
-    color: #6b7280;
-  }
+  .screen-name { font-size: 0.8rem; color: #6b7280; }
 
   .converge-arrows {
     width: 100%;
@@ -244,10 +224,7 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
     padding: 1rem 0;
   }
 
-  .arrows-svg {
-    width: 100%;
-    height: auto;
-  }
+  .arrows-svg { width: 100%; height: auto; }
 
   .new-screen {
     display: flex;
@@ -258,18 +235,10 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
     margin-top: 0.75rem;
   }
 
-  .new-screen img {
-    width: 100%;
-    height: auto;
-  }
+  .new-screen img { width: 100%; height: auto; }
 
   @media (max-width: 640px) {
-    .old-screens {
-      gap: 0.5rem;
-    }
-
-    .new-screen {
-      max-width: 180px;
-    }
+    .old-screens { gap: 0.5rem; }
+    .new-screen { max-width: 180px; }
   }
 </style>
