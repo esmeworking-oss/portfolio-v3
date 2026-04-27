@@ -6,7 +6,8 @@ const { lang = 'zh' } = Astro.props
 const greeting = lang === 'zh' ? '嗨，我是 Esme。' : "Hi, I'm Esme."
 const taglines = lang === 'zh'
   ? [
-      '嗨！我是 Esme，擅長從複雜的需求裡挖出真正的痛點，再用設計思維將它轉化為好用、好看的產品體驗。最近也著迷於把 AI 融入工作流程，從發想到落地等環節，每個都想試試看能不能更快、更有趣。'
+      '嗨！我是 Esme，擅長從複雜的需求裡挖出真正的痛點，再用設計思維將它轉化為好用、好看的產品體驗',
+      '最近也著迷於把 AI 融入工作流程，從發想到落地等環節，每個都想試試看能不能更快、更有趣。'
     ]
   : ['Product designer focused on bridging business and users.']
 const cta = lang === 'zh' ? '看看我的作品' : 'View my work'
@@ -25,8 +26,8 @@ const cta = lang === 'zh' ? '看看我的作品' : 'View my work'
       <h1 class="hero-animate text-[22px] md:text-[30px] lg:text-[36px] font-semibold leading-[1.1] tracking-tight text-black mb-4">
         {greeting}
       </h1>
-      {taglines.map((line, i) => (
-        <p class={`hero-animate text-[13px] md:text-[14px] text-black leading-relaxed max-w-[460px]${i > 0 ? ' mt-3' : ''}`}>
+      {taglines.map((line) => (
+        <p class="hero-animate text-[13px] md:text-[14px] text-black leading-relaxed">
           {line}
         </p>
       ))}
