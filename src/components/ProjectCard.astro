@@ -1,48 +1,44 @@
 ---
-import { useTranslations } from '../i18n/utils'
-
-type Lang = 'zh' | 'en'
 interface Props {
   title: string
-  description: string
+  client: string
+  metric: string
   href: string
   video?: string
   image?: string
-  i18nPrefix?: string
-  lang?: Lang
 }
 
-const { title, description, href, video, image, i18nPrefix, lang = 'zh' } = Astro.props
-const t = useTranslations(lang)
-const displayTitle = i18nPrefix ? t(`${i18nPrefix}.title`) : title
-const displayDesc = i18nPrefix ? t(`${i18nPrefix}.desc`) : description
+const { title, client, metric, href, video, image } = Astro.props
 ---
 
 <a href={href} class="group block">
   {video && (
-    <div class="overflow-hidden h-[360px] transition-transform duration-300 group-hover:scale-[1.02]">
+    <div class="overflow-hidden bg-gray-100 rounded-xl">
       <video
         src={video}
         autoplay
         loop
         muted
         playsinline
-        class="w-full h-full object-cover"
+        class="w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
       />
     </div>
   )}
   {!video && image && (
-    <div class="overflow-hidden h-[360px] transition-transform duration-300 group-hover:scale-[1.02]">
+    <div class="overflow-hidden bg-gray-100 rounded-xl">
       <img
         src={image}
-        alt={displayTitle}
-        class="w-full h-full object-cover"
+        alt={title}
+        class="w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
       />
     </div>
   )}
-  <h3 class="text-xl font-medium mt-5">
-    <span>{displayTitle}</span>
-    <span class="inline-block align-middle text-lg transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-  </h3>
-  <p class="text-sm text-black mt-1">{displayDesc}</p>
+  <div class="mt-5">
+    <p class="text-xs text-black/40 tracking-widest uppercase mb-2">{client}</p>
+    <h3 class="text-base font-medium leading-snug mb-1">
+      {title}
+      <span class="inline-block align-middle text-sm ml-1 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+    </h3>
+    <p class="text-sm text-black/50">{metric}</p>
+  </div>
 </a>

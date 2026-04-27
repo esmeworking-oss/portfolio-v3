@@ -4,77 +4,99 @@
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| Background | `#FDF8EC` | 全站底色（米白） |
-| Text | `#000000` (black) | 主要文字 |
+| Background | `#ffffff` | 全站底色（白） |
+| Primary | `#004080` | Hero 標題色、藍色右側面板 |
+| Text | `#000000` | 主要文字 |
+| Text Muted | `rgba(0,0,0,0.6)` | Hero 介紹文、次要文字 |
 | Gray 500 | `#6B7280` | 次要文字 |
 | Gray 200 | `#E5E7EB` | 邊線、分隔線 |
 | Gray 100 | `#F3F4F6` | 區塊底色 |
-| Highlight Gold | `rgba(215, 190, 130, 0.35)` | 螢光筆劃線底色 |
 
 ## Typography
 
-- **Font Stack:** `Playfair Display`, `Noto Serif TC`, serif
-- 中英文共用同一組 serif 字體，Playfair Display 處理英文，Noto Serif TC 處理中文
+- **Font Stack:** `Inter`, `Noto Sans TC`, system-ui, sans-serif
+- 中英文皆使用 sans-serif，無 serif 字體
+- **字距原則：** 標題文字間距比照一般排版，不加寬字距（避免 `tracking-widest`）；若有 uppercase 標籤類小字可保留 `tracking-wide`，但不超過此幅度
 
-### Scale（Tailwind class）
+### Scale
 
 | Element | Class | Usage |
 |---------|-------|-------|
-| Hero 標題 | `text-4xl md:text-5xl font-bold` | 首頁大標 |
+| Hero 標題 | `text-[21px] md:text-[32px] font-semibold leading-[1.15] tracking-tight text-primary` | 首頁大標 |
+| Hero 內文 | `text-[14px] text-black/60 leading-relaxed` | 首頁介紹段落 |
 | 專案標題 | `text-3xl md:text-4xl font-bold` | 專案頁 h1 |
-| Section 標題 | `text-[20px] font-semibold tracking-widest uppercase` | 專案頁 h2 |
-| 副標題 | `text-base font-medium` | 專案頁 h3（策略標題等） |
+| Section 標題 | `text-[20px] font-semibold` | 專案頁 h2，不加 tracking |
+| 副標題 | `text-base font-medium` | 專案頁 h3 |
 | 內文 | `text-black leading-relaxed` | 段落文字 |
-| 小標 | `text-xs font-semibold tracking-widest uppercase` | sidebar 標籤 |
+| 小標 | `text-xs font-semibold tracking-wide uppercase` | sidebar 標籤，tracking-wide 上限 |
 | 連結/按鈕 | `text-sm` | Navbar、CTA |
 
 ## Layout
+
+### 首頁（BaseLayout）
+
+分欄設計，僅桌機生效：
+
+| 區域 | Class | 說明 |
+|------|-------|------|
+| 左側內容區 | `lg:w-[70%] lg:pl-[10vw] lg:pr-8` | 白色底、主要內容 |
+| 右側藍色面板 | `w-[30%]` fixed，`bg-primary` | 純裝飾，pointer-events-none |
+
+### 專案頁（ProjectLayout）
 
 | Token | Value |
 |-------|-------|
 | Max Width | `max-w-[1200px]` |
 | Horizontal Padding | `px-8` |
 | Centering | `mx-auto` |
+| Sidebar 寬度 | `md:w-[200px]` |
 
-> 所有頁面容器統一使用 `max-w-[1200px] mx-auto px-8`，確保左右對齊一致。
+### Footer
+
+`max-w-[900px] mx-auto px-8`
 
 ## Components
 
-### Navbar（雙線邊框）
+### Navbar
+
+- 固定於頂部，無背景色（透明），全寬（`left-0 right-0`）
+- Inner 容器：`px-8 lg:pl-[10vw] lg:pr-8 py-6`，全寬，`justify-between`
+- 左：Logo（`text-sm font-medium tracking-widest uppercase`）
+- 右：語言切換（ZH / EN），位於右側邊緣
 
 ```css
-.nav-double-border {
-  border-bottom: 2px solid black;
-}
-.nav-double-border::after {
-  /* 下方 4px 處加一條 1px 細線 */
-  bottom: -4px;
-  height: 1px;
-  background: black;
-}
+/* 語言切換 pill */
+border: 1px solid rgba(0, 0, 0, 0.2);
+border-radius: 999px;
+padding: 2px;
+
+/* 各按鈕 */
+font-size: 11px;
+letter-spacing: 0.08em;
+padding: 3px 11px;
+
+/* Active 狀態 */
+background: black;
+color: white;
 ```
 
-- 固定於頂部，背景半透明 `bg-[#FDF8EC]/80 backdrop-blur-sm`
+### Highlight Underline
 
-### Highlight Underline（螢光筆劃線）
-
-用於加強副標題的視覺層級，模擬手繪螢光筆效果。
-
-```html
-<h3><span class="highlight-underline">策略一：降低使用門檻</span></h3>
-```
+用於專案頁加強副標題層級。
 
 ```css
 .highlight-underline {
-  background-image: linear-gradient(transparent 60%, rgba(215, 190, 130, 0.35) 60%);
+  background-image: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.08) 60%);
   padding: 0 2px;
 }
 ```
 
-**調整方式：**
-- 劃線厚度：改 `60%` 數值，越小越厚（例如 `50%` = 下半部都有底色）
-- 劃線顏色：改 `rgba(215, 190, 130, 0.35)` 的色值或透明度
-- 定義於 `src/styles/global.css`，全站可用
+定義於 `src/styles/global.css`，全站可用。
+
+### ProjectCard
+
+- 圖片/影片容器：`rounded-xl`（12px 圓角），`overflow-hidden`
+- Hover 效果：`scale-[1.02]`，圓角由容器裁切保持不變
 
 ### CTA Button
 
@@ -87,30 +109,33 @@
 
 ### Grain Overlay（紙質紋理）
 
-- 全站套用 `.grain-overlay` 於 `<body>`
-- 使用 SVG fractalNoise 產生雜訊，opacity `0.035`
-- 動畫 `grain-shift` 以 steps 模擬底片顆粒感
+- 僅專案頁 `<body>` 套用 `.grain-overlay`
+- 首頁無此效果
 
 ## Animation
 
 | Name | Usage | Duration |
 |------|-------|----------|
-| `hero-animate` / `fade-in-up` | 首頁元素依序淡入 | 0.8s, staggered |
-| `fadeInUp` | 專案頁 section 依序淡入 | 0.6s, staggered |
-| `blink` | 打字機游標閃爍 | 0.8s infinite |
-| `grain-shift` | 紙質紋理微移 | 6s infinite |
+| `fade-in-up` / `.hero-animate` | 首頁元素依序淡入，共 5 層 stagger | 0.8s |
+| `fadeInUp` | 專案頁 section 依序淡入，共 7 層 stagger | 0.6s |
+| `bob` | 首頁向下滾動箭頭上下浮動 | 2s infinite |
 
 ## File Structure
 
 ```
 src/
-├── styles/global.css        ← 全域樣式（顏色、動畫、utility class）
+├── styles/global.css        ← 全域樣式（顏色 token、動畫、utility class）
 ├── layouts/
-│   ├── BaseLayout.astro     ← 首頁 layout
-│   └── ProjectLayout.astro  ← 專案頁 layout（sidebar + content）
+│   ├── BaseLayout.astro     ← 首頁 layout（含 Navbar + Footer）
+│   └── ProjectLayout.astro  ← 專案頁 layout（sidebar + content + 下一篇導航）
 ├── components/
-│   ├── Navbar.astro
-│   ├── Hero.astro
-│   └── Footer.astro
-└── pages/projects/          ← 各專案頁面
+│   ├── Navbar.astro         ← 固定導覽列，含語言切換
+│   ├── Hero.astro           ← 首頁 hero section
+│   ├── Footer.astro         ← 全站 footer
+│   ├── ProjectCard.astro    ← 首頁專案卡片
+│   └── ExperienceList.astro ← 首頁工作經歷列表
+└── pages/
+    ├── index.astro          ← 首頁（ZH）
+    ├── en/index.astro       ← 首頁（EN）
+    └── projects/            ← 各專案頁面
 ```

@@ -31,25 +31,34 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
 
   <section class="mb-16">
     <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4" data-i18n="bk.s1.h">背景</h2>
+    <h3 class="text-base font-medium mb-3 text-black/60">從繁瑣到直覺的數位點餐</h3>
     <p class="text-black leading-relaxed" data-i18n="bk.s1.p">
-      在飢腸轆轆的時刻，科技不該是阻礙。我們重新梳理了 LINE LIFF 上的資訊雜音，將繁瑣的票券分類化繁為簡。透過更符合直覺的導航體驗，使用者能穿梭於各項優惠之間，讓點餐的過程從「尋找」變成一種「期待」。我們不僅改版了介面，更為每一位熱愛美食的會員，打造了更乾淨、更流暢的數位生活。
+      在飢腸轆轆的時刻，科技不該是阻礙。我重新梳理了 LINE LIFF 介面上的資訊雜音，將繁瑣的票券分類化繁為簡。透過更符合直覺的導航體驗，使用者得以穿梭於各項優惠之間，讓點餐過程從「盲目尋找」轉化為一種「流暢的期待」。這不僅是介面的翻新，更是為每一位美食愛好者，打造更乾淨、低摩擦的數位生活。
     </p>
   </section>
 
   <section class="mb-16">
     <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4" data-i18n="bk.s2.h">產品調研</h2>
-    <p class="text-black leading-relaxed mb-6" data-i18n="bk.s2.p1">
-      這個專案我獨立負責從研究規劃到設計提案的全流程。在正式進入設計之前，我先花了 2 週快速收集資料：不只訪談用戶，也同步分析業務數據、拆解競品以及評估技術限制。
+    <h3 class="text-base font-medium mb-3 text-black/60">多維度的策略思考</h3>
+    <p class="text-black leading-relaxed mb-10" data-i18n="bk.s2.p1">
+      在這個專案中，我<span class="highlight-underline">獨立負責從研究規劃到設計提案的全流程</span>。為確保設計方向的精準度，我於初期投入 2 週進行快速調研：不僅進行用戶訪談與競品拆解，更同步<span class="highlight-underline">分析業務數據</span>並評估技術限制，確保方案兼具使用者價值與實作可行性。
     </p>
-    <p class="text-black leading-relaxed mb-8" data-i18n="bk.s2.p2">
-      透過初期調研，我們找出了幾個關鍵痛點——Banner 過度佔據首頁視覺、會員條碼與票券藏在深層頁面、載具綁定流程缺乏狀態引導——同時也釐清了產品的限制與潛能：在 LINE LIFF 的技術框架下，我們無法完全自定導航體驗，但可以善用其高觸及率的優勢，將最高頻的功能前置，減少操作路徑，讓商業推廣與用戶體驗重新取得平衡。
+
+    <h3 class="text-base font-medium mb-3 text-black/60">洞察與限制：在框架中尋求平衡</h3>
+    <p class="text-black leading-relaxed mb-4">透過調研，我們精準鎖定了三大核心痛點：</p>
+    <ul class="space-y-3 mb-6 text-black leading-relaxed list-none pl-0">
+      <li><strong>視覺干擾：</strong>Banner 過度佔據首頁，稀釋了核心功能權重。</li>
+      <li><strong>路徑過深：</strong>關鍵的會員條碼與票券層級過深，導致操作中斷。</li>
+      <li><strong>體驗斷點：</strong>載具綁定流程缺乏引導，造成使用者困惑。</li>
+    </ul>
+    <p class="text-black leading-relaxed mb-8">
+      同時，我也釐清了開發上的邊界——在 <span class="highlight-underline">LINE LIFF 技術框架</span>的導航限制下，我們採取「高頻功能前置」的策略。目標是縮短操作路徑，在商業推廣需求與優質用戶體驗之間，重新取得最佳平衡點。
     </p>
     <Image src={userResearch} alt="產品調研流程" class="w-full" />
   </section>
 
   <section class="mb-16">
-    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4" data-i18n="bk.s3.h">重塑失衡的溝通：找出藏在介面裡的摩擦點</h2>
-    <p class="text-black leading-relaxed" data-i18n="bk.s3.p">
+<p class="text-black leading-relaxed" data-i18n="bk.s3.p">
       我們發現，現有的介面在商業推廣與用戶體驗之間失去了平衡。過於強勢的 Banner 稀釋了核心功能，資訊層級的混亂讓票券與點數等重要價值變得難以觸及。同時，缺乏引導的載具綁定與不夠直覺的導航符號，都成了點餐旅程中的隱形路障。我們的挑戰是：如何剝除這些多餘的視覺雜訊，將原本「尋找」的痛苦，轉化為「獲得」的快樂。
     </p>
   </section>
@@ -58,19 +67,19 @@ import userResearch from '../../assets/projects/burger-king/user-research.png'
     <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4" data-i18n="bk.s4.h">解決方案</h2>
 
     <p class="text-black leading-relaxed mb-2" data-i18n-html="bk.s4.p1">
-      <strong class="text-black block mb-1">把最常用的功能，放到手指最近的地方</strong>我們發現用戶每次結帳都在翻找會員條碼——於是直接把它和 QR Code 搬到首頁核心位置。點數餘額不再藏在深層頁面，而是一眼可見，搭配到期提醒和一鍵兌換，讓「查詢」和「行動」零距離。
+      <strong class="text-black block mb-1">縮短操作路徑：核心功能觸手可及</strong>針對結帳情境進行流程優化，將「會員條碼」與「支付 QR Code」整合至首頁黃金熱點。同時外顯點數餘額與到期提醒，實現一鍵兌換，將查詢至行動的路徑縮減至最短。
     </p>
 
     <p class="text-black leading-relaxed mb-2" data-i18n-html="bk.s4.p2">
-      <strong class="text-black block mb-1">用狀態說話，別讓用戶猜</strong>過去的票券頁像一疊沒整理的折價券，用戶永遠搞不清哪張能用。我們重新設計了 5 種狀態分類，每張票券附上清楚的使用條件。載具綁定也是同樣邏輯：已綁定、未綁定，兩種狀態、兩種引導，不再讓人茫然。
+      <strong class="text-black block mb-1">狀態透明化：消除認知負擔</strong>重新定義票券系統的 5 種狀態分類（如：可使用、已使用、已過期等），並明確標示使用限制，減少用戶重複確認的成本。載具綁定流程則採分流引導，根據「已綁定/未綁定」提供差異化 UI，確保操作不迷失。
     </p>
 
     <p class="text-black leading-relaxed mb-2" data-i18n-html="bk.s4.p3">
-      <strong class="text-black block mb-1">乾淨，但不無聊</strong>白底打底、金黃色 CTA 點綴，視覺輕盈卻不失品牌個性。底部導航從繁雜精簡為 5 個清晰 Tab，首頁置中——讓每一次操作都從熟悉的起點開始。
+      <strong class="text-black block mb-1">視覺減法：平衡品牌感與資訊量</strong>以潔淨白底搭配品牌金黃色作為視覺引導（CTA），提升層次感。底部導航精簡至 5 大核心功能，確保導覽邏輯一致且直覺。
     </p>
 
     <p class="text-black leading-relaxed mb-2" data-i18n-html="bk.s4.p4">
-      <strong class="text-black block mb-1">建立Design System，確保設計風格</strong>新頁面設計有據可循，讓元件易於重複使用，減少重複決策的時間與開發成本
+      <strong class="text-black block mb-1">原子化設計：建構可擴展的 Design System</strong>導入元件化思維建立設計規範，確保跨頁面的一致性。這不僅降低了後續的 UI 決策成本，更大幅提升開發團隊的元件複用率與協作效率。
     </p>
 
     <div class="mt-12 bg-white p-6 text-center">

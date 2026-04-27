@@ -99,7 +99,7 @@ export const ui: Record<Lang, Record<string, string>> = {
 
     // ── Squirrel Doctor (Symptomtrace) ────────────────────────────────────────
     'sd.s1.h': 'Background',
-    'sd.s1.p': 'Chronic disease patients need to track health data long-term, but for many elderly users, digital tools are not intuitive: records are often interrupted, data is scattered, and the learning curve is steep. This project designed both the patient-facing app and the clinical dashboard simultaneously, aiming to make "health recording" simple while connecting the care relationships between patients, families, and medical staff.',
+    'sd.s1.p': 'Chronic disease patients need to track health data long-term, but for many elderly users, digital tools are not intuitive: records are often interrupted, data is scattered, and the learning curve is steep. This project designed both the patient-facing app and the clinical dashboard simultaneously, aiming to make "health recording" simple while connecting the care relationships between patients, families, and medical staff. Additionally, the AI-powered dashboard is a key highlight of this project, helping medical staff better understand each patient\'s condition.',
     'sd.s2.h': 'Core Problems',
     'sd.s2.li1': '<strong class="text-black">Patients:</strong> Text too small to read, unfamiliar login credentials, difficulty describing symptoms, forgetting to measure, and unable to tell if readings are normal',
     'sd.s2.li2': '<strong class="text-black">Family:</strong> Want to monitor elderly relatives but can\'t check their status in real-time; caregivers cannot log records on their behalf',

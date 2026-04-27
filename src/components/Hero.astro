@@ -1,115 +1,50 @@
 ---
-import { useTranslations } from '../i18n/utils'
-
 type Lang = 'zh' | 'en'
 interface Props { lang?: Lang }
 const { lang = 'zh' } = Astro.props
-const t = useTranslations(lang)
+
+const greeting = lang === 'zh' ? '嗨，我是 Esme。' : "Hi, I'm Esme."
+const tagline = lang === 'zh'
+  ? '專注於打造好用、好看的產品體驗的 Product Designer。'
+  : 'Product designer focused on bridging business and users.'
+const intro = lang === 'zh'
+  ? ['嗨！我是 Esme，擅長從複雜的需求裡挖出真正的痛點，再用設計思維將它轉化為好用、好看的產品體驗。最近也著迷於把 AI 融入工作流程，從發想到落地等環節，每個都想試試看能不能更快、更有趣。', '對我來說，設計最迷人的地方，就是永遠有新的可能等著被探索。']
+  : null
 ---
 
-<section class="pt-40 pb-20 md:pt-48 md:pb-28" data-lang={lang}>
-  <div class="max-w-[1200px] mx-auto px-8">
-    <div class="flex items-start gap-10">
-      <div class="flex-1 min-w-0">
-        <h1 class="hero-animate font-serif text-[26px] md:text-[38px] font-bold leading-[1.2] tracking-tight max-w-[680px] mb-6">
-          <span id="typewriter"></span><span id="cursor" class="inline-block w-[2px] h-[1em] bg-black align-middle ml-[2px] animate-blink"></span>
-        </h1>
-        <p class="hero-animate text-sm text-black leading-relaxed max-w-[600px] mb-10">
-          {t('hero.bio')}
-        </p>
-        <div class="hero-animate flex flex-wrap gap-2 mb-10">
-          <span class="tag">Product Design</span>
-          <span class="tag">UX Research</span>
-          <span class="tag">{t('hero.tag.ai')}</span>
-          <span class="tag">{t('hero.tag.pm')}</span>
-          <span class="tag">Design System</span>
+<section class="min-h-[85vh] flex flex-col justify-center pt-24 pb-8">
+  <div class="px-8 lg:px-0 w-full">
+    <div class="lg:max-w-[50%]">
+      <h1 class="hero-animate text-[21px] md:text-[32px] font-semibold leading-[1.15] tracking-tight mb-6 text-primary">
+        {greeting}
+      </h1>
+      {intro ? (
+        <div class="hero-animate text-[14px] text-black/60 leading-relaxed space-y-4">
+          {intro.map(p => <p>{p}</p>)}
         </div>
-        <a
-          href="mailto:esme.working@gmail.com"
-          class="hero-animate inline-block border border-black text-black text-sm px-6 py-3 hover:bg-black hover:text-white transition-colors"
-        >
-          {t('hero.cta')}
-        </a>
-      </div>
-      <div class="hero-animate hidden md:block hero-image-wrapper">
-        <img src="/images/hero-image.png" alt="" class="hero-image" />
-      </div>
+      ) : (
+        <p class="hero-animate text-[14px] text-black/60 leading-relaxed">
+          {tagline}
+        </p>
+      )}
     </div>
-
+    <a
+      href="#projects"
+      class="hero-animate inline-block mt-16 text-sm text-black/40 hover:text-black transition-colors scroll-arrow"
+      aria-label="scroll to projects"
+    >
+      ↓
+    </a>
   </div>
 </section>
 
 <style>
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  .scroll-arrow {
+    font-size: 24px;
+    animation: bob 2s ease-in-out infinite;
   }
-  .animate-blink {
-    animation: blink 0.8s step-end infinite;
-  }
-  .tag {
-    display: inline-block;
-    padding: 4px 14px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 999px;
-    font-size: 12px;
-    line-height: 1.6;
-    letter-spacing: 0.02em;
-    color: rgba(0, 0, 0, 0.7);
-  }
-  .hero-image-wrapper {
-    flex: 0 0 360px;
-    margin-top: -60px;
-  }
-  .hero-image {
-    width: 100%;
-    object-fit: cover;
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
   }
 </style>
-
-<script>
-  const typewriterTexts: Record<string, string> = {
-    zh: '用設計 架起商業與使用者的橋樑',
-    en: 'Bridging Business and Users Through Design',
-  }
-
-  let typewriterTimeout: ReturnType<typeof setTimeout> | null = null
-
-  function startTypewriter(text: string) {
-    const el = document.getElementById('typewriter')!
-    const cursor = document.getElementById('cursor')!
-
-    if (typewriterTimeout) {
-      clearTimeout(typewriterTimeout)
-      typewriterTimeout = null
-    }
-
-    el.innerHTML = ''
-    cursor.style.display = ''
-
-    let i = 0
-    const speed = 100
-
-    function type() {
-      if (i < text.length) {
-        const char = text[i]
-        if (char === '\n') {
-          el.appendChild(document.createElement('br'))
-        } else {
-          el.appendChild(document.createTextNode(char))
-        }
-        i++
-        typewriterTimeout = setTimeout(type, speed)
-      } else {
-        typewriterTimeout = setTimeout(() => {
-          cursor.style.display = 'none'
-        }, 1500)
-      }
-    }
-
-    typewriterTimeout = setTimeout(type, 600)
-  }
-
-  const lang = document.querySelector<HTMLElement>('[data-lang]')?.dataset.lang ?? 'zh'
-  startTypewriter(typewriterTexts[lang] ?? typewriterTexts.zh)
-</script>

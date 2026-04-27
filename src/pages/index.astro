@@ -7,25 +7,29 @@ import ExperienceList from '../components/ExperienceList.astro'
 const projects = [
   {
     title: '豪點王 Redesign',
-    description: '漢堡王 LINE LIFF 介面改版，重整資訊層級、優化票券分類與導航體驗。',
+    client: '漢堡王',
+    metric: '結帳條碼動線從 3 步縮短至 0 步',
     href: '/projects/burger-king',
     video: '/videos/burger-king-hero.webm',
   },
   {
     title: '松鼠醫生 App 與後台',
-    description: '醫療健康管理產品，服務高齡患者、家屬與醫護人員，涵蓋患者端 App 與臨床端後台的雙端設計。',
+    client: '星坦科技',
+    metric: '跨境三國協作，雙端設計全流程',
     href: '/projects/squirrel-doctor',
     video: '/videos/squirrel-doctor-hero.webm',
   },
   {
     title: 'WINGSTARS 啦啦隊官方網站',
-    description: '為啦啦隊粉絲社群打造互動平台，涵蓋個人頁面、排行榜、收藏展示櫃與商城等功能。',
+    client: 'WINGSTARS',
+    metric: '粉絲生態系從零規劃到上線',
     href: '/projects/wingstar',
     image: '/images/wingstar-cover.png',
   },
   {
     title: '台鋼會員系統',
-    description: '重新設計會員系統，優化註冊流程、點數經濟與票券管理，建立一致的 Design System。',
+    client: '台鋼集團',
+    metric: '跨品牌整合會員系統 + 建立全新 Design System',
     href: '/projects/tsg-membership',
     image: '/images/taigun-cover.png',
   },
@@ -33,19 +37,23 @@ const projects = [
 ---
 
 <BaseLayout lang="zh">
-  <Hero lang="zh" />
+  <!-- Blue right panel: desktop only, fixed, behind all content -->
+  <div class="fixed top-0 right-0 h-full w-[30%] bg-primary pointer-events-none hidden lg:block" style="z-index: 0;"></div>
 
-  <section id="projects" class="pb-20">
-    <div class="max-w-[1200px] mx-auto px-8">
-      <h2 class="text-2xl font-bold mb-2">Projects</h2>
+  <!-- Content: full width mobile, 70% desktop -->
+  <div class="relative lg:w-[70%] lg:pl-[10vw] lg:pr-8" style="z-index: 1;">
+    <Hero lang="zh" />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        {projects.map((project) => (
-          <ProjectCard {...project} lang="zh" />
-        ))}
+    <section id="projects" class="pb-24">
+      <div class="px-8 lg:px-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+          {projects.map((project) => (
+            <ProjectCard {...project} />
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <ExperienceList lang="zh" />
+    <ExperienceList lang="zh" />
+  </div>
 </BaseLayout>

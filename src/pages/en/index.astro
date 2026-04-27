@@ -7,25 +7,29 @@ import ExperienceList from '../../components/ExperienceList.astro'
 const projects = [
   {
     title: 'Burger King 豪點王 Redesign',
-    description: 'Redesigned the Burger King LINE LIFF interface, restructuring information hierarchy and optimizing coupon categorization and navigation.',
+    client: 'Burger King',
+    metric: 'Checkout reduced from 3 taps to instant',
     href: '/en/projects/burger-king',
     video: '/videos/burger-king-hero.webm',
   },
   {
     title: 'Symptomtrace App & Dashboard',
-    description: 'A healthcare management product serving elderly patients, families, and medical staff — dual-platform design covering a patient-facing app and a clinical dashboard.',
+    client: 'Symptomtrace',
+    metric: 'Cross-border 3-country collab, dual platform',
     href: '/en/projects/squirrel-doctor',
     video: '/videos/squirrel-doctor-hero.webm',
   },
   {
-    title: 'WINGSTARS Cheerleading Official Website',
-    description: 'Built an interactive platform for a cheerleading fan community, featuring personal pages, leaderboards, collection showcases, and a merchandise store.',
+    title: 'WINGSTARS Cheerleading Website',
+    client: 'WINGSTARS',
+    metric: 'Fan ecosystem built from ground up',
     href: '/en/projects/wingstar',
     image: '/images/wingstar-cover.png',
   },
   {
     title: 'TSG Membership System',
-    description: 'Redesigned the membership system to optimize registration flow, points & rewards, and coupon management, while establishing a consistent Design System.',
+    client: 'TSG Group',
+    metric: 'Cross-brand unification + new Design System',
     href: '/en/projects/tsg-membership',
     image: '/images/taigun-cover.png',
   },
@@ -33,19 +37,23 @@ const projects = [
 ---
 
 <BaseLayout lang="en" title="Esme Chang — Product Designer">
-  <Hero lang="en" />
+  <!-- Blue right panel: desktop only, fixed, behind all content -->
+  <div class="fixed top-0 right-0 h-full w-[30%] bg-primary pointer-events-none hidden lg:block" style="z-index: 0;"></div>
 
-  <section id="projects" class="pb-20">
-    <div class="max-w-[1200px] mx-auto px-8">
-      <h2 class="text-2xl font-bold mb-2">Projects</h2>
+  <!-- Content: full width mobile, 70% desktop -->
+  <div class="relative lg:w-[70%] lg:pl-[10vw] lg:pr-8" style="z-index: 1;">
+    <Hero lang="en" />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        {projects.map((project) => (
-          <ProjectCard {...project} lang="en" />
-        ))}
+    <section id="projects" class="pb-24">
+      <div class="px-8 lg:px-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+          {projects.map((project) => (
+            <ProjectCard {...project} />
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <ExperienceList lang="en" />
+    <ExperienceList lang="en" />
+  </div>
 </BaseLayout>
