@@ -37,14 +37,10 @@ const projects = [
 ---
 
 <BaseLayout lang="zh">
-  <!-- Blue right panel: desktop only, fixed, behind all content -->
-  <div class="fixed top-0 right-0 h-full w-[30%] bg-primary pointer-events-none hidden lg:block" style="z-index: 0;"></div>
+  <Hero lang="zh" />
 
-  <!-- Content: full width mobile, 70% desktop -->
   <div class="relative lg:w-[70%] lg:pl-[10vw] lg:pr-8" style="z-index: 1;">
-    <Hero lang="zh" />
-
-    <section id="projects" class="pb-24">
+    <section id="projects" class="pt-16 pb-24">
       <div class="px-8 lg:px-0">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
           {projects.map((project) => (
