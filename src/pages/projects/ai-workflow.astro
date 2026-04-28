@@ -49,12 +49,10 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro'
               <li>撰寫 portfolio-plan.md，定義頁面架構、技術選型、資訊層級</li>
               <li>建立全站視覺基調（黑白主調 + 襯線標題）</li>
             </ul>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：研究員</span>
-              <span class="text-xs bg-black text-white px-3 py-1">結構整理者</span>
-            </div>
-            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
-              <span class="text-xs text-black/40">圖片佔位｜portfolio-plan.md 截圖 / 競品分析筆記</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-black text-white px-3 py-1">AI 競品分析</span>
+              <span class="text-xs bg-black text-white px-3 py-1">Claude Chat</span>
+              <span class="text-xs bg-black text-white px-3 py-1">Skill：research</span>
             </div>
           </div>
         </div>
@@ -74,12 +72,10 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro'
               <li>把每個區塊的設計需求轉譯為「工程規格書」：尺寸、間距、breakpoint、互動細節</li>
               <li>建立模組化組件清單（Hero / ProjectCard / Footer…）</li>
             </ul>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：規格翻譯者</span>
-              <span class="text-xs bg-black text-white px-3 py-1">組件命名顧問</span>
-            </div>
-            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
-              <span class="text-xs text-black/40">圖片佔位｜Figma 設計稿 / 規格書文件截圖</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-black text-white px-3 py-1">Figma AI</span>
+              <span class="text-xs bg-black text-white px-3 py-1">Claude Chat</span>
+              <span class="text-xs bg-black text-white px-3 py-1">規格化 Prompt</span>
             </div>
           </div>
         </div>
@@ -100,11 +96,10 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro'
               <li>建立 i18n 多國語系架構</li>
               <li>Git 版本控制：Push、Commit、解 Conflict</li>
             </ul>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：Pair Programmer</span>
-            </div>
-            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
-              <span class="text-xs text-black/40">圖片佔位｜VSCode + Claude Code 對話畫面 / Git commit history</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-black text-white px-3 py-1">Claude Code</span>
+              <span class="text-xs bg-black text-white px-3 py-1">Cursor</span>
+              <span class="text-xs bg-black text-white px-3 py-1">GitHub Copilot</span>
             </div>
           </div>
         </div>
@@ -124,12 +119,10 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro'
               <li>模擬極端情境：超長文案、圖片失真、深色模式</li>
               <li>設計品質校正回饋進迭代</li>
             </ul>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：審查員</span>
-              <span class="text-xs bg-black text-white px-3 py-1">QA 工程師</span>
-            </div>
-            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
-              <span class="text-xs text-black/40">圖片佔位｜截圖 + AI 標註對照 / RWD 多裝置展示</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-black text-white px-3 py-1">Claude Vision（截圖分析）</span>
+              <span class="text-xs bg-black text-white px-3 py-1">Skill：review</span>
+              <span class="text-xs bg-black text-white px-3 py-1">Skill：simplify</span>
             </div>
           </div>
         </div>
@@ -149,12 +142,10 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro'
               <li>上線後請 AI 自行 review 整段協作流程，提取可優化點</li>
               <li>將學到的技術細節整理回 Second Brain，避免重複提問</li>
             </ul>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：DevOps 助手</span>
-              <span class="text-xs bg-black text-white px-3 py-1">Retrospective 主持人</span>
-            </div>
-            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
-              <span class="text-xs text-black/40">圖片佔位｜Vercel 部署畫面 / Second Brain 筆記截圖</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-black text-white px-3 py-1">Claude Code（Vercel CLI）</span>
+              <span class="text-xs bg-black text-white px-3 py-1">Skill：retro</span>
+              <span class="text-xs bg-black text-white px-3 py-1">Second Brain（Notion AI）</span>
             </div>
           </div>
         </div>
@@ -274,9 +265,49 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro'
     </div>
   </section>
 
-  <!-- 五、心得 -->
+  <!-- 六、復盤 -->
   <section>
-    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-6">六、心得</h2>
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-2">六、復盤：再重來一次，我會如何改進？</h2>
+    <p class="text-black/60 leading-relaxed mb-8 text-sm">
+      從這次的經驗中，整理出三個下次想嘗試的調整方向。
+    </p>
+
+    <div class="space-y-0">
+      <div class="grid grid-cols-1 md:grid-cols-[100px_1fr] gap-3 md:gap-8 py-8 border-t border-black/10">
+        <p class="text-xs font-semibold tracking-widest uppercase text-black/40">01</p>
+        <div>
+          <h3 class="text-base font-semibold mb-3"><span class="highlight-underline">多運用現成工具</span></h3>
+          <p class="text-black/80 leading-relaxed">
+            會優先採用大廠開源的 design.md 檔案，而非自己從頭探索。作品集的核心類似後台設計，重點是資訊呈現的清晰度——精妙的設計是加分而非主軸。從及格分的設計檔起步再客製，能更有效率地接近目標。
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-[100px_1fr] gap-3 md:gap-8 py-8 border-t border-black/10">
+        <p class="text-xs font-semibold tracking-widest uppercase text-black/40">02</p>
+        <div>
+          <h3 class="text-base font-semibold mb-3"><span class="highlight-underline">把心力放在「大綱」而非後期 Prompt 修改</span></h3>
+          <p class="text-black/80 leading-relaxed">
+            初期會急著看到成品再雕琢細節，但事後修改的效率遠不如一開始就規劃清楚的大綱。如何決定關鍵細節、如何產出一份結構穩固的大綱，會是我接下來想持續精進的方向。
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-[100px_1fr] gap-3 md:gap-8 py-8 border-t border-b border-black/10">
+        <p class="text-xs font-semibold tracking-widest uppercase text-black/40">03</p>
+        <div>
+          <h3 class="text-base font-semibold mb-3"><span class="highlight-underline">定義模組化區塊與客製化細節的邊界</span></h3>
+          <p class="text-black/80 leading-relaxed">
+            大綱應預先區分：哪些區塊適合套用現成工具（如數據展示、UI 組件），哪些需要高度客製化（如思維脈絡圖）。明確的邊界能降低自己與 AI 的認知負擔，也讓日後優化更有邏輯與一致性。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、心得 -->
+  <section>
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-6">七、心得</h2>
 
     <div class="space-y-6">
       <div class="border-l-2 border-black pl-5 py-1">
