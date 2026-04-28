@@ -1,0 +1,30 @@
+---
+interface StatItem {
+  label: string
+  before: string
+  after: string
+}
+interface Props {
+  items: StatItem[]
+}
+const { items } = Astro.props
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+  {items.map((item) => (
+    <div class="border border-black/8 rounded-2xl p-6">
+      <p class="text-[10px] font-semibold tracking-widest uppercase text-black/30 mb-5">{item.label}</p>
+      <div class="flex items-center gap-3">
+        <div class="flex-1 text-center py-4 px-3 bg-gray-50 rounded-xl">
+          <p class="text-[10px] text-black/30 mb-2 tracking-wider uppercase">Traditional</p>
+          <p class="text-xl font-bold text-black/20 line-through decoration-black/15">{item.before}</p>
+        </div>
+        <span class="text-black/20 text-lg shrink-0">→</span>
+        <div class="flex-1 text-center py-4 px-3 bg-black rounded-xl">
+          <p class="text-[10px] text-white/40 mb-2 tracking-wider uppercase">AI-Powered</p>
+          <p class="text-xl font-bold text-white">{item.after}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

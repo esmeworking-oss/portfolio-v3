@@ -8,7 +8,7 @@ interface Props {
   image?: string
 }
 
-const { title, client, metric, href, video, image } = Astro.props
+const { title, metric, href, video, image } = Astro.props
 ---
 
 <a href={href} class="group block">
@@ -34,7 +34,6 @@ const { title, client, metric, href, video, image } = Astro.props
     </div>
   )}
   <div class="mt-5">
-    <p class="text-xs text-black/40 tracking-widest uppercase mb-2">{client}</p>
     <h3 class="text-base font-medium leading-snug mb-1">
       {title}
       <span class="inline-block align-middle text-sm ml-1 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>

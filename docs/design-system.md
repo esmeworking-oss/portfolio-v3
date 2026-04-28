@@ -86,7 +86,7 @@ color: white;
 
 ```css
 .highlight-underline {
-  background-image: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.08) 60%);
+  background-image: linear-gradient(transparent 60%, rgba(253, 224, 71, 0.5) 60%);
   padding: 0 2px;
 }
 ```

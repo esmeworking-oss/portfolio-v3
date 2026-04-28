@@ -21,6 +21,7 @@ const { title, headline, skills, roles, lang = 'zh' } = Astro.props
 const t = useTranslations(lang)
 
 const projects = [
+  { slug: 'ai-workflow', title: '從設計到上線：AI 協作體系', titleEn: 'Design-Led AI Orchestration' },
   { slug: 'squirrel-doctor', title: '松鼠醫生 App 與後台', titleEn: 'Symptomtrace App & Dashboard' },
   { slug: 'burger-king', title: '豪點王 Redesign', titleEn: 'Burger King 豪點王 Redesign' },
   { slug: 'wingstar', title: 'WINGSTARS 啦啦隊官方網站', titleEn: 'WINGSTARS Cheerleading Official Website' },
@@ -76,7 +77,7 @@ const nextTitle = lang === 'en' ? nextProject.titleEn : nextProject.title
 
           <!-- Right content -->
           <div class="flex-1 min-w-0 project-body">
-            <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">{title}</h1>
+            <h1 class="text-3xl md:text-4xl font-bold leading-snug tracking-tight mb-3">{title}</h1>
             <p class="text-lg text-black leading-relaxed mb-[100px]">{headline}</p>
             <slot />
 
