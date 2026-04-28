@@ -1,311 +1,304 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro'
-import PromptBubble from '../../components/PromptBubble.astro'
-import StatComparison from '../../components/StatComparison.astro'
 ---
 
 <ProjectLayout
-  title="從設計到上線：我如何用 AI 協作體系，一個人完成產品全週期"
-  titleEn="Design-Led Development: Bridging the Gap with AI Orchestration"
-  headline="AI 不只是工具，而是我的研發副手。記錄一個設計師如何透過 Prompt Engineering 與協作系統，將開發成本降至最低，將設計影響力擴至最大。"
-  headlineEn="AI isn't just a tool — it's my co-developer. A record of how a designer uses Prompt Engineering and orchestration systems to minimize development costs and maximize design impact."
+  title="AI 協作實踐：兩週內獨立打造客製化作品集"
+  titleEn="AI Collaboration in Practice: Building a Custom Portfolio Solo in Two Weeks"
+  headline="這個章節記錄我如何將 AI 應用於實際工作流程中。以本作品集網站為例，從零到上線的兩週內，AI 同時擴展了我的能力邊界、優化既有產出，也累積了一套協作方法論。"
+  headlineEn="A record of how I apply AI in real-world workflows. Using this portfolio site as a case study — from zero to launch in two weeks — AI both expanded my capability boundaries and refined my existing craft."
   skills={['AI Orchestration', 'Prompt Design', 'Claude Code', 'Context Engineering']}
   skillsEn={['AI Orchestration', 'Prompt Design', 'Claude Code', 'Context Engineering']}
   roles={['產品設計師', 'AI 協作架構師']}
   rolesEn={['Product Designer', 'AI Orchestration Architect']}
 >
 
-  <!-- ─── Chapter 1: 設計驅動開發 ─────────────────────────── -->
+  <!-- 一、起點 -->
   <section>
-    <h2 class="text-[20px] font-semibold tracking-normal mb-6">Ch.01 — 設計驅動開發：網站即 PoC</h2>
-
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-4">一、起點：從「版面受限」到「獨立開發」</h2>
     <p class="text-black leading-relaxed mb-4">
-      這份作品集並非傳統的網頁生成器產物，而是「設計師主導開發」的實踐。從一份
-      <code class="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">portfolio-plan.md</code>
-      出發，我定義了完整的網站架構、視覺規範與元件邊界，再引導 Claude Code 逐步將其轉譯為高品質的 Astro + Tailwind CSS 程式碼。
+      過去的作品集受限於既有平台框架，設計風格難以完整呈現；同時也缺乏前端開發與部署的實作經驗。
     </p>
-    <p class="text-black leading-relaxed mb-8">
-      整個過程沒有前端工程師介入，也不依賴任何現成模板。從規劃到部署，<strong>預估 14 天的開發週期，實際壓縮到 5 天上線</strong>。
-    </p>
-
-    <!-- 14天→5天 Contrast Card -->
-    <div class="grid grid-cols-2 gap-3 mb-10">
-      <div class="rounded-2xl border border-black/8 p-6 text-center">
-        <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-3">Traditional Estimate</p>
-        <p class="text-4xl font-bold text-black/15 line-through decoration-black/10">14 天</p>
-        <p class="text-xs text-black/20 mt-2">自學 Astro + 逐行撰寫</p>
-      </div>
-      <div class="rounded-2xl bg-black p-6 text-center">
-        <p class="text-[10px] font-semibold tracking-widest uppercase text-white/30 mb-3">AI-Powered Reality</p>
-        <p class="text-4xl font-bold text-white">5 天</p>
-        <p class="text-xs text-white/40 mt-2">設計驅動 · Claude Code 實作</p>
-      </div>
-    </div>
-
-    <!-- Key Insight Pullquote -->
-    <blockquote class="border-l-2 border-black pl-6 py-1 my-8">
-      <p class="text-[17px] leading-relaxed text-black/80 italic">
-        「UI/UX 設計師的優勢，在於定義組件邊界與互動邏輯。我將這套組件化思維轉化為清晰的 Context，讓 AI 產出具備系統性的程式碼，而非零散的 HTML。」
-      </p>
-    </blockquote>
-
-    <!-- 截圖佔位：portfolio-plan.md 畫面 + Claude Code terminal 並排 -->
-  </section>
-
-  <!-- ─── Chapter 2: 協作工具鏈 ──────────────────────────── -->
-  <section>
-    <h2 class="text-[20px] font-semibold tracking-normal mb-6">Ch.02 — 協作工具鏈：建立高效迴圈</h2>
-
-    <!-- Tool Flow Diagram -->
-    <div class="flex items-stretch gap-0 mb-10 overflow-x-auto">
-      <div class="flex-1 min-w-[120px] border border-black/10 rounded-l-2xl p-5">
-        <p class="text-[10px] font-semibold tracking-widest uppercase text-black/30 mb-2">01 · 定義</p>
-        <p class="font-semibold text-sm mb-1">Figma</p>
-        <p class="text-xs text-black/50 leading-relaxed">視覺語言、Design Tokens、元件結構</p>
-      </div>
-      <div class="flex items-center px-2 text-black/20 text-lg shrink-0">→</div>
-      <div class="flex-1 min-w-[120px] border border-black/10 p-5 bg-black rounded-none">
-        <p class="text-[10px] font-semibold tracking-widest uppercase text-white/30 mb-2">02 · 實作</p>
-        <p class="font-semibold text-sm mb-1 text-white">Claude Code</p>
-        <p class="text-xs text-white/50 leading-relaxed">Logic, Components, Styling</p>
-      </div>
-      <div class="flex items-center px-2 text-black/20 text-lg shrink-0">→</div>
-      <div class="flex-1 min-w-[120px] border border-black/10 rounded-r-2xl p-5">
-        <p class="text-[10px] font-semibold tracking-widest uppercase text-black/30 mb-2">03 · 驗證</p>
-        <p class="font-semibold text-sm mb-1">Browser</p>
-        <p class="text-xs text-black/50 leading-relaxed">視覺 QA、互動驗證、設計眼睛</p>
-      </div>
-    </div>
-
-    <!-- Context Engineering Concept -->
-    <p class="text-black leading-relaxed mb-2">
-      在使用 AI 協作時，我遵循三項核心原則：<strong>品質確保、易於迭代、以及資源（Token）優化</strong>。
-    </p>
-    <p class="text-black leading-relaxed mb-8">
-      每個新任務啟動前，我習慣先與 AI 進行架構討論，將共識產出為 Markdown 文件作為「開發藍圖」。這種做法能有效減少後期反覆修正的成本；透過結構化文檔，不僅能顯著降低 AI 產生幻覺的機率，更能確保版本紀錄清晰，為日後的持續迭代打下穩固基礎。
-    </p>
-
-    <p class="text-[13px] text-black/35 font-medium tracking-wider uppercase mb-1">Core Principle</p>
-    <p class="text-[22px] font-bold leading-snug mb-10">
-      「你餵給 AI 的資訊品質，<br class="hidden sm:block" />決定了產出的專業深度。」
-    </p>
-
-    <!-- Conversation Demo -->
-    <div class="bg-gray-50 rounded-2xl px-6 pt-5 pb-6">
-      <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-5">Context Engineering · 實際對話示意</p>
-      <PromptBubble
-        role="user"
-        label="Esme"
-        content="請依照以下設計規範建立 ProjectCard 元件：主色 #000000、內容最大寬度 1200px、內文 leading-relaxed、標題 text-base font-medium。封面需同時支援 video 與 image 兩種形式，hover 時有輕微放大動畫。"
-      />
-      <PromptBubble
-        role="ai"
-        label="Claude"
-        content="了解你的設計規範。封面我會用 rounded-xl + overflow-hidden 處理，video 優先、fallback 到 image。hover 加 scale-[1.02] 搭配 duration-500 的過渡動畫，文字區塊保持 mt-5 與你的間距系統對齊，client 名稱用 text-xs tracking-widest uppercase text-black/40 呈現層次..."
-      />
-    </div>
-  </section>
-
-  <!-- ─── Chapter 3: 場景實踐 ──────────────────────────────── -->
-  <section>
-    <h2 class="text-[20px] font-semibold tracking-normal mb-6">Ch.03 — 場景實踐：效率倍增器</h2>
-
-    <!-- A: Research -->
-    <div class="mb-12">
-      <div class="flex items-baseline gap-3 mb-4">
-        <span class="text-[10px] font-semibold tracking-widest uppercase text-black/25">Subsection A</span>
-        <h3 class="text-[15px] font-semibold">Research 加速</h3>
-      </div>
-      <p class="text-black leading-relaxed mb-6">
-        過去競品分析要花三天：找資料、截圖歸類、整理成文件，等做完早已精疲力竭。現在的流程是先定義分析框架（哪些維度？對誰有意義？），讓 AI 快速比對與整理，自己只做最有價值的那一步：<strong>判斷、定義設計機會點</strong>。
-      </p>
-      <StatComparison items={[{ label: '競品分析', before: '3 天', after: '2 小時' }]} />
-      <div class="bg-gray-50 rounded-2xl px-6 pt-5 pb-6 mt-6">
-        <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-5">Research Prompt 範例</p>
-        <PromptBubble
-          role="user"
-          label="Esme"
-          content="幫我分析 Open Point、星巴克、momo 三個競品的會員系統。比較維度：1）入會誘因與門檻 2）點數累積與兌換規則 3）優惠券分類 4）首頁資訊層次。輸出格式用比較表格，最後附上設計機會點。"
-        />
-        <PromptBubble
-          role="ai"
-          label="Claude"
-          content="以下是三個競品在四個維度的比較。入會誘因方面：Open Point 以跨品牌整合為核心訴求、星巴克強調等級特權、momo 以即時折扣驅動⋯⋯（設計機會點：三者都忽略了點數到期前的主動提醒機制，這是可以差異化的切入點。）"
-        />
-      </div>
-    </div>
-
-    <!-- B: UX Copy -->
-    <div class="mb-12">
-      <div class="flex items-baseline gap-3 mb-4">
-        <span class="text-[10px] font-semibold tracking-widest uppercase text-black/25">Subsection B</span>
-        <h3 class="text-[15px] font-semibold">UX Copy 迭代 — Human-in-the-Loop</h3>
-      </div>
-      <p class="text-black leading-relaxed mb-5">
-        處理文案時，我改用 AI 作為「腦力激盪」的起點。讓它先跑出五種不同的情緒方向，我再從中篩選並優化。這把設計師從繁瑣的初稿撰寫中解放出來，將心力集中在最關鍵的<u>「審美判斷」與「語感校正」</u>上——這些是目前 AI 仍無法自動化取代的細微感知。
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3">
-        <div class="flex-1 border border-black/8 rounded-2xl p-5">
-          <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-3">AI 產出</p>
-          <p class="text-sm text-black/60 leading-relaxed">多樣化提案 × 5 版本<br />涵蓋不同語調與切入角度</p>
-        </div>
-        <div class="flex items-center justify-center text-black/20 text-lg shrink-0 py-2 sm:py-0">→</div>
-        <div class="flex-1 border border-black/8 rounded-2xl p-5">
-          <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-3">人員介入</p>
-          <p class="text-sm text-black/60 leading-relaxed">選擇最接近的版本<br />進行感性微調與語氣校準</p>
-        </div>
-        <div class="flex items-center justify-center text-black/20 text-lg shrink-0 py-2 sm:py-0">→</div>
-        <div class="flex-1 border border-black/8 rounded-2xl p-5 bg-black">
-          <p class="text-[10px] font-semibold tracking-widest uppercase text-white/30 mb-3">最終產出</p>
-          <p class="text-sm text-white/70 leading-relaxed">兼具一致性與人性溫度<br />的 UX Copy</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- C: .claude/ 資料夾架構 -->
-    <div class="mb-12">
-      <div class="flex items-baseline gap-3 mb-4">
-        <span class="text-[10px] font-semibold tracking-widest uppercase text-black/25">Subsection C</span>
-        <h3 class="text-[15px] font-semibold">.claude/ 資料夾：AI 工作系統的基礎設施</h3>
-      </div>
-      <p class="text-black leading-relaxed mb-2">
-        大多數人用 Claude Code 只發揮了 10%——因為他們只用對話框，卻沒建立 <code class="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">.claude/</code> 資料夾。這個資料夾是整個 AI 工作系統的骨架：定義規則、儲存技能、授權行為、積累記憶，讓每次對話都從「陌生同事」昇級為「熟悉專案的夥伴」。
-      </p>
-
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6 mb-6">
-        <div class="border border-black/8 rounded-2xl p-5 col-span-2 sm:col-span-1">
-          <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-2">Core</p>
-          <p class="font-semibold text-sm font-mono mb-2">CLAUDE.md</p>
-          <p class="text-xs text-black/50 leading-relaxed">AI 的核心腦袋。定義設計規範、技術棧與命名規則，讓每次對話都繼承相同的語境基礎</p>
-        </div>
-        <div class="border border-black/8 rounded-2xl p-5">
-          <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-2">Reusable</p>
-          <p class="font-semibold text-sm font-mono mb-2">skills/</p>
-          <p class="text-xs text-black/50 leading-relaxed">可重複觸發的工作流，一個指令啟動複雜任務</p>
-        </div>
-        <div class="border border-black/8 rounded-2xl p-5">
-          <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-2">Shortcut</p>
-          <p class="font-semibold text-sm font-mono mb-2">commands/</p>
-          <p class="text-xs text-black/50 leading-relaxed">客製化快捷指令，將常用操作封裝為單行觸發</p>
-        </div>
-        <div class="border border-black/8 rounded-2xl p-5">
-          <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-2">Automation</p>
-          <p class="font-semibold text-sm font-mono mb-2">hooks/</p>
-          <p class="text-xs text-black/50 leading-relaxed">自動化工作流，提交前的格式驗證與行為限制</p>
-        </div>
-        <div class="border border-black/8 rounded-2xl p-5">
-          <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-2">Permissions</p>
-          <p class="font-semibold text-sm font-mono mb-2">settings.json</p>
-          <p class="text-xs text-black/50 leading-relaxed">控制 AI 的行為邊界，定義哪些操作需要人工確認</p>
-        </div>
-        <div class="border border-black/8 rounded-2xl p-5 bg-black">
-          <p class="text-[10px] font-semibold tracking-widest uppercase text-white/30 mb-2">Long-term</p>
-          <p class="font-semibold text-sm font-mono mb-2 text-white">memory/</p>
-          <p class="text-xs text-white/50 leading-relaxed">跨 Session 的記憶系統，積累偏好、決策背景與糾正記錄</p>
-        </div>
-      </div>
-
+    <div class="border-l-2 border-black pl-4 py-1">
+      <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-1">核心目標</p>
       <p class="text-black leading-relaxed">
-        核心是將工作「產品化」：<strong>把我的判斷力與規則系統化，打造一個能隨時接手任務的 AI 分身。</strong>
+        以 AI 輔助，在兩週內獨立完成客製化作品集開發。
       </p>
     </div>
+  </section>
 
-    <!-- D: Job Advisor Skill -->
-    <div>
-      <div class="flex items-baseline gap-3 mb-4">
-        <span class="text-[10px] font-semibold tracking-widest uppercase text-black/25">Subsection D</span>
-        <h3 class="text-[15px] font-semibold">個人化 Skill — Job Advisor</h3>
-      </div>
-      <p class="text-black leading-relaxed mb-5">
-        以我開發的「Job-Advisor」自動化工具為例：它能精準媒合符合我條件的職缺，並針對不同職位自動產出客製化的求職信（Cover Letter）。這項工具成功將過去繁瑣、重複性的求職庶務自動化，讓我能將精力集中在更高價值的面試準備與作品優化上。
-      </p>
-      <div class="border border-black/8 rounded-2xl p-6">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="w-8 h-8 rounded-lg bg-black flex items-center justify-center shrink-0">
-            <span class="text-white text-[11px] font-bold font-mono">/</span>
+  <!-- 二、製作流程 -->
+  <section>
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-2">二、製作流程：兩週、五階段</h2>
+    <p class="text-black/60 leading-relaxed mb-8 text-sm">
+      從研究到上線，每個階段 AI 扮演的角色不同。以下記錄完整的協作軌跡。
+    </p>
+
+    <div class="space-y-6">
+      <!-- Step 01 -->
+      <div class="border border-black/10 p-6 md:p-8">
+        <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+          <div class="md:w-[180px] shrink-0">
+            <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-1">Step 01</p>
+            <p class="text-xs tracking-widest uppercase text-black/40 mb-3">Day 1–2</p>
+            <p class="text-lg font-semibold text-black leading-snug">研究與規劃</p>
           </div>
-          <div>
-            <p class="font-semibold text-sm">job-advisor</p>
-            <p class="text-xs text-black/40">Personalized Skill · Claude Code</p>
+          <div class="flex-1 min-w-0">
+            <ul class="text-sm text-black/80 leading-relaxed space-y-1.5 list-disc list-inside mb-4">
+              <li>分析 10+ 個設計師作品集，提取版面結構、字級節奏、互動模式</li>
+              <li>撰寫 portfolio-plan.md，定義頁面架構、技術選型、資訊層級</li>
+              <li>建立全站視覺基調（黑白主調 + 襯線標題）</li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：研究員</span>
+              <span class="text-xs bg-black text-white px-3 py-1">結構整理者</span>
+            </div>
+            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
+              <span class="text-xs text-black/40">圖片佔位｜portfolio-plan.md 截圖 / 競品分析筆記</span>
+            </div>
           </div>
         </div>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3">
-            <span class="w-5 h-5 rounded-full border border-black/15 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold text-black/30">1</span>
-            <p class="text-sm text-black/70 leading-relaxed">自動讀取履歷與求職條件，建立個人化的評估基準</p>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="w-5 h-5 rounded-full border border-black/15 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold text-black/30">2</span>
-            <p class="text-sm text-black/70 leading-relaxed">分析職缺描述，輸出適配度評估與需要補強的能力點</p>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="w-5 h-5 rounded-full border border-black/15 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold text-black/30">3</span>
-            <p class="text-sm text-black/70 leading-relaxed">依照職缺重點，生成個人化求職信草稿，風格對齊目標公司文化</p>
-          </li>
+      </div>
+
+      <!-- Step 02 -->
+      <div class="border border-black/10 p-6 md:p-8">
+        <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+          <div class="md:w-[180px] shrink-0">
+            <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-1">Step 02</p>
+            <p class="text-xs tracking-widest uppercase text-black/40 mb-3">Day 3–5</p>
+            <p class="text-lg font-semibold text-black leading-snug">設計與規格化</p>
+          </div>
+          <div class="flex-1 min-w-0">
+            <ul class="text-sm text-black/80 leading-relaxed space-y-1.5 list-disc list-inside mb-4">
+              <li>Figma 內完成 wireframe 與高保真稿</li>
+              <li>把每個區塊的設計需求轉譯為「工程規格書」：尺寸、間距、breakpoint、互動細節</li>
+              <li>建立模組化組件清單（Hero / ProjectCard / Footer…）</li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：規格翻譯者</span>
+              <span class="text-xs bg-black text-white px-3 py-1">組件命名顧問</span>
+            </div>
+            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
+              <span class="text-xs text-black/40">圖片佔位｜Figma 設計稿 / 規格書文件截圖</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 03 -->
+      <div class="border border-black/10 p-6 md:p-8">
+        <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+          <div class="md:w-[180px] shrink-0">
+            <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-1">Step 03</p>
+            <p class="text-xs tracking-widest uppercase text-black/40 mb-3">Day 6–10</p>
+            <p class="text-lg font-semibold text-black leading-snug">開發與整合</p>
+          </div>
+          <div class="flex-1 min-w-0">
+            <ul class="text-sm text-black/80 leading-relaxed space-y-1.5 list-disc list-inside mb-4">
+              <li>Astro 專案建置、Tailwind 設定</li>
+              <li>由 AI 將規格書逐一輸出為 Astro 組件</li>
+              <li>建立 i18n 多國語系架構</li>
+              <li>Git 版本控制：Push、Commit、解 Conflict</li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：Pair Programmer</span>
+            </div>
+            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
+              <span class="text-xs text-black/40">圖片佔位｜VSCode + Claude Code 對話畫面 / Git commit history</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 04 -->
+      <div class="border border-black/10 p-6 md:p-8">
+        <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+          <div class="md:w-[180px] shrink-0">
+            <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-1">Step 04</p>
+            <p class="text-xs tracking-widest uppercase text-black/40 mb-3">Day 11–12</p>
+            <p class="text-lg font-semibold text-black leading-snug">QA 與邊緣案例</p>
+          </div>
+          <div class="flex-1 min-w-0">
+            <ul class="text-sm text-black/80 leading-relaxed space-y-1.5 list-disc list-inside mb-4">
+              <li>截圖丟給 AI 進行排版對齊、字級層次、RWD 二次檢查</li>
+              <li>模擬極端情境：超長文案、圖片失真、深色模式</li>
+              <li>設計品質校正回饋進迭代</li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：審查員</span>
+              <span class="text-xs bg-black text-white px-3 py-1">QA 工程師</span>
+            </div>
+            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
+              <span class="text-xs text-black/40">圖片佔位｜截圖 + AI 標註對照 / RWD 多裝置展示</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 05 -->
+      <div class="border border-black/10 p-6 md:p-8">
+        <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+          <div class="md:w-[180px] shrink-0">
+            <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-1">Step 05</p>
+            <p class="text-xs tracking-widest uppercase text-black/40 mb-3">Day 13–14</p>
+            <p class="text-lg font-semibold text-black leading-snug">部署與反向校準</p>
+          </div>
+          <div class="flex-1 min-w-0">
+            <ul class="text-sm text-black/80 leading-relaxed space-y-1.5 list-disc list-inside mb-4">
+              <li>Vercel 部署環境設定、Domain 指向</li>
+              <li>上線後請 AI 自行 review 整段協作流程，提取可優化點</li>
+              <li>將學到的技術細節整理回 Second Brain，避免重複提問</li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="text-xs bg-black text-white px-3 py-1">AI 角色：DevOps 助手</span>
+              <span class="text-xs bg-black text-white px-3 py-1">Retrospective 主持人</span>
+            </div>
+            <div class="aspect-[16/9] bg-gray-100 border border-dashed border-black/20 flex items-center justify-center">
+              <span class="text-xs text-black/40">圖片佔位｜Vercel 部署畫面 / Second Brain 筆記截圖</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、橫向擴張 -->
+  <section>
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-2">三、橫向擴張：因 AI 解鎖的新技能</h2>
+    <p class="text-black/60 leading-relaxed mb-6 text-sm">
+      原本無法獨立完成，因 AI 而拓展的能力範圍。
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-gray-100 p-6">
+        <p class="text-sm font-semibold text-black mb-3">工程實作與架構</p>
+        <ul class="text-sm text-black/80 leading-relaxed space-y-1.5 list-disc list-inside">
+          <li>獨立完成整站開發（Astro / Tailwind）</li>
+          <li>建立 i18n 多國語系架構</li>
+          <li>掌握 Git 版本控制（Push / Commit / 解 Conflict）</li>
         </ul>
-        <p class="text-[12px] text-black/35 mt-5 pt-5 border-t border-black/5">
-          這件事本身就是產品思維的體現：將自身需求「產品化」，設計出可重複、可迭代的解決方案。
+      </div>
+
+      <div class="bg-gray-100 p-6">
+        <p class="text-sm font-semibold text-black mb-3">自動化部署（DevOps）</p>
+        <ul class="text-sm text-black/80 leading-relaxed space-y-1.5 list-disc list-inside">
+          <li>獨立處理 Vercel 部署環境設定</li>
+          <li>Domain 指向與綁定</li>
+        </ul>
+      </div>
+
+      <div class="bg-gray-100 p-6">
+        <p class="text-sm font-semibold text-black mb-3">個人工具開發</p>
+        <ul class="text-sm text-black/80 leading-relaxed space-y-1.5 list-disc list-inside">
+          <li>打造專屬 job-advisor 腳本</li>
+          <li>將機械性的求職庶務自動化</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、縱向優化 -->
+  <section>
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-2">四、縱向優化：因 AI 提升的產出品質</h2>
+    <p class="text-black/60 leading-relaxed mb-6 text-sm">
+      原本就擅長的設計專業，因 AI 而從「優」走向「精」。
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-gray-100 p-6">
+        <p class="text-sm font-semibold text-black mb-2">邏輯轉譯與規格定義</p>
+        <p class="text-sm text-black/80 leading-relaxed">
+          將「設計需求」轉化為「工程規格書」，確保開發流程不偏離原型。
+        </p>
+      </div>
+
+      <div class="bg-gray-100 p-6">
+        <p class="text-sm font-semibold text-black mb-2">深度研究與分析</p>
+        <p class="text-sm text-black/80 leading-relaxed">
+          快速進行競品版面結構分析，提取設計模式；透過 AI 對話反覆磨合文案，篩選最精準的語感。
+        </p>
+      </div>
+
+      <div class="bg-gray-100 p-6">
+        <p class="text-sm font-semibold text-black mb-2">設計品質校正（QA）</p>
+        <p class="text-sm text-black/80 leading-relaxed">
+          利用截圖請 AI 二次檢查排版對齊、字級層次與 RWD 適配性。
+        </p>
+      </div>
+
+      <div class="bg-gray-100 p-6">
+        <p class="text-sm font-semibold text-black mb-2">邊緣案例測試</p>
+        <p class="text-sm text-black/80 leading-relaxed">
+          模擬極端情境（超長文案、圖片失真），提前優化 CSS 處理邏輯。
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ─── Chapter 4: 數位遺傳 ──────────────────────────────── -->
+  <!-- 四、協作與風險管理 -->
   <section>
-    <h2 class="text-[20px] font-semibold tracking-normal mb-6">Ch.04 — 數位遺傳：打造懂你的 AI 副手</h2>
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-6">五、AI 協作的決策與風險管理</h2>
 
-    <p class="text-black leading-relaxed mb-4">
-      我對 AI 協作的定義是「系統化的邏輯複用」。相較於每次從頭校正 AI，我利用 Claude Code 的 Memory 系統建構一套屬於我的「設計語境」。這就像是產品設計中的 <strong>Design System</strong>，只是內容轉化為我的邏輯框架與審美準則。
-    </p>
-    <p class="text-black leading-relaxed mb-8">
-      這種「數位遺傳」的模式，讓 AI 能夠從工具演進為理解我風格的長期夥伴，大幅降低溝通成本。
-    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="border border-black/10 p-6">
+        <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-2">01</p>
+        <p class="text-sm font-semibold text-black mb-2">文件驅動開發</p>
+        <p class="text-sm text-black/80 leading-relaxed">
+          建立 portfolio-plan.md 與模組化組件，降低 AI 幻覺、節省 Token 消耗。
+        </p>
+      </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-      <div class="border border-black/8 rounded-2xl p-5">
-        <div class="w-7 h-7 rounded-lg bg-black/5 flex items-center justify-center mb-4">
-          <span class="text-[11px] font-bold text-black/40">U</span>
-        </div>
-        <p class="font-semibold text-sm mb-2">User Memory</p>
-        <p class="text-sm text-black/55 leading-relaxed">記錄角色背景、技能層次與工作偏好，讓 AI 知道「在和誰協作」，調整溝通深度</p>
+      <div class="border border-black/10 p-6">
+        <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-2">02</p>
+        <p class="text-sm font-semibold text-black mb-2">技術資料庫（Second Brain）</p>
+        <p class="text-sm text-black/80 leading-relaxed">
+          將學到的技術細節（如 Astro 語法）即時整理回個人資料庫，避免對 AI 重複提問。
+        </p>
       </div>
-      <div class="border border-black/8 rounded-2xl p-5">
-        <div class="w-7 h-7 rounded-lg bg-black/5 flex items-center justify-center mb-4">
-          <span class="text-[11px] font-bold text-black/40">F</span>
-        </div>
-        <p class="font-semibold text-sm mb-2">Feedback Memory</p>
-        <p class="text-sm text-black/55 leading-relaxed">記錄糾正過的行為與確認過的做法，讓同樣的問題不再出現第二次</p>
+
+      <div class="border border-black/10 p-6">
+        <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-2">03</p>
+        <p class="text-sm font-semibold text-black mb-2">主動防錯習慣</p>
+        <p class="text-sm text-black/80 leading-relaxed">
+          建立手動備份機制，彌補 AI 不會主動避險的局限。
+        </p>
       </div>
-      <div class="border border-black/8 rounded-2xl p-5">
-        <div class="w-7 h-7 rounded-lg bg-black/5 flex items-center justify-center mb-4">
-          <span class="text-[11px] font-bold text-black/40">P</span>
-        </div>
-        <p class="font-semibold text-sm mb-2">Project Memory</p>
-        <p class="text-sm text-black/55 leading-relaxed">記錄進行中的專案脈絡、決策背景與設計方向，確保跨 Session 的一致性</p>
+
+      <div class="border border-black/10 p-6">
+        <p class="text-xs font-semibold tracking-widest uppercase text-black/50 mb-2">04</p>
+        <p class="text-sm font-semibold text-black mb-2">對話後的反向校準</p>
+        <p class="text-sm text-black/80 leading-relaxed">
+          每段協作結束後，請 AI 自行 review 流程，或引入社群分享的 review skill，持續優化 AI 與自身的相性與默契。
+        </p>
       </div>
     </div>
-
-    <p class="text-black leading-relaxed">
-      搭配 Skill 系統，重複性任務就變成一鍵觸發的流程。<span class="highlight-underline">就像一個逐漸了解你工作方式的同事，而不是每次都要你重新介紹自己。</span>
-    </p>
-
-    <!-- 截圖佔位：Memory 目錄結構 or Skill 執行中的 terminal 截圖 -->
   </section>
 
-  <!-- ─── Closing ────────────────────────────────────────────── -->
+  <!-- 五、心得 -->
   <section>
-    <h2 class="text-[20px] font-semibold tracking-normal mb-6">AI 縮短了從構思到實踐的距離，讓設計師成為真正的「產品掌控者」。</h2>
+    <h2 class="text-[20px] font-semibold tracking-widest uppercase mb-6">六、心得</h2>
 
-    <p class="text-black leading-relaxed mb-4">
-      以前，創意常因高昂的研發成本而被犧牲；如今，AI 讓快速原型與全週期開發成為可能。這意味著競爭力已不再是「產出速度」，而是<span class="highlight-underline">「設定方向」與「鑑賞品質」</span>的能力。AI 雖然能自主完成任務，但它缺乏對目標的理解；唯有知道如何解決核心問題、辨識優質設計的標準，才能在 AI 協作中保持不可取代的領先優勢。
-    </p>
+    <div class="space-y-6">
+      <div class="border-l-2 border-black pl-5 py-1">
+        <p class="text-base font-semibold text-black mb-1">做完很簡單，做好很難</p>
+        <p class="text-black/80 leading-relaxed">
+          AI 很容易做到 60 分；80 分以上需要專業能力，再往上則需要專業投入數倍於前面的時間。
+        </p>
+      </div>
 
-    <!-- Signature Clause -->
-    <div class="border-t border-black/8 pt-10">
-      <p class="text-[10px] font-semibold tracking-widest uppercase text-black/25 mb-4">Closing Statement</p>
-      <p class="text-[22px] sm:text-[26px] font-bold leading-snug">
-        「我不只是 AI 的使用者，<br />我是 AI 工作系統的設計師。」
-      </p>
+      <div class="border-l-2 border-black pl-5 py-1">
+        <p class="text-base font-semibold text-black mb-1">能用，但不夠好用</p>
+        <p class="text-black/80 leading-relaxed">
+          成果最終仍需仰賴人工修整才能臻於理想。如何彌平 AI 與人類對「好作品」的想像落差，會是長期需要持續優化的課題。
+        </p>
+      </div>
+
+      <div class="border-l-2 border-black pl-5 py-1">
+        <p class="text-base font-semibold text-black mb-1">保持與人的連結，避免閉門造車</p>
+        <p class="text-black/80 leading-relaxed">
+          AI 是一段需要持續學習的旅程。透過社群軟體、業界小聚等管道與人保持接觸，才能不斷吸收新工具與新方法，避免自己原地打轉。
+        </p>
+      </div>
     </div>
   </section>
 
