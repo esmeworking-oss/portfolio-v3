@@ -3,7 +3,7 @@ type Lang = 'zh' | 'en'
 interface Props { lang?: Lang }
 const { lang = 'zh' } = Astro.props
 
-const greeting = lang === 'zh' ? '嗨，我是 Esme。' : "Hi, I'm Esme."
+const greeting = "Hi, I'm Esme."
 const taglines = lang === 'zh'
   ? [
       '我是一名 UI/UX 設計師與產品開發者，能從雜亂的原始需求中提煉<strong>核心痛點</strong>，將<strong>複雜邏輯轉化</strong>為直覺、高效的數位體驗。',
@@ -23,7 +23,7 @@ const cta = lang === 'zh' ? '看看我的作品' : 'View my work'
   />
   <div class="absolute inset-0 flex flex-col justify-center px-8 lg:pl-[10vw] lg:pr-8">
     <div>
-      <h1 class="hero-animate text-[20px] md:text-[26px] lg:text-[30px] font-semibold leading-[1.1] tracking-tight text-black mb-4">
+      <h1 class="hero-animate text-[32px] md:text-[44px] lg:text-[56px] leading-[1.1] tracking-tight text-black mb-4" style="font-family: 'Instrument Serif', serif;">
         {greeting}
       </h1>
       {taglines.map((line) => (
