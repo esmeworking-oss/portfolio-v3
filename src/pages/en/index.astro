@@ -1,62 +1,56 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import Hero from '../../components/Hero.astro'
-import ProjectCard from '../../components/ProjectCard.astro'
-import ExperienceList from '../../components/ExperienceList.astro'
+import HorizontalShowcase from '../../components/HorizontalShowcase.astro'
 
 const projects = [
   {
     title: 'AI Orchestration in Practice',
     client: 'Personal Project',
+    category: 'AI Workflow',
     metric: 'Using AI to streamline workflows and ship products',
+    description: 'Building a repeatable AI collaboration workflow from scratch — integrating toolchains and decision frameworks to make design and product development sharper from ideation to launch.',
     href: '/en/projects/ai-workflow',
     image: '/images/ai-workflow-cover.png',
   },
   {
     title: 'Burger King 豪點王 Redesign',
     client: 'Burger King',
+    category: 'App Redesign',
     metric: 'Checkout reduced from 3 taps to instant',
+    description: 'Rebuilt the ordering-to-pickup flow end-to-end, shrinking the checkout barcode from 3 taps to zero — significantly improving in-store speed and brand consistency.',
     href: '/en/projects/burger-king',
     video: '/videos/burger-king-hero.webm',
   },
   {
     title: 'Symptomtrace App & Dashboard',
     client: 'Symptomtrace',
+    category: 'Product Design',
     metric: 'Cross-border 3-country collab, dual platform',
+    description: 'Led the full design process across both app and dashboard with teams in Taiwan, China, and Japan — from research and flows to a unified UI system.',
     href: '/en/projects/squirrel-doctor',
     video: '/videos/squirrel-doctor-hero.webm',
   },
   {
     title: 'WINGSTARS Cheerleading Website',
     client: 'WINGSTARS',
+    category: 'Website Design',
     metric: 'Fan ecosystem built from ground up',
+    description: 'Planned a fan ecosystem and official site from scratch for a professional cheer squad — building content architecture, visual language, and interactions that bring fans closer to the team.',
     href: '/en/projects/wingstar',
     image: '/images/wingstar-cover.png',
   },
   {
     title: 'TSG Membership System',
     client: 'TSG Group',
+    category: 'Membership / Design System',
     metric: 'Cross-brand unification + new Design System',
+    description: 'Unified the membership systems across TSG Group\'s sub-brands and built a shared Design System from scratch, balancing consistency with each brand\'s distinct voice.',
     href: '/en/projects/tsg-membership',
     image: '/images/taigun-cover.png',
   },
 ]
 ---
 
-<BaseLayout lang="en" title="Esme Chang — Product Designer">
-  <Hero lang="en" />
-
-  <div class="relative lg:w-[70%] lg:pl-[10vw] lg:pr-8" style="z-index: 1;">
-    <section id="projects" class="pt-16 pb-24">
-      <div class="px-8 lg:px-0">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-          {projects.map((project) => (
-            <ProjectCard {...project} />
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <ExperienceList lang="en" />
-  </div>
+<BaseLayout lang="en" title="Esme Chang — Product Designer" showFooter={false}>
+  <HorizontalShowcase lang="en" projects={projects} />
 </BaseLayout>

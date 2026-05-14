@@ -14,10 +14,10 @@ const zhUrl = pathname.startsWith('/en')
   : pathname
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/[0.06]">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white">
   <div class="px-8 lg:pl-[10vw] lg:pr-8 py-6 flex items-center justify-between">
-    <a href={lang === 'en' ? '/en/' : '/'} class="text-sm font-medium tracking-widest uppercase hover:opacity-50 transition-opacity">
-      Esme Chang
+    <a href={lang === 'en' ? '/en/' : '/'} class="hover:opacity-50 transition-opacity">
+      <img src="/esme-design.svg" alt="Esme Design" class="h-5 w-auto" />
     </a>
     <div class="lang-switch">
       <a href={zhUrl} class:list={['lang-btn', { active: lang === 'zh' }]}>ZH</a>

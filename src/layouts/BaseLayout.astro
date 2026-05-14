@@ -7,9 +7,11 @@ type Lang = 'zh' | 'en'
 interface Props {
   title?: string
   lang?: Lang
+  showFooter?: boolean
+  bodyClass?: string
 }
 
-const { title = 'Esme Chang — Product Designer', lang = 'zh' } = Astro.props
+const { title = 'Esme Chang — Product Designer', lang = 'zh', showFooter = true, bodyClass = '' } = Astro.props
 ---
 
 <!doctype html>
@@ -30,11 +32,11 @@ const { title = 'Esme Chang — Product Designer', lang = 'zh' } = Astro.props
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="text-black font-sans antialiased bg-white min-h-screen relative">
+  <body class:list={['text-black font-sans antialiased bg-white min-h-screen relative', bodyClass]}>
     <Navbar lang={lang} />
     <main class="relative z-10">
       <slot />
     </main>
-    <Footer />
+    {showFooter && <Footer />}
   </body>
 </html>

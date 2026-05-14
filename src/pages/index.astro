@@ -1,62 +1,56 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Hero from '../components/Hero.astro'
-import ProjectCard from '../components/ProjectCard.astro'
-import ExperienceList from '../components/ExperienceList.astro'
+import HorizontalShowcase from '../components/HorizontalShowcase.astro'
 
 const projects = [
   {
     title: 'AI 協作體系實戰',
     client: '個人專案',
+    category: 'AI 工作流',
     metric: '如何使用 AI 優化流程、建立產品',
+    description: '從零搭建可重複的 AI 協作流程，整合工具鏈與決策框架，讓設計與產品開發從發想到落地都更聰明、更精準。',
     href: '/projects/ai-workflow',
     image: '/images/ai-workflow-cover.png',
   },
   {
     title: '豪點王 Redesign',
     client: '漢堡王',
+    category: 'App 改版',
     metric: '結帳條碼動線從 3 步縮短至 0 步',
+    description: '重新梳理點餐到取餐的全流程，將結帳條碼從 3 步操作縮短至 0 步，大幅提升現場使用效率與品牌體驗一致性。',
     href: '/projects/burger-king',
     video: '/videos/burger-king-hero.webm',
   },
   {
     title: '松鼠醫生 App 與後台',
     client: '星坦科技',
+    category: '產品設計',
     metric: '跨境三國協作，雙端設計全流程',
+    description: '跨越台灣、中國、日本三地團隊協作，主導 App 與後台雙端的完整設計流程，從研究、流程到 UI 系統一站到底。',
     href: '/projects/squirrel-doctor',
     video: '/videos/squirrel-doctor-hero.webm',
   },
   {
     title: 'WINGSTARS 啦啦隊官方網站',
     client: 'WINGSTARS',
+    category: '網站設計',
     metric: '粉絲生態系從零規劃到上線',
+    description: '為職業啦啦隊從零規劃粉絲生態系與品牌官網，建立完整的內容架構、視覺語言與互動體驗，讓粉絲與隊員的關係更近一步。',
     href: '/projects/wingstar',
     image: '/images/wingstar-cover.png',
   },
   {
     title: '台鋼會員系統',
     client: '台鋼集團',
+    category: '會員系統 / Design System',
     metric: '跨品牌整合會員系統 + 建立全新 Design System',
+    description: '整合台鋼集團旗下多個子品牌的會員體系，從零打造一套跨品牌共用的 Design System，兼顧一致性與各品牌獨特調性。',
     href: '/projects/tsg-membership',
     image: '/images/taigun-cover.png',
   },
 ]
 ---
 
-<BaseLayout lang="zh">
-  <Hero lang="zh" />
-
-  <div class="relative lg:w-[70%] lg:pl-[10vw] lg:pr-8" style="z-index: 1;">
-    <section id="projects" class="pt-16 pb-24">
-      <div class="px-8 lg:px-0">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-          {projects.map((project) => (
-            <ProjectCard {...project} />
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <ExperienceList lang="zh" />
-  </div>
+<BaseLayout lang="zh" showFooter={false}>
+  <HorizontalShowcase lang="zh" projects={projects} />
 </BaseLayout>

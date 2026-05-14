@@ -1,0 +1,536 @@
+---
+type Lang = 'zh' | 'en'
+
+interface Project {
+  title: string
+  client: string
+  category?: string
+  metric: string
+  description?: string
+  href: string
+  video?: string
+  image?: string
+}
+
+interface Props {
+  lang?: Lang
+  projects: Project[]
+}
+
+const { lang = 'zh', projects } = Astro.props
+
+const copy = lang === 'zh'
+  ? {
+      greeting: "Hi, I'm Esme.",
+      taglines: [
+        '我是一名 UI/UX 設計師與產品開發者，能從雜亂的原始需求中提煉<strong>核心痛點</strong>，將<strong>複雜邏輯轉化</strong>為直覺、高效的數位體驗。',
+        '目前，我也深耕於 <strong>AI 驅動的設計工作流</strong>，致力於讓產品從發想到落地的過程變得更聰明、更精準。',
+      ],
+      cta: '看看我的作品',
+      hint: '可使用滑鼠滾輪上下滑動，或以鍵盤左右操作網頁。',
+      ok: 'OK',
+      view: 'VIEW PROJECT',
+      defaultCategory: '產品設計',
+      contactLabel: '聯繫我',
+    }
+  : {
+      greeting: "Hi, I'm Esme.",
+      taglines: [
+        'I\'m a UI/UX designer and product builder who distills <strong>core pain points</strong> from raw, messy requirements and translates <strong>complex logic</strong> into intuitive, efficient digital experiences.',
+        'These days I work deeply on <strong>AI-powered design workflows</strong>, making the journey from idea to ship smarter and sharper.',
+      ],
+      cta: 'View my work',
+      hint: 'Scroll vertically with your mouse wheel, or use ← → keys to navigate.',
+      ok: 'OK',
+      view: 'VIEW PROJECT',
+      defaultCategory: 'Product Design',
+      contactLabel: 'Get in touch',
+    }
+---
+
+<div class="hs-root" data-lang={lang}>
+  <div class="hs-track">
+    <section class="hs-panel hs-hero">
+      <div class="hs-hero-inner">
+        <h1 class="hs-hero-greeting" style="font-family: 'Instrument Serif', serif;">
+          {copy.greeting}
+        </h1>
+        {copy.taglines.map((line) => (
+          <p class="hs-hero-tagline" set:html={line} />
+        ))}
+        <a href={projects[0]?.href ?? '#'} class="hs-hero-cta">
+          {copy.cta} →
+        </a>
+      </div>
+    </section>
+
+    {projects.map((project) => (
+      <section class="hs-panel hs-project">
+        <a href={project.href} class="hs-project-inner group">
+          <div class="hs-project-header">
+            <h2 class="hs-project-title">
+              {project.title}
+              <span class="hs-project-category">／{project.category ?? copy.defaultCategory}</span>
+            </h2>
+            <p class="hs-project-desc">{project.description ?? project.metric}</p>
+            <span class="hs-project-view">
+              {copy.view}
+              <span class="hs-project-arrow">→</span>
+            </span>
+          </div>
+          <div class="hs-project-media">
+            {project.video ? (
+              <video src={project.video} loop muted playsinline preload="metadata" aria-hidden="true" />
+            ) : project.image ? (
+              <img src={project.image} alt={project.title} />
+            ) : null}
+          </div>
+        </a>
+      </section>
+    ))}
+
+    <section class="hs-panel hs-end">
+      <div class="hs-end-inner">
+        <p class="hs-end-label">{copy.contactLabel}</p>
+        <a href="mailto:esme.working@gmail.com" class="hs-end-mail">
+          esme.working@gmail.com
+        </a>
+        <p class="hs-end-copy">&copy; 2026 Esme Chang</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="hs-hint" id="hs-hint">
+    <p class="hs-hint-text">{copy.hint}</p>
+    <button type="button" class="hs-hint-ok" id="hs-hint-ok">{copy.ok}</button>
+  </div>
+
+  <div class="hs-dots" id="hs-dots" aria-hidden="true">
+    <span class="hs-dot" data-index="0"></span>
+    {projects.map((_, i) => (
+      <span class="hs-dot" data-index={i + 1}></span>
+    ))}
+    <span class="hs-dot" data-index={projects.length + 1}></span>
+  </div>
+</div>
+
+<style>
+  /* ---------- Mobile default: vertical stack ---------- */
+  .hs-root {
+    position: relative;
+    width: 100%;
+  }
+
+  .hs-track {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding: 96px 24px 64px;
+  }
+
+  .hs-panel {
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  /* ---------- Desktop: horizontal scroll ---------- */
+  @media (min-width: 1024px) {
+    .hs-root {
+      height: 100vh;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+    }
+    .hs-root::-webkit-scrollbar { display: none; }
+
+    .hs-track {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      padding: 0;
+      height: 100vh;
+      width: max-content;
+      align-items: stretch;
+    }
+
+    .hs-panel {
+      height: 100vh;
+      flex-shrink: 0;
+      padding-top: 88px;
+      padding-bottom: 32px;
+      box-sizing: border-box;
+    }
+
+    .hs-hero {
+      width: 46vw;
+      padding-left: 10vw;
+      padding-right: 4vw;
+      display: flex;
+      align-items: center;
+    }
+
+    .hs-project {
+      width: 50vw;
+      padding-top: 140px;
+      padding-bottom: 96px;
+      padding-left: 1.5vw;
+      padding-right: 1.5vw;
+    }
+
+    .hs-end {
+      width: 38vw;
+      padding-left: 4vw;
+      padding-right: 8vw;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  /* ---------- Hero panel ---------- */
+  .hs-hero-inner {
+    max-width: 560px;
+  }
+
+  .hs-hero-greeting {
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #000;
+    margin-bottom: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .hs-hero-greeting { font-size: 44px; }
+  }
+  @media (min-width: 1024px) {
+    .hs-hero-greeting { font-size: 56px; }
+  }
+
+  .hs-hero-tagline {
+    font-size: 13px;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    color: #000;
+    margin-bottom: 8px;
+  }
+  @media (min-width: 768px) {
+    .hs-hero-tagline { font-size: 14px; }
+  }
+
+  .hs-hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    padding: 10px 24px;
+    border-radius: 999px;
+    background: var(--color-primary);
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .hs-hero-cta:hover { background: color-mix(in srgb, var(--color-primary) 80%, transparent); }
+
+  /* ---------- Project panel ---------- */
+  .hs-project-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .hs-project-header {
+    padding-bottom: 20px;
+  }
+
+  .hs-project-title {
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 12px;
+  }
+  @media (min-width: 1024px) {
+    .hs-project-title { font-size: 26px; }
+  }
+
+  .hs-project-category {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 4px;
+  }
+
+  .hs-project-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+
+  .hs-project-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #000;
+    transition: opacity 0.2s;
+  }
+  .hs-project-inner:hover .hs-project-view { opacity: 0.6; }
+
+  .hs-project-arrow {
+    display: inline-block;
+    transition: transform 0.3s;
+  }
+  .hs-project-inner:hover .hs-project-arrow {
+    transform: translateX(4px);
+  }
+
+  .hs-project-media {
+    width: 100%;
+    aspect-ratio: 1545 / 1000;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  @media (min-width: 1024px) {
+    .hs-project-media {
+      max-width: calc((100vh - 380px) * 1.545);
+    }
+  }
+
+  .hs-project-media video,
+  .hs-project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+
+  .hs-project-inner:hover .hs-project-media video,
+  .hs-project-inner:hover .hs-project-media img {
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 1023px) {
+    .hs-project-inner { gap: 16px; }
+    .hs-project-media {
+      order: -1;
+      height: auto;
+    }
+  }
+
+  /* ---------- End panel ---------- */
+  .hs-end-inner { max-width: 400px; }
+  .hs-end-label {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 16px;
+  }
+  .hs-end-mail {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: opacity 0.2s;
+  }
+  .hs-end-mail:hover { opacity: 0.6; }
+  .hs-end-copy {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* ---------- Onboarding hint ---------- */
+  .hs-hint {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 60;
+    display: none;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px 14px 22px;
+    background: rgba(243, 244, 246, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    max-width: calc(100vw - 48px);
+  }
+
+  @media (min-width: 1024px) {
+    .hs-hint.is-visible { display: inline-flex; }
+  }
+
+  .hs-hint-text {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.75);
+    margin: 0;
+  }
+
+  .hs-hint-ok {
+    flex-shrink: 0;
+    padding: 6px 18px;
+    border-radius: 999px;
+    background: var(--color-primary);
+    color: #000;
+    font-size: 13px;
+    font-weight: 600;
+    border: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .hs-hint-ok:hover { background: color-mix(in srgb, var(--color-primary) 80%, transparent); }
+
+  /* ---------- Progress dots ---------- */
+  .hs-dots {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 50;
+    display: none;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 999px;
+  }
+
+  @media (min-width: 1024px) {
+    .hs-dots { display: inline-flex; }
+  }
+
+  .hs-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.2);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .hs-dot.is-active {
+    background: #000;
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  function initHorizontalShowcase() {
+    const root = document.querySelector<HTMLElement>('.hs-root')
+    if (!root) return
+
+    const isDesktop = () => window.matchMedia('(min-width: 1024px)').matches
+
+    const hint = document.getElementById('hs-hint')
+    const okBtn = document.getElementById('hs-hint-ok')
+    const dots = Array.from(document.querySelectorAll<HTMLElement>('.hs-dot'))
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.hs-panel'))
+
+    // Wheel -> horizontal scroll on the container
+    root.addEventListener('wheel', (e) => {
+      if (!isDesktop()) return
+      if (e.deltaX !== 0 && e.deltaY === 0) return
+      e.preventDefault()
+      root.scrollBy({ left: e.deltaY, behavior: 'auto' })
+    }, { passive: false })
+
+    // Capture wheel events anywhere on the page on desktop
+    window.addEventListener('wheel', (e) => {
+      if (!isDesktop()) return
+      if (e.deltaX !== 0 && e.deltaY === 0) return
+      const target = e.target as Node | null
+      if (target && root.contains(target)) return // already handled above
+      e.preventDefault()
+      root.scrollBy({ left: e.deltaY, behavior: 'auto' })
+    }, { passive: false })
+
+    window.addEventListener('keydown', (e) => {
+      if (!isDesktop()) return
+      const step = window.innerWidth * 0.5
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        e.preventDefault()
+        root.scrollBy({ left: step, behavior: 'smooth' })
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault()
+        root.scrollBy({ left: -step, behavior: 'smooth' })
+      } else if (e.key === 'Home') {
+        e.preventDefault()
+        root.scrollTo({ left: 0, behavior: 'smooth' })
+      } else if (e.key === 'End') {
+        e.preventDefault()
+        root.scrollTo({ left: root.scrollWidth, behavior: 'smooth' })
+      }
+    })
+
+    const hintKey = 'hs-hint-dismissed'
+    const safeStorage = {
+      get(key: string): string | null {
+        try { return localStorage.getItem(key) } catch { return null }
+      },
+      set(key: string, value: string): void {
+        try { localStorage.setItem(key, value) } catch { /* no-op */ }
+      },
+    }
+    if (hint && !safeStorage.get(hintKey)) {
+      hint.classList.add('is-visible')
+    }
+    okBtn?.addEventListener('click', () => {
+      hint?.classList.remove('is-visible')
+      safeStorage.set(hintKey, '1')
+    })
+
+    // Pause off-screen videos to save CPU / battery
+    const videos = Array.from(root.querySelectorAll<HTMLVideoElement>('.hs-project-media video'))
+    if (videos.length > 0 && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          const video = entry.target as HTMLVideoElement
+          if (entry.isIntersecting) {
+            video.play().catch(() => { /* autoplay may reject; ignore */ })
+          } else {
+            video.pause()
+          }
+        }
+      }, { root, threshold: 0.25 })
+      videos.forEach((v) => io.observe(v))
+    } else {
+      // Fallback: just play all (legacy behavior)
+      videos.forEach((v) => { v.play().catch(() => {}) })
+    }
+
+    function updateDots() {
+      if (!isDesktop() || panels.length === 0) return
+      const scrollX = root!.scrollLeft + window.innerWidth / 2
+      let activeIndex = 0
+      let accumulated = 0
+      for (let i = 0; i < panels.length; i++) {
+        const w = panels[i].offsetWidth
+        if (scrollX >= accumulated && scrollX < accumulated + w) {
+          activeIndex = i
+          break
+        }
+        accumulated += w
+        if (i === panels.length - 1) activeIndex = i
+      }
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === activeIndex))
+    }
+    updateDots()
+    root.addEventListener('scroll', updateDots, { passive: true })
+    window.addEventListener('resize', updateDots)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHorizontalShowcase)
+  } else {
+    initHorizontalShowcase()
+  }
+</script>
