@@ -21,11 +21,11 @@ const { title, headline, skills, roles, lang = 'zh' } = Astro.props
 const t = useTranslations(lang)
 
 const projects = [
-  { slug: 'ai-workflow', title: '從設計到上線：AI 協作體系', titleEn: 'Design-Led AI Orchestration' },
-  { slug: 'squirrel-doctor', title: '松鼠醫生 App 與後台', titleEn: 'Symptomtrace App & Dashboard' },
-  { slug: 'burger-king', title: '豪點王 Redesign', titleEn: 'Burger King 豪點王 Redesign' },
-  { slug: 'wingstar', title: 'WINGSTARS 啦啦隊官方網站', titleEn: 'WINGSTARS Cheerleading Official Website' },
-  { slug: 'tsg-membership', title: '台鋼會員系統', titleEn: 'TSG Membership System' },
+  { slug: 'squirrel-doctor', title: '松鼠醫生 App 與後台', titleEn: 'Symptomtrace App & Dashboard', cover: '/images/squirrel-doctor-poster.jpg' },
+  { slug: 'burger-king', title: '豪點王 Redesign', titleEn: 'Burger King 豪點王 Redesign', cover: '/images/burger-king-cover.jpg' },
+  { slug: 'tsg-membership', title: '台鋼會員系統', titleEn: 'TSG Membership System', cover: '/images/taigun-cover.jpg' },
+  { slug: 'wingstar', title: 'WINGSTARS 啦啦隊官方網站', titleEn: 'WINGSTARS Cheerleading Official Website', cover: '/images/wingstar-cover.jpg' },
+  { slug: 'ai-workflow', title: 'AI 協作實踐', titleEn: 'AI Collaboration in Practice', cover: '/images/ai-workflow-cover.jpg' },
 ]
 
 const currentSlug = Astro.url.pathname.replace(/\/$/, '').split('/').pop()
@@ -34,6 +34,8 @@ const nextProject = projects[(currentIndex + 1) % projects.length]
 
 const projectBase = lang === 'en' ? '/en/projects' : '/projects'
 const nextTitle = lang === 'en' ? nextProject.titleEn : nextProject.title
+const ogImage = new URL(projects[currentIndex]?.cover ?? '/images/og-default.jpg', Astro.site).href
+const canonical = new URL(Astro.url.pathname, Astro.site).href
 ---
 
 <!doctype html>
@@ -44,10 +46,12 @@ const nextTitle = lang === 'en' ? nextProject.titleEn : nextProject.title
     <link rel="icon" type="image/png" href="/icon.png" />
     <meta property="og:title" content={`${title} — Esme Chang`} />
     <meta property="og:description" content={headline} />
-    <meta property="og:image" content="/icon.png" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:type" content="article" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/icon.png" />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="canonical" href={canonical} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />

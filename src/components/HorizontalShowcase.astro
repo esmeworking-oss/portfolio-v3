@@ -1,4 +1,6 @@
 ---
+import { useTranslations } from '../i18n/utils'
+
 type Lang = 'zh' | 'en'
 
 interface Project {
@@ -9,6 +11,7 @@ interface Project {
   description?: string
   href: string
   video?: string
+  poster?: string
   image?: string
 }
 
@@ -18,10 +21,19 @@ interface Props {
 }
 
 const { lang = 'zh', projects } = Astro.props
+const t = useTranslations(lang)
+
+const experiences = [
+  { year: '2025 – 2026', i18nKey: 'exp.startech' },
+  { year: '2025', i18nKey: 'exp.jianxun' },
+  { year: '2023 – 2025', i18nKey: 'exp.himalaya' },
+  { year: '2022', i18nKey: 'exp.pansying' },
+]
 
 const copy = lang === 'zh'
   ? {
       greeting: "Hi, I'm Esme.",
+      meta: 'Product Designer・會員／醫療產品・中英日',
       taglines: [
         '我是一名 UI/UX 設計師與產品開發者，能從雜亂的原始需求中提煉<strong>核心痛點</strong>，將<strong>複雜邏輯轉化</strong>為直覺、高效的數位體驗。',
         '目前，我也深耕於 <strong>AI 驅動的設計工作流</strong>，致力於讓產品從發想到落地的過程變得更聰明、更精準。',
@@ -32,9 +44,13 @@ const copy = lang === 'zh'
       view: 'VIEW PROJECT',
       defaultCategory: '產品設計',
       contactLabel: '聯繫我',
+      experienceLabel: '經歷',
+      languagesLabel: '語言',
+      languages: '中文（母語）・English・日本語',
     }
   : {
       greeting: "Hi, I'm Esme.",
+      meta: 'Product Designer · Membership & Healthcare · ZH / EN / JA',
       taglines: [
         'I\'m a UI/UX designer and product builder who distills <strong>core pain points</strong> from raw, messy requirements and translates <strong>complex logic</strong> into intuitive, efficient digital experiences.',
         'These days I work deeply on <strong>AI-powered design workflows</strong>, making the journey from idea to ship smarter and sharper.',
@@ -45,6 +61,9 @@ const copy = lang === 'zh'
       view: 'VIEW PROJECT',
       defaultCategory: 'Product Design',
       contactLabel: 'Get in touch',
+      experienceLabel: 'Experience',
+      languagesLabel: 'Languages',
+      languages: 'Mandarin (native) · English · Japanese',
     }
 ---
 
@@ -62,6 +81,7 @@ const copy = lang === 'zh'
           <h1 class="hs-hero-greeting" style="font-family: 'Instrument Serif', serif;">
             {copy.greeting}
           </h1>
+          <p class="hs-hero-meta">{copy.meta}</p>
           {copy.taglines.map((line) => (
             <p class="hs-hero-tagline" set:html={line} />
           ))}
@@ -88,7 +108,7 @@ const copy = lang === 'zh'
           </div>
           <div class="hs-project-media">
             {project.video ? (
-              <video src={project.video} loop muted playsinline preload="metadata" aria-hidden="true" />
+              <video src={project.video} poster={project.poster} loop muted playsinline preload="metadata" aria-hidden="true" />
             ) : project.image ? (
               <img src={project.image} alt={project.title} />
             ) : null}
@@ -99,6 +119,18 @@ const copy = lang === 'zh'
 
     <section class="hs-panel hs-end">
       <div class="hs-end-inner">
+        <p class="hs-end-label">{copy.experienceLabel}</p>
+        <ul class="hs-end-exp">
+          {experiences.map((exp) => (
+            <li>
+              <span class="hs-end-exp-year">{exp.year}</span>
+              <span class="hs-end-exp-company">{t(`${exp.i18nKey}.company`)}</span>
+              <span class="hs-end-exp-role">{t(`${exp.i18nKey}.role`)}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="hs-end-label">{copy.languagesLabel}</p>
+        <p class="hs-end-lang">{copy.languages}</p>
         <p class="hs-end-label">{copy.contactLabel}</p>
         <a href="mailto:esme.working@gmail.com" class="hs-end-mail">
           esme.working@gmail.com
@@ -267,6 +299,14 @@ const copy = lang === 'zh'
     .hs-hero-greeting { font-size: 38px; }
   }
 
+  .hs-hero-meta {
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    color: #E8D2A0;
+    margin: 10px 0 14px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  }
   .hs-hero-tagline {
     font-size: 10px;
     line-height: 1.55;
@@ -424,6 +464,31 @@ const copy = lang === 'zh'
     transition: opacity 0.2s;
   }
   .hs-end-mail:hover { opacity: 0.6; }
+  .hs-end-exp {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    font-size: 14px;
+  }
+  .hs-end-exp li {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    column-gap: 16px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .hs-end-exp-year {
+    grid-row: span 2;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .hs-end-exp-role {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 13px;
+  }
+  .hs-end-lang {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
   .hs-end-copy {
     font-size: 13px;
     color: rgba(0, 0, 0, 0.5);
@@ -558,13 +623,16 @@ const copy = lang === 'zh'
         try { localStorage.setItem(key, value) } catch { /* no-op */ }
       },
     }
-    if (hint && !safeStorage.get(hintKey)) {
-      hint.classList.add('is-visible')
-    }
-    okBtn?.addEventListener('click', () => {
+    const dismissHint = () => {
       hint?.classList.remove('is-visible')
       safeStorage.set(hintKey, '1')
-    })
+    }
+    if (hint && !safeStorage.get(hintKey)) {
+      hint.classList.add('is-visible')
+      // Auto-dismiss so the hint doesn't keep covering content
+      window.setTimeout(dismissHint, 6000)
+    }
+    okBtn?.addEventListener('click', dismissHint)
 
     // Pause off-screen videos to save CPU / battery
     const videos = Array.from(root.querySelectorAll<HTMLVideoElement>('.hs-project-media video'))

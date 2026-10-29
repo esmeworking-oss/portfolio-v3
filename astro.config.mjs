@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://portfolio-v3-black-zeta.vercel.app',
   i18n: {
     defaultLocale: 'zh',
     locales: ['zh', 'en'],
