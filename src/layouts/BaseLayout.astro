@@ -12,6 +12,8 @@ interface Props {
 }
 
 const { title = 'Esme Chang — Product Designer', lang = 'zh', showFooter = true, bodyClass = '' } = Astro.props
+const ogImage = new URL('/images/og-default.jpg', Astro.site).href
+const canonical = new URL(Astro.url.pathname, Astro.site).href
 ---
 
 <!doctype html>
@@ -23,10 +25,12 @@ const { title = 'Esme Chang — Product Designer', lang = 'zh', showFooter = tru
     <link rel="icon" type="image/png" href="/icon.png" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={lang === 'zh' ? 'Esme Chang — 產品設計師作品集' : 'Esme Chang — Product Designer Portfolio'} />
-    <meta property="og:image" content="/icon.png" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/icon.png" />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="canonical" href={canonical} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet" />

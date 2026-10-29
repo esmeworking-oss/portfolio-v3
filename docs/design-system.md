@@ -5,7 +5,7 @@
 | Token | Value | Usage |
 |-------|-------|-------|
 | Background | `#ffffff` | 全站底色（白） |
-| Primary | `#7BB3E3` | 主要按鈕底色、tag chip 底色（搭黑字） |
+| Primary | `#163609` | 主要按鈕底色、tag chip 底色（搭白字） |
 | Text | `#000000` | 主要文字 |
 | Text Muted | `rgba(0,0,0,0.6)` | Hero 介紹文、次要文字 |
 | Gray 500 | `#6B7280` | 次要文字 |
@@ -41,7 +41,7 @@
 
 | 區域 | 寬度 | 說明 |
 |------|------|------|
-| Hero panel | `46vw`，`padding-left: 10vw` | 沿用 Hero 文字 + CTA，背景 `/images/hero-bg-2.png` |
+| Hero panel | `46vw`，`padding-left: 10vw` | 書本封面 `/images/hero-notebook.png` 上放問候、定位一行、自介 + CTA |
 | Project panel | `50vw`，`padding-top: 140px`、`padding-bottom: 96px`、`padding-x: 1.5vw` | 每個專案一個 panel，內部上 → 下：標題＋類別、描述、`VIEW PROJECT` 連結、媒體 |
 | End / Contact panel | `38vw`，`padding-left: 4vw`、`padding-right: 8vw` | 結尾 contact + copyright，取代 Footer |
 
@@ -112,7 +112,7 @@ color: white;
 
 定義於 `src/styles/global.css`，全站可用。
 
-### ProjectCard（舊版垂直 grid，目前未使用於首頁）
+### ProjectCard（舊版垂直 grid，元件已移除，僅保留規格參考）
 
 - 圖片/影片容器：`rounded-xl`（12px 圓角），`overflow-hidden`
 - Hover 效果：`scale-[1.02]`，圓角由容器裁切保持不變
@@ -156,7 +156,7 @@ backdrop-filter: blur(8px);
 border-radius: 999px;
 ```
 
-OK 按鈕為淺藍底（`var(--color-primary)`）pill 配黑字，dismiss 後寫入 `localStorage['hs-hint-dismissed'] = '1'`。
+OK 按鈕為 primary 底（`var(--color-primary)`）pill，按下或顯示 6 秒後自動關閉，並寫入 `localStorage['hs-hint-dismissed'] = '1'`。
 
 ### Progress Dots（右下指示器）
 
@@ -182,7 +182,7 @@ border-radius: 999px;
 </a>
 ```
 
-- 底色：`var(--color-primary)`（`#7BB3E3`，淺藍）
+- 底色：`var(--color-primary)`（`#163609`，深綠）
 - 文字色：`#000`（淺藍底搭白字對比度不足，固定使用黑字）
 - Hover：`bg-primary/80` 或 `color-mix(in srgb, var(--color-primary) 80%, transparent)`
 
@@ -223,8 +223,7 @@ src/
 │   ├── HorizontalShowcase.astro ← 首頁橫向滾動展示（hero + projects + contact）
 │   ├── Hero.astro               ← 舊版垂直 hero（首頁已不使用，保留備用）
 │   ├── Footer.astro             ← 全站 footer（首頁停用）
-│   ├── ProjectCard.astro        ← 舊版專案卡片（首頁已不使用）
-│   └── ExperienceList.astro     ← 工作經歷列表（首頁已不使用）
+│   └── ExperienceList.astro     ← 工作經歷列表（首頁結尾 panel 另有內建版本）
 └── pages/
     ├── index.astro              ← 首頁（ZH），改用 HorizontalShowcase
     ├── en/index.astro           ← 首頁（EN），改用 HorizontalShowcase
